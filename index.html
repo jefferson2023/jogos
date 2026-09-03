@@ -214,6 +214,7 @@ footer{
 <main class="container">
 
   <div class="tabs">
+
     <button class="tab active" onclick="showDay('today',this)">
       HOJE
     </button>
@@ -225,6 +226,7 @@ footer{
     <button class="tab" onclick="showDay('next',this)">
       PRÓXIMOS
     </button>
+
   </div>
 
   <section id="today" class="day active"></section>
@@ -244,178 +246,229 @@ footer{
 
 /* ==========================================================
    LISTA DE JOGOS
+   ==========================================================
 
-   PARA ADICIONAR NOVOS JOGOS, BASTA COPIAR UMA LINHA
-   E ALTERAR DATA, HORÁRIO, COMPETIÇÃO, TIMES E CANAIS.
+   PARA ADICIONAR NOVOS JOGOS, BASTA ADICIONAR UM NOVO BLOCO
+   DENTRO DE gamesData.
 
-   O SITE ORGANIZA TUDO AUTOMATICAMENTE.
+   O SITE ORGANIZA AUTOMATICAMENTE:
+   - HOJE
+   - AMANHÃ
+   - PRÓXIMOS
+   - DATAS
+   - HORÁRIOS
 ========================================================== */
 
 const gamesData = [
 
-  /* =========================
-     QUINTA – 03/09/2026
-  ========================= */
+  /* ========================================================
+     QUINTA-FEIRA – 03/09/2026
+  ======================================================== */
 
   {
     date: "2026-09-03",
     time: "16:00",
-    comp: "🇮🇹 Itália • Copa Itália",
+    comp: "🏆 Copa Itália",
     teams: "Cagliari x Hellas Verona",
-    channels: ["📺 SportyNet"]
+    channels: [
+      "📺 SportyNet"
+    ]
   },
 
   {
     date: "2026-09-03",
     time: "20:00",
-    comp: "🇧🇷 Brasil • Copa do Brasil",
+    comp: "🏆 Copa do Brasil",
     teams: "Grêmio x Internacional",
-    channels: ["📺 Prime Video"]
+    channels: [
+      "📺 Prime Video"
+    ]
   },
 
   {
     date: "2026-09-03",
     time: "20:00",
-    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    comp: "🏆 Brasileirão Série B",
     teams: "Náutico x Botafogo-SP",
-    channels: ["📺 Sportv", "📺 Premiere"]
+    channels: [
+      "📺 Sportv",
+      "📺 Premiere"
+    ]
   },
 
 
-  /* =========================
-     SEXTA – 04/09/2026
-  ========================= */
+  /* ========================================================
+     SEXTA-FEIRA – 04/09/2026
+  ======================================================== */
 
   {
     date: "2026-09-04",
     time: "14:00",
-    comp: "🇫🇷 França • Ligue 1",
+    comp: "🏆 Ligue 1",
     teams: "Lyon x Auxerre",
-    channels: ["📺 Xsports"]
+    channels: [
+      "📺 Xsports"
+    ]
   },
 
   {
     date: "2026-09-04",
     time: "16:00",
-    comp: "🏴 Inglaterra • Campeonato Inglês",
+    comp: "🏆 Premier League",
     teams: "Ipswich Town x Liverpool",
-    channels: ["📺 ESPN"]
+    channels: [
+      "📺 ESPN"
+    ]
   },
 
   {
     date: "2026-09-04",
     time: "16:00",
-    comp: "🇪🇸 Espanha • LaLiga",
+    comp: "🏆 LaLiga",
     teams: "Real Bétis x Real Madrid",
-    channels: ["📺 CazeTV"]
+    channels: [
+      "📺 CazeTV"
+    ]
   },
 
   {
     date: "2026-09-04",
     time: "16:05",
-    comp: "🇫🇷 França • Ligue 1",
+    comp: "🏆 Ligue 1",
     teams: "PSG x Monaco",
-    channels: ["📺 Xsports"]
+    channels: [
+      "📺 Xsports"
+    ]
   },
 
   {
     date: "2026-09-04",
     time: "19:30",
-    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    comp: "🏆 Brasileirão Série B",
     teams: "Criciúma x Cuiabá",
-    channels: ["📺 ESPN"]
+    channels: [
+      "📺 ESPN"
+    ]
   },
 
   {
     date: "2026-09-04",
     time: "21:30",
-    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    comp: "🏆 Brasileirão Série B",
     teams: "CRB x América-MG",
-    channels: ["📺 Xsports", "📺 SportyNet"]
+    channels: [
+      "📺 Xsports",
+      "📺 SportyNet"
+    ]
   },
 
 
-  /* =========================
+  /* ========================================================
      SÁBADO – 05/09/2026
-  ========================= */
+  ======================================================== */
 
   {
     date: "2026-09-05",
     time: "08:30",
-    comp: "🏴 Inglaterra • Campeonato Inglês",
+    comp: "🏆 Campeonato Inglês",
     teams: "Newcastle x Bournemouth",
-    channels: ["📺 ESPN", "📺 Disney+"]
+    channels: [
+      "📺 ESPN",
+      "📺 Disney+"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "11:00",
-    comp: "🏴 Inglaterra • Campeonato Inglês",
+    comp: "🏆 Campeonato Inglês",
     teams: "Manchester City x Coventry City",
-    channels: ["📺 ESPN", "📺 Disney+"]
+    channels: [
+      "📺 ESPN",
+      "📺 Disney+"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "13:00",
-    comp: "🇮🇹 Itália • Campeonato Italiano",
+    comp: "🏆 Campeonato Italiano",
     teams: "Internazionale x Napoli",
-    channels: ["📺 ESPN", "📺 Disney+"]
+    channels: [
+      "📺 ESPN",
+      "📺 Disney+"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "15:00",
-    comp: "🇸🇦 Arábia Saudita • Campeonato Saudita",
+    comp: "🏆 Campeonato Saudita",
     teams: "Al-Ittihad x Al-Nassr",
-    channels: ["📺 Band", "📺 BandSports"]
+    channels: [
+      "📺 Band",
+      "📺 BandSports"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "16:00",
-    comp: "🇧🇷 Brasil • Brasileirão - Série A",
+    comp: "🏆 Brasileirão - Série A",
     teams: "RB Bragantino x Bahia",
-    channels: ["📺 Premiere"]
+    channels: [
+      "📺 Premiere"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "16:00",
-    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    comp: "🏆 Brasileirão - Série B",
     teams: "Goiás x Fortaleza",
-    channels: ["📺 RedeTV!", "📺 ESPN", "📺 SportyNet"]
+    channels: [
+      "📺 RedeTV!",
+      "📺 ESPN",
+      "📺 SportyNet"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "18:30",
-    comp: "🇧🇷 Brasil • Brasileirão - Série A",
+    comp: "🏆 Brasileirão - Série A",
     teams: "São Paulo x Atlético-MG",
-    channels: ["📺 Premiere"]
+    channels: [
+      "📺 Premiere"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "18:30",
-    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    comp: "🏆 Brasileirão - Série B",
     teams: "Ceará x Sport",
-    channels: ["📺 Disney+"]
+    channels: [
+      "📺 Disney+"
+    ]
   },
 
   {
     date: "2026-09-05",
     time: "21:00",
-    comp: "🇧🇷 Brasil • Brasileirão - Série A",
+    comp: "🏆 Brasileirão - Série A",
     teams: "Fluminense x Vasco",
-    channels: ["📺 SporTV", "📺 Premiere"]
+    channels: [
+      "📺 SporTV",
+      "📺 Premiere"
+    ]
   }
 
 ];
 
 
 /* ==========================================================
-   FORMATAÇÃO DA DATA
+   FORMATA DATA
 ========================================================== */
 
 function formatDate(dateObj){
@@ -430,25 +483,30 @@ function formatDate(dateObj){
     "SÁBADO"
   ];
 
-  const dayName = daysOfWeek[dateObj.getDay()];
+  const dayName =
+    daysOfWeek[dateObj.getDay()];
 
-  const day = String(dateObj.getDate()).padStart(2,"0");
+  const day =
+    String(dateObj.getDate()).padStart(2,"0");
 
-  const month = String(dateObj.getMonth()+1).padStart(2,"0");
+  const month =
+    String(dateObj.getMonth()+1).padStart(2,"0");
 
-  const year = dateObj.getFullYear();
+  const year =
+    dateObj.getFullYear();
 
   return `📅 ${dayName} – ${day}/${month}/${year}`;
 }
 
 
 /* ==========================================================
-   FORMATAÇÃO DE DATA SEM PROBLEMAS DE FUSO HORÁRIO
+   CONVERTE DATA DO JOGO SEM PROBLEMAS DE FUSO HORÁRIO
 ========================================================== */
 
 function parseDate(dateString){
 
-  const parts = dateString.split("-");
+  const parts =
+    dateString.split("-");
 
   return new Date(
     Number(parts[0]),
@@ -459,7 +517,7 @@ function parseDate(dateString){
 
 
 /* ==========================================================
-   DATA ATUAL
+   PEGA A DATA DE HOJE
 ========================================================== */
 
 function getToday(){
@@ -480,22 +538,23 @@ function getToday(){
 
 function dateToString(dateObj){
 
-  const year = dateObj.getFullYear();
+  const year =
+    dateObj.getFullYear();
 
-  const month = String(
-    dateObj.getMonth()+1
-  ).padStart(2,"0");
+  const month =
+    String(dateObj.getMonth()+1)
+    .padStart(2,"0");
 
-  const day = String(
-    dateObj.getDate()
-  ).padStart(2,"0");
+  const day =
+    String(dateObj.getDate())
+    .padStart(2,"0");
 
   return `${year}-${month}-${day}`;
 }
 
 
 /* ==========================================================
-   ORGANIZA OS JOGOS
+   ORDENA OS JOGOS
 ========================================================== */
 
 function sortGames(games){
@@ -503,12 +562,15 @@ function sortGames(games){
   return games.sort((a,b)=>{
 
     if(a.date !== b.date){
+
       return a.date.localeCompare(b.date);
+
     }
 
     return a.time.localeCompare(b.time);
 
   });
+
 }
 
 
@@ -522,13 +584,22 @@ function createGamesHTML(games){
 
   games.forEach(game => {
 
-    const channelsHTML = game.channels
+    const channelsHTML =
+      game.channels
       .map(channel => {
-        return `<div class="channel">${channel}</div>`;
+
+        return `
+          <div class="channel">
+            ${channel}
+          </div>
+        `;
+
       })
       .join("");
 
+
     html += `
+
       <div class="game">
 
         <div class="time-row">
@@ -552,7 +623,9 @@ function createGamesHTML(games){
         </div>
 
       </div>
+
     `;
+
   });
 
   return html;
@@ -560,16 +633,23 @@ function createGamesHTML(games){
 
 
 /* ==========================================================
-   CRIA UMA SEÇÃO
+   MONTA HOJE OU AMANHÃ
 ========================================================== */
 
-function buildSection(sectionId, games, dateText){
+function buildSection(
+  sectionId,
+  games,
+  dateText
+){
 
-  const container = document.getElementById(sectionId);
+  const container =
+    document.getElementById(sectionId);
+
 
   if(games.length === 0){
 
     container.innerHTML = `
+
       <div class="date">
         ${dateText}
       </div>
@@ -577,74 +657,89 @@ function buildSection(sectionId, games, dateText){
       <div class="empty">
         Nenhuma partida agendada.
       </div>
+
     `;
 
     return;
   }
 
+
   games = sortGames(games);
 
+
   container.innerHTML = `
+
     <div class="date">
       ${dateText}
     </div>
 
     ${createGamesHTML(games)}
+
   `;
 }
 
 
 /* ==========================================================
-   RENDERIZA HOJE / AMANHÃ / PRÓXIMOS
+   RENDERIZA TODAS AS ABAS
 ========================================================== */
 
 function renderGames(){
 
-  const today = getToday();
+  const today =
+    getToday();
 
-  const tomorrow = new Date(today);
+
+  const tomorrow =
+    new Date(today);
+
 
   tomorrow.setDate(
     tomorrow.getDate()+1
   );
 
 
-  const todayStr = dateToString(today);
-
-  const tomorrowStr = dateToString(tomorrow);
-
-
-  /* -------------------------
-     HOJE
-  ------------------------- */
-
-  const todayGames = gamesData.filter(game => {
-
-    return game.date === todayStr;
-
-  });
+  const todayStr =
+    dateToString(today);
 
 
-  /* -------------------------
-     AMANHÃ
-  ------------------------- */
-
-  const tomorrowGames = gamesData.filter(game => {
-
-    return game.date === tomorrowStr;
-
-  });
+  const tomorrowStr =
+    dateToString(tomorrow);
 
 
-  /* -------------------------
-     PRÓXIMOS
-  ------------------------- */
+  /* ========================================================
+     JOGOS DE HOJE
+  ======================================================== */
 
-  const nextGames = gamesData.filter(game => {
+  const todayGames =
+    gamesData.filter(game => {
 
-    return game.date > tomorrowStr;
+      return game.date === todayStr;
 
-  });
+    });
+
+
+  /* ========================================================
+     JOGOS DE AMANHÃ
+  ======================================================== */
+
+  const tomorrowGames =
+    gamesData.filter(game => {
+
+      return game.date === tomorrowStr;
+
+    });
+
+
+  /* ========================================================
+     JOGOS FUTUROS
+  ======================================================== */
+
+  const nextGames =
+    gamesData.filter(game => {
+
+      return game.date > tomorrowStr;
+
+    });
 
 
   buildSection(
@@ -662,8 +757,7 @@ function renderGames(){
 
 
   /* ========================================================
-     PRÓXIMOS JOGOS
-     AGRUPADOS POR DATA
+     PRÓXIMOS JOGOS AGRUPADOS POR DATA
   ======================================================== */
 
   const nextContainer =
@@ -673,6 +767,7 @@ function renderGames(){
   if(nextGames.length === 0){
 
     nextContainer.innerHTML = `
+
       <div class="date">
         📅 PRÓXIMOS JOGOS
       </div>
@@ -680,6 +775,7 @@ function renderGames(){
       <div class="empty">
         Nenhuma partida futura cadastrada.
       </div>
+
     `;
 
     return;
@@ -690,15 +786,15 @@ function renderGames(){
     sortGames(nextGames);
 
 
-  /* Agrupa os jogos pela data */
-
   const grouped = {};
 
 
   sortedNextGames.forEach(game => {
 
     if(!grouped[game.date]){
+
       grouped[game.date] = [];
+
     }
 
     grouped[game.date].push(game);
@@ -713,13 +809,22 @@ function renderGames(){
     .sort()
     .forEach((date,index)=>{
 
-      const dateObj = parseDate(date);
+      const dateObj =
+        parseDate(date);
+
 
       html += `
-        <div class="date ${index > 0 ? "next-date" : ""}">
+
+        <div class="date ${
+          index > 0 ? "next-date" : ""
+        }">
+
           ${formatDate(dateObj)}
+
         </div>
+
       `;
+
 
       html += createGamesHTML(
         grouped[date]
@@ -728,7 +833,8 @@ function renderGames(){
     });
 
 
-  nextContainer.innerHTML = html;
+  nextContainer.innerHTML =
+    html;
 }
 
 
