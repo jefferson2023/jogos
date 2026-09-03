@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0f14">
 <title>JTV | Jogos de Hoje</title>
+
 <style>
 :root{
   --bg:#0b0f14;
@@ -15,151 +16,762 @@
   --muted:#9aa7b7;
   --accent:#18c46e;
 }
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
+
 body{
-  margin:0;font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
   background:linear-gradient(180deg,#080b10,#10151d);
-  color:var(--text);min-height:100vh
+  color:var(--text);
+  min-height:100vh;
 }
-.sub{color:var(--muted);font-size:14px;text-align:center;margin-bottom:15px}
-.container{max-width:760px;margin:auto;padding:15px 14px 50px}
-.tabs{display:flex;gap:8px;margin-bottom:20px}
+
+header{
+  text-align:center;
+  padding:25px 15px 10px;
+}
+
+.logo{
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:var(--accent);
+}
+
+.sub{
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.container{
+  max-width:760px;
+  margin:auto;
+  padding:15px 14px 50px;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+}
+
 .tab{
-  flex:1;border:1px solid var(--border);background:var(--card);
-  color:var(--text);padding:12px 8px;border-radius:10px;
-  cursor:pointer;font-weight:bold
+  flex:1;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:12px 8px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.2s;
 }
-.tab.active{background:var(--accent);color:#062313;border-color:var(--accent)}
-.day{display:none}
-.day.active{display:block}
+
+.tab:hover{
+  border-color:var(--accent);
+}
+
+.tab.active{
+  background:var(--accent);
+  color:#062313;
+  border-color:var(--accent);
+}
+
+.day{
+  display:none;
+}
+
+.day.active{
+  display:block;
+}
+
 .date{
-  text-align:center;background:var(--card2);border:1px solid var(--border);
-  padding:12px;border-radius:10px;margin-bottom:15px;
-  color:var(--muted);font-weight:bold
+  text-align:center;
+  background:var(--card2);
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:15px;
+  color:var(--muted);
+  font-weight:bold;
 }
+
+.next-date{
+  margin-top:25px;
+}
+
 .game{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:14px;padding:16px;margin-bottom:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,.18)
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
-.time{display:inline-block;background:var(--accent);color:#062313;
-  font-weight:900;padding:5px 9px;border-radius:7px;font-size:14px}
-.time-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.time-row .competition{margin:0;color:#f4f7fb;font-weight:800;font-size:15px}
-.teams{font-size:19px;font-weight:800;margin:12px 0 14px}
-.info{border-top:1px solid var(--border);padding-top:10px;margin-top:8px;font-size:14px}
-.channel{color:#fff;font-weight:bold;font-size:16px;margin-top:4px}
-.empty{text-align:center;color:var(--muted);padding:40px 10px}
-footer{text-align:center;color:#647080;font-size:12px;padding:20px}
+
+.time-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.time{
+  display:inline-block;
+  background:var(--accent);
+  color:#062313;
+  font-weight:900;
+  padding:5px 9px;
+  border-radius:7px;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.time-row .competition{
+  margin:0;
+  color:#f4f7fb;
+  font-weight:800;
+  font-size:15px;
+}
+
+.teams{
+  font-size:19px;
+  font-weight:800;
+  margin:12px 0 14px;
+}
+
+.info{
+  border-top:1px solid var(--border);
+  padding-top:10px;
+  margin-top:8px;
+  font-size:14px;
+}
+
+.channel{
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+  margin-top:4px;
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:40px 10px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+}
+
+footer{
+  text-align:center;
+  color:#647080;
+  font-size:12px;
+  padding:20px;
+}
+
 @media(max-width:480px){
-  .teams{font-size:17px}
-  .tab{font-size:12px;padding:11px 4px}
-  .channel{font-size:15px}
+
+  .logo{
+    font-size:28px;
+  }
+
+  .teams{
+    font-size:17px;
+  }
+
+  .tab{
+    font-size:12px;
+    padding:11px 4px;
+  }
+
+  .channel{
+    font-size:15px;
+  }
+
+  .time-row .competition{
+    font-size:14px;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<main class="container">
+<header>
+  <div class="logo">J<span>TV</span></div>
   <div class="sub">⚽ Programação de Jogos e Transmissões</div>
+</header>
+
+<main class="container">
 
   <div class="tabs">
-    <button class="tab active" onclick="showDay('today',this)">HOJE</button>
-    <button class="tab" onclick="showDay('tomorrow',this)">AMANHÃ</button>
-    <button class="tab" onclick="showDay('next',this)">PRÓXIMOS</button>
+    <button class="tab active" onclick="showDay('today',this)">
+      HOJE
+    </button>
+
+    <button class="tab" onclick="showDay('tomorrow',this)">
+      AMANHÃ
+    </button>
+
+    <button class="tab" onclick="showDay('next',this)">
+      PRÓXIMOS
+    </button>
   </div>
 
   <section id="today" class="day active"></section>
+
   <section id="tomorrow" class="day"></section>
+
   <section id="next" class="day"></section>
+
 </main>
 
-<footer>© 2026 JTV • Jogos e Transmissões</footer>
+<footer>
+  © 2026 JTV • Jogos e Transmissões
+</footer>
+
 
 <script>
-// Lista de jogos cadastrados (adicione ou remova novos jogos aqui)
+
+/* ==========================================================
+   LISTA DE JOGOS
+
+   PARA ADICIONAR NOVOS JOGOS, BASTA COPIAR UMA LINHA
+   E ALTERAR DATA, HORÁRIO, COMPETIÇÃO, TIMES E CANAIS.
+
+   O SITE ORGANIZA TUDO AUTOMATICAMENTE.
+========================================================== */
+
 const gamesData = [
-  // Quinta-feira (03/09/2026)
-  { date: "2026-09-03", time: "16:00", comp: "🏆 Copa Itália", teams: "Cagliari x Hellas Verona", channels: ["📺 SportyNet"] },
-  { date: "2026-09-03", time: "20:00", comp: "🏆 Copa do Brasil", teams: "Grêmio x Internacional", channels: ["📺 Prime Video"] },
-  { date: "2026-09-03", time: "20:00", comp: "🏆 Brasileirão Série B", teams: "Náutico x Botafogo-SP", channels: ["📺 Sportv", "📺 Premiere"] },
 
-  // Sexta-feira (04/09/2026)
-  { date: "2026-09-04", time: "14:00", comp: "🏆 Ligue 1", teams: "Lyon x Auxerre", channels: ["📺 Xsports"] },
-  { date: "2026-09-04", time: "16:00", comp: "🏆 Premier League", teams: "Ipswich Town x Liverpool", channels: ["📺 ESPN"] },
-  { date: "2026-09-04", time: "16:00", comp: "🏆 LaLiga", teams: "Real Bétis x Real Madrid", channels: ["📺 CazeTV"] },
-  { date: "2026-09-04", time: "16:05", comp: "🏆 Ligue 1", teams: "PSG x Monaco", channels: ["📺 Xsports"] },
-  { date: "2026-09-04", time: "19:30", comp: "🏆 Brasileirão Série B", teams: "Criciúma x Cuiabá", channels: ["📺 ESPN"] },
-  { date: "2026-09-04", time: "21:30", comp: "🏆 Brasileirão Série B", teams: "CRB x América-MG", channels: ["📺 Xsports", "📺 SportyNet"] },
+  /* =========================
+     QUINTA – 03/09/2026
+  ========================= */
 
-  // Sábado (05/09/2026)
-  { date: "2026-09-05", time: "08:30", comp: "🏆 Premier League", teams: "Newcastle x Bournemouth", channels: ["📺 ESPN", "📺 Disney+"] },
-  { date: "2026-09-05", time: "11:00", comp: "🏆 Premier League", teams: "Manchester City x Coventry City", channels: ["📺 ESPN", "📺 Disney+"] },
-  { date: "2026-09-05", time: "13:00", comp: "🏆 Serie A Italiana", teams: "Internazionale x Napoli", channels: ["📺 ESPN", "📺 Disney+"] },
-  { date: "2026-09-05", time: "15:00", comp: "🏆 Campeonato Saudita", teams: "Al-Ittihad x Al-Nassr", channels: ["📺 Band", "📺 BandSports"] },
-  { date: "2026-09-05", time: "16:00", comp: "🏆 Brasileirão Série A", teams: "RB Bragantino x Bahia", channels: ["📺 Premiere"] },
-  { date: "2026-09-05", time: "16:00", comp: "🏆 Brasileirão Série B", teams: "Goiás x Fortaleza", channels: ["📺 RedeTV!", "📺 ESPN", "📺 SportyNet"] },
-  { date: "2026-09-05", time: "18:30", comp: "🏆 Brasileirão Série A", teams: "São Paulo x Atlético-MG", channels: ["📺 Premiere"] },
-  { date: "2026-09-05", time: "18:30", comp: "🏆 Brasileirão Série B", teams: "Ceará x Sport", channels: ["📺 Disney+"] },
-  { date: "2026-09-05", time: "21:00", comp: "🏆 Brasileirão Série A", teams: "Fluminense x Vasco", channels: ["📺 SporTV", "📺 Premiere"] }
+  {
+    date: "2026-09-03",
+    time: "16:00",
+    comp: "🇮🇹 Itália • Copa Itália",
+    teams: "Cagliari x Hellas Verona",
+    channels: ["📺 SportyNet"]
+  },
+
+  {
+    date: "2026-09-03",
+    time: "20:00",
+    comp: "🇧🇷 Brasil • Copa do Brasil",
+    teams: "Grêmio x Internacional",
+    channels: ["📺 Prime Video"]
+  },
+
+  {
+    date: "2026-09-03",
+    time: "20:00",
+    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    teams: "Náutico x Botafogo-SP",
+    channels: ["📺 Sportv", "📺 Premiere"]
+  },
+
+
+  /* =========================
+     SEXTA – 04/09/2026
+  ========================= */
+
+  {
+    date: "2026-09-04",
+    time: "14:00",
+    comp: "🇫🇷 França • Ligue 1",
+    teams: "Lyon x Auxerre",
+    channels: ["📺 Xsports"]
+  },
+
+  {
+    date: "2026-09-04",
+    time: "16:00",
+    comp: "🏴 Inglaterra • Campeonato Inglês",
+    teams: "Ipswich Town x Liverpool",
+    channels: ["📺 ESPN"]
+  },
+
+  {
+    date: "2026-09-04",
+    time: "16:00",
+    comp: "🇪🇸 Espanha • LaLiga",
+    teams: "Real Bétis x Real Madrid",
+    channels: ["📺 CazeTV"]
+  },
+
+  {
+    date: "2026-09-04",
+    time: "16:05",
+    comp: "🇫🇷 França • Ligue 1",
+    teams: "PSG x Monaco",
+    channels: ["📺 Xsports"]
+  },
+
+  {
+    date: "2026-09-04",
+    time: "19:30",
+    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    teams: "Criciúma x Cuiabá",
+    channels: ["📺 ESPN"]
+  },
+
+  {
+    date: "2026-09-04",
+    time: "21:30",
+    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    teams: "CRB x América-MG",
+    channels: ["📺 Xsports", "📺 SportyNet"]
+  },
+
+
+  /* =========================
+     SÁBADO – 05/09/2026
+  ========================= */
+
+  {
+    date: "2026-09-05",
+    time: "08:30",
+    comp: "🏴 Inglaterra • Campeonato Inglês",
+    teams: "Newcastle x Bournemouth",
+    channels: ["📺 ESPN", "📺 Disney+"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "11:00",
+    comp: "🏴 Inglaterra • Campeonato Inglês",
+    teams: "Manchester City x Coventry City",
+    channels: ["📺 ESPN", "📺 Disney+"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "13:00",
+    comp: "🇮🇹 Itália • Campeonato Italiano",
+    teams: "Internazionale x Napoli",
+    channels: ["📺 ESPN", "📺 Disney+"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "15:00",
+    comp: "🇸🇦 Arábia Saudita • Campeonato Saudita",
+    teams: "Al-Ittihad x Al-Nassr",
+    channels: ["📺 Band", "📺 BandSports"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "16:00",
+    comp: "🇧🇷 Brasil • Brasileirão - Série A",
+    teams: "RB Bragantino x Bahia",
+    channels: ["📺 Premiere"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "16:00",
+    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    teams: "Goiás x Fortaleza",
+    channels: ["📺 RedeTV!", "📺 ESPN", "📺 SportyNet"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "18:30",
+    comp: "🇧🇷 Brasil • Brasileirão - Série A",
+    teams: "São Paulo x Atlético-MG",
+    channels: ["📺 Premiere"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "18:30",
+    comp: "🇧🇷 Brasil • Brasileirão - Série B",
+    teams: "Ceará x Sport",
+    channels: ["📺 Disney+"]
+  },
+
+  {
+    date: "2026-09-05",
+    time: "21:00",
+    comp: "🇧🇷 Brasil • Brasileirão - Série A",
+    teams: "Fluminense x Vasco",
+    channels: ["📺 SporTV", "📺 Premiere"]
+  }
+
 ];
-  
-function formatDate(dateObj) {
-  const daysOfWeek = ["DOMINGO", "SEGUNDA-FEIRA", "TERÇA-FEIRA", "QUARTA-FEIRA", "QUINTA-FEIRA", "SEXTA-FEIRA", "SÁBADO"];
+
+
+/* ==========================================================
+   FORMATAÇÃO DA DATA
+========================================================== */
+
+function formatDate(dateObj){
+
+  const daysOfWeek = [
+    "DOMINGO",
+    "SEGUNDA-FEIRA",
+    "TERÇA-FEIRA",
+    "QUARTA-FEIRA",
+    "QUINTA-FEIRA",
+    "SEXTA-FEIRA",
+    "SÁBADO"
+  ];
+
   const dayName = daysOfWeek[dateObj.getDay()];
-  const day = String(dateObj.getDate()).padStart(2, '0');
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+
+  const day = String(dateObj.getDate()).padStart(2,"0");
+
+  const month = String(dateObj.getMonth()+1).padStart(2,"0");
+
   const year = dateObj.getFullYear();
+
   return `📅 ${dayName} – ${day}/${month}/${year}`;
 }
 
-function renderGames() {
-  const now = new Date();
-  const todayStr = now.toISOString().split('T')[0];
 
-  const tomorrow = new Date(now);
-  tomorrow.setDate(now.getDate() + 1);
-  const tomorrowStr = tomorrow.toISOString().split('T')[0];
+/* ==========================================================
+   FORMATAÇÃO DE DATA SEM PROBLEMAS DE FUSO HORÁRIO
+========================================================== */
 
-  const todayGames = gamesData.filter(g => g.date === todayStr);
-  const tomorrowGames = gamesData.filter(g => g.date === tomorrowStr);
-  const nextGames = gamesData.filter(g => g.date > tomorrowStr);
+function parseDate(dateString){
 
-  buildSection('today', todayGames, formatDate(now));
-  buildSection('tomorrow', tomorrowGames, formatDate(tomorrow));
-  buildSection('next', nextGames, '📅 PRÓXIMOS JOGOS');
+  const parts = dateString.split("-");
+
+  return new Date(
+    Number(parts[0]),
+    Number(parts[1])-1,
+    Number(parts[2])
+  );
 }
 
-function buildSection(sectionId, games, dateText) {
-  const container = document.getElementById(sectionId);
-  if (games.length === 0) {
-    container.innerHTML = `<div class="date">${dateText}</div><div class="empty">Nenhuma partida agendada.</div>`;
-    return;
-  }
 
-  let html = `<div class="date">${dateText}</div>`;
-  games.forEach(g => {
-    const channelsHtml = g.channels.map(c => `<div class="channel">${c}</div>`).join('');
+/* ==========================================================
+   DATA ATUAL
+========================================================== */
+
+function getToday(){
+
+  const now = new Date();
+
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+}
+
+
+/* ==========================================================
+   CONVERTE DATA PARA YYYY-MM-DD
+========================================================== */
+
+function dateToString(dateObj){
+
+  const year = dateObj.getFullYear();
+
+  const month = String(
+    dateObj.getMonth()+1
+  ).padStart(2,"0");
+
+  const day = String(
+    dateObj.getDate()
+  ).padStart(2,"0");
+
+  return `${year}-${month}-${day}`;
+}
+
+
+/* ==========================================================
+   ORGANIZA OS JOGOS
+========================================================== */
+
+function sortGames(games){
+
+  return games.sort((a,b)=>{
+
+    if(a.date !== b.date){
+      return a.date.localeCompare(b.date);
+    }
+
+    return a.time.localeCompare(b.time);
+
+  });
+}
+
+
+/* ==========================================================
+   CRIA OS CARDS DOS JOGOS
+========================================================== */
+
+function createGamesHTML(games){
+
+  let html = "";
+
+  games.forEach(game => {
+
+    const channelsHTML = game.channels
+      .map(channel => {
+        return `<div class="channel">${channel}</div>`;
+      })
+      .join("");
+
     html += `
       <div class="game">
-        <div class="time-row"><span class="time">${g.time}</span><span class="competition">${g.comp}</span></div>
-        <div class="teams">${g.teams}</div>
-        <div class="info">${channelsHtml}</div>
+
+        <div class="time-row">
+
+          <span class="time">
+            ${game.time}
+          </span>
+
+          <span class="competition">
+            ${game.comp}
+          </span>
+
+        </div>
+
+        <div class="teams">
+          ${game.teams}
+        </div>
+
+        <div class="info">
+          ${channelsHTML}
+        </div>
+
       </div>
     `;
   });
-  container.innerHTML = html;
+
+  return html;
 }
 
-function showDay(id, button) {
-  document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  button.classList.add('active');
+
+/* ==========================================================
+   CRIA UMA SEÇÃO
+========================================================== */
+
+function buildSection(sectionId, games, dateText){
+
+  const container = document.getElementById(sectionId);
+
+  if(games.length === 0){
+
+    container.innerHTML = `
+      <div class="date">
+        ${dateText}
+      </div>
+
+      <div class="empty">
+        Nenhuma partida agendada.
+      </div>
+    `;
+
+    return;
+  }
+
+  games = sortGames(games);
+
+  container.innerHTML = `
+    <div class="date">
+      ${dateText}
+    </div>
+
+    ${createGamesHTML(games)}
+  `;
 }
 
-// Inicializa a renderização dinâmica ao carregar a página
+
+/* ==========================================================
+   RENDERIZA HOJE / AMANHÃ / PRÓXIMOS
+========================================================== */
+
+function renderGames(){
+
+  const today = getToday();
+
+  const tomorrow = new Date(today);
+
+  tomorrow.setDate(
+    tomorrow.getDate()+1
+  );
+
+
+  const todayStr = dateToString(today);
+
+  const tomorrowStr = dateToString(tomorrow);
+
+
+  /* -------------------------
+     HOJE
+  ------------------------- */
+
+  const todayGames = gamesData.filter(game => {
+
+    return game.date === todayStr;
+
+  });
+
+
+  /* -------------------------
+     AMANHÃ
+  ------------------------- */
+
+  const tomorrowGames = gamesData.filter(game => {
+
+    return game.date === tomorrowStr;
+
+  });
+
+
+  /* -------------------------
+     PRÓXIMOS
+  ------------------------- */
+
+  const nextGames = gamesData.filter(game => {
+
+    return game.date > tomorrowStr;
+
+  });
+
+
+  buildSection(
+    "today",
+    todayGames,
+    formatDate(today)
+  );
+
+
+  buildSection(
+    "tomorrow",
+    tomorrowGames,
+    formatDate(tomorrow)
+  );
+
+
+  /* ========================================================
+     PRÓXIMOS JOGOS
+     AGRUPADOS POR DATA
+  ======================================================== */
+
+  const nextContainer =
+    document.getElementById("next");
+
+
+  if(nextGames.length === 0){
+
+    nextContainer.innerHTML = `
+      <div class="date">
+        📅 PRÓXIMOS JOGOS
+      </div>
+
+      <div class="empty">
+        Nenhuma partida futura cadastrada.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const sortedNextGames =
+    sortGames(nextGames);
+
+
+  /* Agrupa os jogos pela data */
+
+  const grouped = {};
+
+
+  sortedNextGames.forEach(game => {
+
+    if(!grouped[game.date]){
+      grouped[game.date] = [];
+    }
+
+    grouped[game.date].push(game);
+
+  });
+
+
+  let html = "";
+
+
+  Object.keys(grouped)
+    .sort()
+    .forEach((date,index)=>{
+
+      const dateObj = parseDate(date);
+
+      html += `
+        <div class="date ${index > 0 ? "next-date" : ""}">
+          ${formatDate(dateObj)}
+        </div>
+      `;
+
+      html += createGamesHTML(
+        grouped[date]
+      );
+
+    });
+
+
+  nextContainer.innerHTML = html;
+}
+
+
+/* ==========================================================
+   TROCA DE ABA
+========================================================== */
+
+function showDay(id,button){
+
+  document
+    .querySelectorAll(".day")
+    .forEach(day => {
+
+      day.classList.remove("active");
+
+    });
+
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(tab => {
+
+      tab.classList.remove("active");
+
+    });
+
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+
+  button.classList.add("active");
+}
+
+
+/* ==========================================================
+   INICIA O SITE
+========================================================== */
+
 renderGames();
+
 </script>
+
 </body>
 </html>
