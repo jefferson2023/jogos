@@ -1,102 +1,141 @@
-<section id="next" class="day">
-  <div class="date">📅 SÁBADO – 05/09/2026</div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0f14">
+<title>JTV | Jogos de Hoje</title>
+<style>
+:root{
+  --bg:#0b0f14;
+  --card:#151b23;
+  --card2:#10161d;
+  --border:#283342;
+  --text:#f4f7fb;
+  --muted:#9aa7b7;
+  --accent:#18c46e;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#080b10,#10151d);
+  color:var(--text);min-height:100vh
+}
+header{
+  text-align:center;padding:30px 15px 20px;
+  border-bottom:1px solid var(--border);
+  background:rgba(10,14,20,.9)
+}
+.logo{font-size:32px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.sub{color:var(--muted);font-size:14px;margin-top:7px}
+.container{max-width:760px;margin:auto;padding:20px 14px 50px}
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tab{
+  flex:1;border:1px solid var(--border);background:var(--card);
+  color:var(--text);padding:12px 8px;border-radius:10px;
+  cursor:pointer;font-weight:bold
+}
+.tab.active{background:var(--accent);color:#062313;border-color:var(--accent)}
+.day{display:none}
+.day.active{display:block}
+.date{
+  text-align:center;background:var(--card2);border:1px solid var(--border);
+  padding:12px;border-radius:10px;margin-bottom:15px;
+  color:var(--muted);font-weight:bold
+}
+.game{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:16px;margin-bottom:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.18)
+}
+.time{display:inline-block;background:var(--accent);color:#062313;
+  font-weight:900;padding:5px 9px;border-radius:7px;font-size:14px}
+.time-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.time-row .competition{margin:0;color:#f4f7fb;font-weight:800;font-size:15px}
+.channel{color:#fff;font-weight:900;font-size:18px}
+.teams{font-size:19px;font-weight:800;margin:12px 0 14px}
+.info{border-top:1px solid var(--border);padding-top:10px;margin-top:8px;font-size:14px}
+.competition{color:#b9c4d0;margin-bottom:7px}
+.channel{color:#fff;font-weight:bold}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+footer{text-align:center;color:#647080;font-size:12px;padding:20px}
+@media(max-width:480px){
+  .logo{font-size:28px}.teams{font-size:17px}
+  .tab{font-size:12px;padding:11px 4px}
+  .channel{font-size:17px}
+}
+</style>
+</head>
+<body>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">08:30</span>
-      <span class="competition">🏴🇬🇧 Campeonato Inglês</span>
-    </div>
-    <div class="teams">Newcastle x Bournemouth</div>
-    <div class="info">
-      <div class="channel">📺 ESPN e Disney+</div>
-    </div>
+<header>
+  <div class="logo">J<span>TV</span></div>
+  <div class="sub">⚽ Programação de Jogos e Transmissões</div>
+</header>
+
+<main class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="showDay('today',this)">HOJE</button>
+    <button class="tab" onclick="showDay('tomorrow',this)">AMANHÃ</button>
+    <button class="tab" onclick="showDay('next',this)">PRÓXIMOS</button>
   </div>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">11:00</span>
-      <span class="competition">🏴🇬🇧 Campeonato Inglês</span>
-    </div>
-    <div class="teams">Manchester City x Coventry City</div>
-    <div class="info">
-      <div class="channel">📺 ESPN e Disney+</div>
-    </div>
-  </div>
+  <section id="today" class="day active">
+    <div class="date">📅 QUINTA-FEIRA – 03/09/2026</div>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">13:00</span>
-      <span class="competition">🇮🇹 Campeonato Italiano</span>
+    <div class="game">
+      <div class="time-row"><span class="time">16:00</span><span class="competition">🏆 Copa Itália</span></div>
+      <div class="teams">Cagliari x Hellas Verona</div>
+      <div class="info">
+        <div class="channel">📺 SportyNet</div>
+      </div>
     </div>
-    <div class="teams">Internazionale x Napoli</div>
-    <div class="info">
-      <div class="channel">📺 ESPN e Disney+</div>
-    </div>
-  </div>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">15:00</span>
-      <span class="competition">🇸🇦 Campeonato Saudita</span>
+    <div class="game">
+      <div class="time-row"><span class="time">20:00</span><span class="competition">🏆 Copa do Brasil</span></div>
+      <div class="teams">Grêmio x Internacional</div>
+      <div class="info">
+        <div class="channel">📺 Prime Video</div>
+      </div>
     </div>
-    <div class="teams">Al-Ittihad x Al-Nassr</div>
-    <div class="info">
-      <div class="channel">📺 Band, BandSports</div>
-    </div>
-  </div>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">16:00</span>
-      <span class="competition">🇧🇷 Brasileirão - Série A</span>
+    <div class="game">
+      <div class="time-row"><span class="time">20:00</span><span class="competition">🏆 Brasileirão Série B</span></div>
+      <div class="teams">Náutico x Botafogo-SP</div>
+      <div class="info">
+        <div class="channel">📺 Sportv</div>
+        <div class="channel">📺 Premiere</div>
+      </div>
     </div>
-    <div class="teams">RB Bragantino x Bahia</div>
-    <div class="info">
-      <div class="channel">📺 Premiere</div>
-    </div>
-  </div>
+  </section>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">16:00</span>
-      <span class="competition">🇧🇷 Brasileirão - Série B</span>
-    </div>
-    <div class="teams">Goiás x Fortaleza</div>
-    <div class="info">
-      <div class="channel">📺 RedeTV!, ESPN, SportyNet</div>
-    </div>
-  </div>
+  <section id="tomorrow" class="day">
+    <div class="date">📅 SEXTA-FEIRA – 04/09/2026</div>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">18:30</span>
-      <span class="competition">🇧🇷 Brasileirão - Série A</span>
-    </div>
-    <div class="teams">São Paulo x Atlético-MG</div>
-    <div class="info">
-      <div class="channel">📺 Premiere</div>
-    </div>
-  </div>
+    <div class="game"><div class="time-row"><span class="time">14:00</span><span class="competition">🏆 Ligue 1</span></div><div class="teams">Lyon x Auxerre</div><div class="info"><div class="channel">📺 Xsports</div></div></div>
+    <div class="game"><div class="time-row"><span class="time">16:00</span><span class="competition">🏆 Premier League</span></div><div class="teams">Ipswich Town x Liverpool</div><div class="info"><div class="channel">📺 ESPN</div></div></div>
+    <div class="game"><div class="time-row"><span class="time">16:00</span><span class="competition">🏆 LaLiga</span></div><div class="teams">Real Bétis x Real Madrid</div><div class="info"><div class="channel">📺 CazeTV</div></div></div>
+    <div class="game"><div class="time-row"><span class="time">16:05</span><span class="competition">🏆 Ligue 1</span></div><div class="teams">PSG x Monaco</div><div class="info"><div class="channel">📺 Xsports</div></div></div>
+    <div class="game"><div class="time-row"><span class="time">19:30</span><span class="competition">🏆 Brasileirão Série B</span></div><div class="teams">Criciúma x Cuiabá</div><div class="info"><div class="channel">📺 ESPN</div></div></div>
+    <div class="game"><div class="time-row"><span class="time">21:30</span><span class="competition">🏆 Brasileirão Série B</span></div><div class="teams">CRB x América-MG</div><div class="info"><div class="channel">📺 Xsports</div><div class="channel">📺 SportyNet</div></div></div>
+  </section>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">18:30</span>
-      <span class="competition">🇧🇷 Brasileirão - Série B</span>
-    </div>
-    <div class="teams">Ceará x Sport</div>
-    <div class="info">
-      <div class="channel">📺 Disney+</div>
-    </div>
-  </div>
+  <section id="next" class="day">
+    <div class="date">📅 PRÓXIMOS JOGOS</div>
+    <div class="empty">Em breve novas partidas.</div>
+  </section>
+</main>
 
-  <div class="game">
-    <div class="time-row">
-      <span class="time">21:00</span>
-      <span class="competition">🇧🇷 Brasileirão - Série A</span>
-    </div>
-    <div class="teams">Fluminense x Vasco</div>
-    <div class="info">
-      <div class="channel">📺 SporTV e Premiere</div>
-    </div>
-  </div>
-</section>
+<footer>© 2026 JTV • Jogos e Transmissões</footer>
+
+<script>
+function showDay(id,button){
+  document.querySelectorAll('.day').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  button.classList.add('active');
+}
+</script>
+</body>
+</html>
