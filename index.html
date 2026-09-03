@@ -31,9 +31,28 @@ body{
   min-height:100vh;
 }
 
+
+/* =========================
+   ANÚNCIO DO TOPO
+========================= */
+
+.ad-top{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px 8px 4px;
+  overflow:hidden;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
 header{
   text-align:center;
-  padding:22px 15px 8px;
+  padding:12px 15px 8px;
 }
 
 .sub{
@@ -44,11 +63,21 @@ header{
   margin-bottom:15px;
 }
 
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
   max-width:760px;
   margin:auto;
   padding:15px 14px 50px;
 }
+
+
+/* =========================
+   ABAS
+========================= */
 
 .tabs{
   display:flex;
@@ -78,6 +107,11 @@ header{
   border-color:var(--accent);
 }
 
+
+/* =========================
+   DIAS
+========================= */
+
 .day{
   display:none;
 }
@@ -85,6 +119,11 @@ header{
 .day.active{
   display:block;
 }
+
+
+/* =========================
+   DATA
+========================= */
 
 .date{
   text-align:center;
@@ -101,6 +140,11 @@ header{
   margin-top:25px;
 }
 
+
+/* =========================
+   CARD DO JOGO
+========================= */
+
 .game{
   background:var(--card);
   border:1px solid var(--border);
@@ -109,6 +153,11 @@ header{
   margin-bottom:12px;
   box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
+
+
+/* =========================
+   HORÁRIO + COMPETIÇÃO
+========================= */
 
 .time-row{
   display:flex;
@@ -135,16 +184,27 @@ header{
   font-size:15px;
 }
 
+
+/* =========================
+   TIMES
+========================= */
+
 .teams{
   font-size:19px;
   font-weight:800;
   margin:12px 0 14px;
 }
 
+
+/* =========================
+   CANAIS
+========================= */
+
 .info{
   border-top:1px solid var(--border);
   padding-top:10px;
   margin-top:8px;
+
   display:flex;
   align-items:center;
   gap:18px;
@@ -159,6 +219,11 @@ header{
   white-space:nowrap;
 }
 
+
+/* =========================
+   SEM JOGOS
+========================= */
+
 .empty{
   text-align:center;
   color:var(--muted);
@@ -168,12 +233,22 @@ header{
   border-radius:14px;
 }
 
+
+/* =========================
+   RODAPÉ
+========================= */
+
 footer{
   text-align:center;
   color:#647080;
   font-size:12px;
   padding:20px;
 }
+
+
+/* =========================
+   CELULAR
+========================= */
 
 @media(max-width:480px){
 
@@ -207,7 +282,24 @@ footer{
 </style>
 </head>
 
+
 <body>
+
+
+<!-- ==========================================================
+     ANÚNCIO NO TOPO
+========================================================== -->
+
+<div class="ad-top">
+
+<script src="https://pl31172186.profitableratecpmnetwork.com/77/bc/3b/77bc3b4bb6d311562f8ecd355c682018.js"></script>
+
+</div>
+
+
+<!-- ==========================================================
+     CABEÇALHO
+========================================================== -->
 
 <header>
 
@@ -217,43 +309,79 @@ footer{
 
 </header>
 
+
 <main class="container">
+
+
+  <!-- ========================================================
+       ABAS
+  ======================================================== -->
 
   <div class="tabs">
 
-    <button class="tab active" onclick="showDay('today',this)">
+    <button
+      class="tab active"
+      onclick="showDay('today',this)">
       HOJE
     </button>
 
-    <button class="tab" onclick="showDay('tomorrow',this)">
+    <button
+      class="tab"
+      onclick="showDay('tomorrow',this)">
       AMANHÃ
     </button>
 
-    <button class="tab" onclick="showDay('next',this)">
+    <button
+      class="tab"
+      onclick="showDay('next',this)">
       PRÓXIMOS
     </button>
 
   </div>
 
-  <section id="today" class="day active"></section>
 
-  <section id="tomorrow" class="day"></section>
+  <!-- ========================================================
+       CONTEÚDO
+  ======================================================== -->
 
-  <section id="next" class="day"></section>
+  <section
+    id="today"
+    class="day active">
+  </section>
+
+
+  <section
+    id="tomorrow"
+    class="day">
+  </section>
+
+
+  <section
+    id="next"
+    class="day">
+  </section>
+
 
 </main>
+
 
 <footer>
   © 2026 • Jogos e Transmissões
 </footer>
 
+
 <script>
+
+
+/* ==========================================================
+   LISTA DE JOGOS
+========================================================== */
 
 const gamesData = [
 
-  /* ==========================================================
+  /* =========================
      QUINTA-FEIRA – 03/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-03",
@@ -287,9 +415,9 @@ const gamesData = [
   },
 
 
-  /* ==========================================================
+  /* =========================
      SEXTA-FEIRA – 04/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-04",
@@ -353,9 +481,9 @@ const gamesData = [
   },
 
 
-  /* ==========================================================
+  /* =========================
      SÁBADO – 05/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-05",
@@ -455,9 +583,9 @@ const gamesData = [
   },
 
 
-  /* ==========================================================
+  /* =========================
      DOMINGO – 06/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-06",
@@ -659,7 +787,7 @@ function dateToString(dateObj){
 
 
 /* ==========================================================
-   ORDENA JOGOS POR DATA E HORÁRIO
+   ORDENA JOGOS
 ========================================================== */
 
 function sortGames(games){
@@ -680,7 +808,7 @@ function sortGames(games){
 
 
 /* ==========================================================
-   CRIA OS CARDS DOS JOGOS
+   CRIA CARDS
 ========================================================== */
 
 function createGamesHTML(games){
@@ -790,7 +918,7 @@ function buildSection(
 
 
 /* ==========================================================
-   RENDERIZA TUDO AUTOMATICAMENTE
+   RENDERIZA OS JOGOS
 ========================================================== */
 
 function renderGames(){
@@ -816,10 +944,6 @@ function renderGames(){
     dateToString(tomorrow);
 
 
-  /* =========================
-     HOJE
-  ========================= */
-
   const todayGames=
     gamesData.filter(game=>{
 
@@ -828,10 +952,6 @@ function renderGames(){
     });
 
 
-  /* =========================
-     AMANHÃ
-  ========================= */
-
   const tomorrowGames=
     gamesData.filter(game=>{
 
@@ -839,10 +959,6 @@ function renderGames(){
 
     });
 
-
-  /* =========================
-     PRÓXIMOS
-  ========================= */
 
   const nextGames=
     gamesData.filter(game=>{
@@ -980,7 +1096,7 @@ function showDay(id,button){
 
 
 /* ==========================================================
-   INICIA O SITE
+   INICIA
 ========================================================== */
 
 renderGames();
