@@ -221,25 +221,40 @@ footer{
 
   <div class="tabs">
 
-    <button class="tab active" onclick="showDay('today',this)">
+    <button
+      class="tab active"
+      onclick="showDay('today',this)">
       HOJE
     </button>
 
-    <button class="tab" onclick="showDay('tomorrow',this)">
+    <button
+      class="tab"
+      onclick="showDay('tomorrow',this)">
       AMANHÃ
     </button>
 
-    <button class="tab" onclick="showDay('next',this)">
+    <button
+      class="tab"
+      onclick="showDay('next',this)">
       PRÓXIMOS
     </button>
 
   </div>
 
-  <section id="today" class="day active"></section>
+  <section
+    id="today"
+    class="day active">
+  </section>
 
-  <section id="tomorrow" class="day"></section>
+  <section
+    id="tomorrow"
+    class="day">
+  </section>
 
-  <section id="next" class="day"></section>
+  <section
+    id="next"
+    class="day">
+  </section>
 
 </main>
 
@@ -249,11 +264,15 @@ footer{
 
 <script>
 
+/* ==========================================================
+   LISTA DE JOGOS
+========================================================== */
+
 const gamesData = [
 
-  /* ==========================================================
+  /* =========================
      QUINTA-FEIRA – 03/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-03",
@@ -287,9 +306,9 @@ const gamesData = [
   },
 
 
-  /* ==========================================================
+  /* =========================
      SEXTA-FEIRA – 04/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-04",
@@ -353,9 +372,9 @@ const gamesData = [
   },
 
 
-  /* ==========================================================
+  /* =========================
      SÁBADO – 05/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-05",
@@ -455,9 +474,9 @@ const gamesData = [
   },
 
 
-  /* ==========================================================
+  /* =========================
      DOMINGO – 06/09/2026
-  ========================================================== */
+  ========================= */
 
   {
     date:"2026-09-06",
@@ -566,6 +585,52 @@ const gamesData = [
     channels:[
       "📺 Prime Video"
     ]
+  },
+
+
+  /* =========================
+     SEGUNDA-FEIRA – 07/09/2026
+  ========================= */
+
+  {
+    date:"2026-09-07",
+    time:"13:30",
+    comp:"🏆 Campeonato Italiano",
+    teams:"Cagliari x Lecce",
+    channels:[
+      "📺 Disney+"
+    ]
+  },
+
+  {
+    date:"2026-09-07",
+    time:"14:00",
+    comp:"🏆 Campeonato Espanhol",
+    teams:"Getafe x Celta de Vigo",
+    channels:[
+      "📺 YouTube (CazéTV)"
+    ]
+  },
+
+  {
+    date:"2026-09-07",
+    time:"18:00",
+    comp:"🏆 Brasileirão - Série C",
+    teams:"Paysandu x Brusque",
+    channels:[
+      "📺 SportyNet"
+    ]
+  },
+
+  {
+    date:"2026-09-07",
+    time:"20:00",
+    comp:"🏆 Brasileirão - Série A",
+    teams:"Vitória x Grêmio",
+    channels:[
+      "📺 SporTV",
+      "📺 Premiere"
+    ]
   }
 
 ];
@@ -647,19 +712,17 @@ function dateToString(dateObj){
     dateObj.getFullYear();
 
   const month=
-    String(dateObj.getMonth()+1)
-      .padStart(2,"0");
+    String(dateObj.getMonth()+1).padStart(2,"0");
 
   const day=
-    String(dateObj.getDate())
-      .padStart(2,"0");
+    String(dateObj.getDate()).padStart(2,"0");
 
   return `${year}-${month}-${day}`;
 }
 
 
 /* ==========================================================
-   ORDENA JOGOS POR DATA E HORÁRIO
+   ORDENA JOGOS
 ========================================================== */
 
 function sortGames(games){
@@ -667,9 +730,7 @@ function sortGames(games){
   return games.sort((a,b)=>{
 
     if(a.date!==b.date){
-
       return a.date.localeCompare(b.date);
-
     }
 
     return a.time.localeCompare(b.time);
@@ -680,13 +741,12 @@ function sortGames(games){
 
 
 /* ==========================================================
-   CRIA OS CARDS DOS JOGOS
+   CRIA CARDS
 ========================================================== */
 
 function createGamesHTML(games){
 
   let html="";
-
 
   games.forEach(game=>{
 
@@ -735,7 +795,6 @@ function createGamesHTML(games){
     `;
 
   });
-
 
   return html;
 }
@@ -790,7 +849,7 @@ function buildSection(
 
 
 /* ==========================================================
-   RENDERIZA TUDO AUTOMATICAMENTE
+   RENDERIZA OS JOGOS
 ========================================================== */
 
 function renderGames(){
@@ -816,39 +875,21 @@ function renderGames(){
     dateToString(tomorrow);
 
 
-  /* =========================
-     HOJE
-  ========================= */
-
   const todayGames=
     gamesData.filter(game=>{
-
       return game.date===todayStr;
-
     });
 
-
-  /* =========================
-     AMANHÃ
-  ========================= */
 
   const tomorrowGames=
     gamesData.filter(game=>{
-
       return game.date===tomorrowStr;
-
     });
 
 
-  /* =========================
-     PRÓXIMOS
-  ========================= */
-
   const nextGames=
     gamesData.filter(game=>{
-
       return game.date>tomorrowStr;
-
     });
 
 
@@ -898,9 +939,7 @@ function renderGames(){
   sortedNextGames.forEach(game=>{
 
     if(!grouped[game.date]){
-
       grouped[game.date]=[];
-
     }
 
     grouped[game.date].push(game);
@@ -954,18 +993,14 @@ function showDay(id,button){
   document
     .querySelectorAll(".day")
     .forEach(day=>{
-
       day.classList.remove("active");
-
     });
 
 
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
-
       tab.classList.remove("active");
-
     });
 
 
@@ -980,7 +1015,7 @@ function showDay(id,button){
 
 
 /* ==========================================================
-   INICIA O SITE
+   INICIA
 ========================================================== */
 
 renderGames();
