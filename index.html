@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -228,9 +229,7 @@ footer{
   </div>
 
   <section id="today" class="day active"></section>
-
   <section id="tomorrow" class="day"></section>
-
   <section id="next" class="day"></section>
 
 </main>
@@ -239,12 +238,7 @@ footer{
   © 2026 • Jogos e Transmissões
 </footer>
 
-
 <script>
-
-/* =========================================================
-   JOGOS
-========================================================= */
 
 const gamesData = [
 
@@ -567,14 +561,105 @@ const gamesData = [
     comp:"🏆 CONMEBOL Sul-Americana (QF-ida)",
     teams:"Boca Juniors x São Paulo",
     channels:["📺 SBT","📺 ESPN"]
+  },
+
+
+  /* QUARTA-FEIRA – 09/09/2026 */
+
+  {
+    date:"2026-09-09",
+    time:"13:45",
+    comp:"🏆 UEFA Champions League",
+    teams:"Barcelona x Feyenoord",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"15:00",
+    comp:"🏆 Liga Saudita",
+    teams:"Al-Nassr x Abha",
+    channels:["📺 Xsports","📺 Sportv"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"🏆 UEFA Champions League",
+    teams:"Liverpool x Atlético de Madrid",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"🏆 UEFA Champions League",
+    teams:"Napoli x Arsenal",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"🏆 UEFA Champions League",
+    teams:"PSG x Slovan Bratislava",
+    channels:["📺 HBO MAX"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"🏆 Copa da Liga Inglesa",
+    teams:"Chelsea x Leeds United",
+    channels:["📺 ESPN"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"19:00",
+    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    teams:"Palmeiras x LDU",
+    channels:["📺 Paramount+"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"19:00",
+    comp:"🏆 CONMEBOL Sul-Americana (QF-ida)",
+    teams:"Santos x Atlético-MG",
+    channels:["📺 ESPN"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"19:30",
+    comp:"🏆 Brasileirão Série B",
+    teams:"Fortaleza x Avaí",
+    channels:["📺 ESPN 4"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"21:30",
+    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    teams:"Estudiantes x Corinthians",
+    channels:["📺 Globo"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"21:30",
+    comp:"🏆 Brasileirão Série B",
+    teams:"Atlético-GO x Ceará",
+    channels:["📺 Xsports","📺 ESPN","📺 SportyNet"]
   }
 
 ];
 
 
-/* =========================================================
-   FORMATAÇÃO DAS DATAS
-========================================================= */
+/* ================================
+   DATA
+================================ */
 
 function formatDate(dateObj){
 
@@ -588,25 +673,26 @@ function formatDate(dateObj){
     "SÁBADO"
   ];
 
-  const dayName=daysOfWeek[dateObj.getDay()];
+  const dayName=
+    daysOfWeek[dateObj.getDay()];
 
-  const day=String(dateObj.getDate()).padStart(2,"0");
+  const day=
+    String(dateObj.getDate()).padStart(2,"0");
 
-  const month=String(dateObj.getMonth()+1).padStart(2,"0");
+  const month=
+    String(dateObj.getMonth()+1).padStart(2,"0");
 
-  const year=dateObj.getFullYear();
+  const year=
+    dateObj.getFullYear();
 
   return `📅 ${dayName} – ${day}/${month}/${year}`;
 }
 
 
-/* =========================================================
-   CONVERTER DATA
-========================================================= */
-
 function parseDate(dateString){
 
-  const parts=dateString.split("-");
+  const parts=
+    dateString.split("-");
 
   return new Date(
     Number(parts[0]),
@@ -615,10 +701,6 @@ function parseDate(dateString){
   );
 }
 
-
-/* =========================================================
-   DATA DE HOJE
-========================================================= */
 
 function getToday(){
 
@@ -632,29 +714,26 @@ function getToday(){
 }
 
 
-/* =========================================================
-   DATA PARA STRING
-========================================================= */
-
 function dateToString(dateObj){
 
-  const year=dateObj.getFullYear();
+  const year=
+    dateObj.getFullYear();
 
-  const month=String(
-    dateObj.getMonth()+1
-  ).padStart(2,"0");
+  const month=
+    String(dateObj.getMonth()+1)
+    .padStart(2,"0");
 
-  const day=String(
-    dateObj.getDate()
-  ).padStart(2,"0");
+  const day=
+    String(dateObj.getDate())
+    .padStart(2,"0");
 
   return `${year}-${month}-${day}`;
 }
 
 
-/* =========================================================
-   ORDENAR JOGOS
-========================================================= */
+/* ================================
+   ORDENAR
+================================ */
 
 function sortGames(games){
 
@@ -673,9 +752,9 @@ function sortGames(games){
 }
 
 
-/* =========================================================
-   CRIAR HTML DOS JOGOS
-========================================================= */
+/* ================================
+   HTML DOS JOGOS
+================================ */
 
 function createGamesHTML(games){
 
@@ -685,12 +764,12 @@ function createGamesHTML(games){
 
     const channelsHTML=
       game.channels
-        .map(channel=>`
-          <div class="channel">
-            ${channel}
-          </div>
-        `)
-        .join("");
+      .map(channel=>`
+        <div class="channel">
+          ${channel}
+        </div>
+      `)
+      .join("");
 
     html+=`
 
@@ -713,9 +792,7 @@ function createGamesHTML(games){
         </div>
 
         <div class="info">
-
           ${channelsHTML}
-
         </div>
 
       </div>
@@ -728,9 +805,9 @@ function createGamesHTML(games){
 }
 
 
-/* =========================================================
-   MONTAR HOJE / AMANHÃ
-========================================================= */
+/* ================================
+   HOJE / AMANHÃ
+================================ */
 
 function buildSection(
   sectionId,
@@ -758,7 +835,8 @@ function buildSection(
     return;
   }
 
-  games=sortGames(games);
+  games=
+    sortGames(games);
 
   container.innerHTML=`
 
@@ -772,15 +850,17 @@ function buildSection(
 }
 
 
-/* =========================================================
-   RENDERIZAR JOGOS
-========================================================= */
+/* ================================
+   RENDERIZAR
+================================ */
 
 function renderGames(){
 
-  const today=getToday();
+  const today=
+    getToday();
 
-  const tomorrow=new Date(today);
+  const tomorrow=
+    new Date(today);
 
   tomorrow.setDate(
     tomorrow.getDate()+1
@@ -794,23 +874,17 @@ function renderGames(){
     dateToString(tomorrow);
 
 
-  /* HOJE */
-
   const todayGames=
     gamesData.filter(
       game=>game.date===todayStr
     );
 
 
-  /* AMANHÃ */
-
   const tomorrowGames=
     gamesData.filter(
       game=>game.date===tomorrowStr
     );
 
-
-  /* PRÓXIMOS */
 
   const nextGames=
     gamesData.filter(
@@ -857,16 +931,13 @@ function renderGames(){
   const sortedNextGames=
     sortGames(nextGames);
 
-
   const grouped={};
 
 
   sortedNextGames.forEach(game=>{
 
     if(!grouped[game.date]){
-
       grouped[game.date]=[];
-
     }
 
     grouped[game.date].push(game);
@@ -887,9 +958,7 @@ function renderGames(){
       html+=`
 
         <div class="date ${index>0?"next-date":""}">
-
           ${formatDate(dateObj)}
-
         </div>
 
       `;
@@ -902,36 +971,29 @@ function renderGames(){
     });
 
 
-  nextContainer.innerHTML=html;
+  nextContainer.innerHTML=
+    html;
 
 }
 
 
-/* =========================================================
-   TROCAR ABA
-========================================================= */
+/* ================================
+   ABAS
+================================ */
 
 function showDay(id,button){
 
   document
     .querySelectorAll(".day")
     .forEach(day=>{
-
-      day.classList.remove(
-        "active"
-      );
-
+      day.classList.remove("active");
     });
 
 
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
-
-      tab.classList.remove(
-        "active"
-      );
-
+      tab.classList.remove("active");
     });
 
 
@@ -945,9 +1007,9 @@ function showDay(id,button){
 }
 
 
-/* =========================================================
+/* ================================
    INICIAR
-========================================================= */
+================================ */
 
 renderGames();
 
@@ -955,3 +1017,4 @@ renderGames();
 
 </body>
 </html>
+```
