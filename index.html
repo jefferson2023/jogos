@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Programação de Jogos e Transmissões</title>
@@ -130,12 +129,27 @@ header{
   white-space:nowrap;
 }
 
-.time-row .competition{
-  margin:0;
+/* COMPETIÇÃO */
+
+.competition{
+  display:flex;
+  align-items:center;
+  gap:7px;
   color:#f4f7fb;
   font-weight:800;
   font-size:15px;
+  line-height:1.2;
 }
+
+.competition-logo{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  flex-shrink:0;
+  display:block;
+}
+
+/* TIMES */
 
 .teams{
   display:grid;
@@ -183,6 +197,8 @@ header{
   font-weight:900;
   color:#9aa7b7;
 }
+
+/* CANAIS */
 
 .info{
   border-top:1px solid var(--border);
@@ -243,10 +259,6 @@ footer{
     font-size:16px;
   }
 
-  .teams{
-    font-size:15px;
-  }
-
   .team{
     font-size:14px;
   }
@@ -256,16 +268,21 @@ footer{
     height:34px;
   }
 
+  .competition{
+    font-size:14px;
+  }
+
+  .competition-logo{
+    width:21px;
+    height:21px;
+  }
+
   .tab{
     font-size:12px;
     padding:11px 4px;
   }
 
   .channel{
-    font-size:14px;
-  }
-
-  .time-row .competition{
     font-size:14px;
   }
 
@@ -323,158 +340,37 @@ footer{
 <script>
 
 /* =========================================================
-   ESCUDOS
-   PNG PRINCIPAL + SVG COMO RESERVA
+   LOGOS DAS COMPETIÇÕES
    ========================================================= */
 
-const logos = {
+const competitionLogos = {
 
-  "Club Brugge":
-    "https://www.footylogos.com/downloads/logo/club-brugge-logo-footylogos.png",
+  "UEFA Champions League":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/UEFA_Champions_League_logo.png",
 
-  "Aston Villa":
-    "https://www.footylogos.com/downloads/logo/aston-villa-logo-footylogos.png",
+  "CONMEBOL Libertadores":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Conmebol-libertadores.svg",
 
-  "Real Madrid":
-    "https://www.footylogos.com/downloads/logo/real-madrid-logo-footylogos.png",
+  "CONMEBOL Sul-Americana":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Conmebol-sudamericana.svg",
 
-  "Inter de Milão":
-    "https://www.footylogos.com/downloads/logo/inter-milan-logo-footylogos.png",
+  "Liga Saudita":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Saudi_Pro_League_Logo.svg",
 
-  "Porto":
-    "https://www.footylogos.com/downloads/logo/fc-porto-logo-footylogos.png",
+  "Copa da Liga Inglesa":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/EFL_(Carabao)_Cup_Logo.svg",
 
-  "Manchester City":
-    "https://www.footylogos.com/downloads/logo/manchester-city-logo-footylogos.png",
-
-  "Fluminense":
-    "https://www.footylogos.com/downloads/logo/fluminense-logo-footylogos.png",
-
-  "Platense":
-    "https://www.footylogos.com/downloads/logo/platense-logo-footylogos.png",
-
-  "Independiente Santa Fe":
-    "https://www.footylogos.com/downloads/logo/independiente-santa-fe-logo-footylogos.png",
-
-  "Vasco da Gama":
-    "https://www.footylogos.com/downloads/logo/vasco-da-gama-logo-footylogos.png",
-
-  "Boca Juniors":
-    "https://www.footylogos.com/downloads/logo/boca-juniors-logo-footylogos.png",
-
-  "São Paulo":
-    "https://www.footylogos.com/downloads/logo/sao-paulo-logo-footylogos.png",
-
-  "Barcelona":
-    "https://www.footylogos.com/downloads/logo/fc-barcelona-logo-footylogos.png",
-
-  "Feyenoord":
-    "https://www.footylogos.com/downloads/logo/feyenoord-logo-footylogos.png",
-
-  "Al-Nassr":
-    "https://www.footylogos.com/downloads/logo/al-nassr-logo-footylogos.png",
-
-  "Abha":
-    "https://www.footylogos.com/downloads/logo/abha-logo-footylogos.png",
-
-  "Liverpool":
-    "https://www.footylogos.com/downloads/logo/liverpool-fc-logo-footylogos.png",
-
-  "Atlético de Madrid":
-    "https://www.footylogos.com/downloads/logo/atletico-madrid-logo-footylogos.png",
-
-  "Napoli":
-    "https://www.footylogos.com/downloads/logo/napoli-logo-footylogos.png",
-
-  "Arsenal":
-    "https://www.footylogos.com/downloads/logo/arsenal-logo-footylogos.png",
-
-  "PSG":
-    "https://www.footylogos.com/downloads/logo/paris-saint-germain-logo-footylogos.png",
-
-  "Slovan Bratislava":
-    "https://www.footylogos.com/downloads/logo/slovan-bratislava-logo-footylogos.png",
-
-  "Chelsea":
-    "https://www.footylogos.com/downloads/logo/chelsea-logo-footylogos.png",
-
-  "Leeds United":
-    "https://www.footylogos.com/downloads/logo/leeds-united-logo-footylogos.png",
-
-  "Palmeiras":
-    "https://www.footylogos.com/downloads/logo/palmeiras-logo-footylogos.png",
-
-  "LDU":
-    "https://www.footylogos.com/downloads/logo/ldu-quito-logo-footylogos.png",
-
-  "Santos":
-    "https://www.footylogos.com/downloads/logo/santos-fc-logo-footylogos.png",
-
-  "Atlético-MG":
-    "https://www.footylogos.com/downloads/logo/atletico-mineiro-logo-footylogos.png",
-
-  "Fortaleza":
-    "https://www.footylogos.com/downloads/logo/fortaleza-logo-footylogos.png",
-
-  "Avaí":
-    "https://www.footylogos.com/downloads/logo/avai-fc-logo-footylogos.png",
-
-  "Estudiantes":
-    "https://www.footylogos.com/downloads/logo/estudiantes-de-la-plata-logo-footylogos.png",
-
-  "Corinthians":
-    "https://www.footylogos.com/downloads/logo/corinthians-logo-footylogos.png",
-
-  "Atlético-GO":
-    "https://www.footylogos.com/downloads/logo/atletico-goianiense-logo-footylogos.png",
-
-  "Ceará":
-    "https://www.footylogos.com/downloads/logo/ceara-sc-logo-footylogos.png",
-
-  "Fenerbahçe":
-    "https://www.footylogos.com/downloads/logo/fenerbahce-logo-footylogos.png",
-
-  "Roma":
-    "https://www.footylogos.com/downloads/logo/roma-logo-footylogos.png",
-
-  "PSV":
-    "https://www.footylogos.com/downloads/logo/psv-eindhoven-logo-footylogos.png",
-
-  "Shakhtar Donetsk":
-    "https://www.footylogos.com/downloads/logo/shakhtar-donetsk-logo-footylogos.png",
-
-  "Bayern de Munique":
-    "https://www.footylogos.com/downloads/logo/bayern-munich-logo-footylogos.png",
-
-  "Bodo/Glimt":
-    "https://www.footylogos.com/downloads/logo/fk-bodo-glimt-logo-footylogos.png",
-
-  "Manchester United":
-    "https://www.footylogos.com/downloads/logo/manchester-united-logo-footylogos.png",
-
-  "Sabah":
-    "https://www.footylogos.com/downloads/logo/sabah-fk-logo-footylogos.png",
-
-  "Independiente del Valle":
-    "https://www.footylogos.com/downloads/logo/independiente-del-valle-logo-footylogos.png",
-
-  "Flamengo":
-    "https://www.footylogos.com/downloads/logo/flamengo-logo-footylogos.png",
-
-  "Sport Recife":
-    "https://www.footylogos.com/downloads/logo/sport-recife-logo-footylogos.png",
-
-  "Ponte Preta":
-    "https://www.footylogos.com/downloads/logo/ponte-preta-logo-footylogos.png"
+  "Brasileirão Série B":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Campeonato_Brasileiro_S%C3%A9rie_B_logo_(2025).svg"
 
 };
 
 
 /* =========================================================
-   RESERVA SVG
+   ESCUDOS DOS TIMES
    ========================================================= */
 
-const logoFallback = {
+const logos = {
 
   "Club Brugge":
     "https://assets.footylogos.com/logos/club-brugge/club-brugge-logo-footylogos.svg",
@@ -626,7 +522,7 @@ const gamesData = [
   {
     date:"2026-09-08",
     time:"13:45",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Club Brugge",
     away:"Aston Villa",
     channels:["📺 TNT"]
@@ -635,7 +531,7 @@ const gamesData = [
   {
     date:"2026-09-08",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Real Madrid",
     away:"Inter de Milão",
     channels:["📺 SBT","📺 TNT"]
@@ -644,7 +540,7 @@ const gamesData = [
   {
     date:"2026-09-08",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Porto",
     away:"Manchester City",
     channels:["📺 Space"]
@@ -653,7 +549,7 @@ const gamesData = [
   {
     date:"2026-09-08",
     time:"19:00",
-    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    comp:"CONMEBOL Libertadores",
     home:"Fluminense",
     away:"Platense",
     channels:["📺 ESPN"]
@@ -662,7 +558,8 @@ const gamesData = [
   {
     date:"2026-09-08",
     time:"19:00",
-    comp:"🏆 CONMEBOL Sul-Americana (QF-ida)",
+    comp:"CONMEBOL Sul-Americana",
+    compExtra:" (QF-ida)",
     home:"Independiente Santa Fe",
     away:"Vasco da Gama",
     channels:["📺 Paramount+"]
@@ -671,7 +568,8 @@ const gamesData = [
   {
     date:"2026-09-08",
     time:"21:30",
-    comp:"🏆 CONMEBOL Sul-Americana (QF-ida)",
+    comp:"CONMEBOL Sul-Americana",
+    compExtra:" (QF-ida)",
     home:"Boca Juniors",
     away:"São Paulo",
     channels:["📺 SBT","📺 ESPN"]
@@ -681,7 +579,7 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"13:45",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Barcelona",
     away:"Feyenoord",
     channels:["📺 TNT"]
@@ -690,16 +588,16 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"15:00",
-    comp:"🏆 Liga Saudita",
+    comp:"Liga Saudita",
     home:"Al-Nassr",
     away:"Abha",
-    channels:["📺 Xsports","📺 Sportv"]
+    channels:["📺 Xsports","📺 Sporty"]
   },
 
   {
     date:"2026-09-09",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Liverpool",
     away:"Atlético de Madrid",
     channels:["📺 TNT"]
@@ -708,7 +606,7 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Napoli",
     away:"Arsenal",
     channels:["📺 Space"]
@@ -717,7 +615,7 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"PSG",
     away:"Slovan Bratislava",
     channels:["📺 HBO MAX"]
@@ -726,7 +624,7 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"16:00",
-    comp:"🏆 Copa da Liga Inglesa",
+    comp:"Copa da Liga Inglesa",
     home:"Chelsea",
     away:"Leeds United",
     channels:["📺 ESPN"]
@@ -735,7 +633,8 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"19:00",
-    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    comp:"CONMEBOL Libertadores",
+    compExtra:" (QF-ida)",
     home:"Palmeiras",
     away:"LDU",
     channels:["📺 Paramount+"]
@@ -744,7 +643,8 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"19:00",
-    comp:"🏆 CONMEBOL Sul-Americana (QF-ida)",
+    comp:"CONMEBOL Sul-Americana",
+    compExtra:" (QF-ida)",
     home:"Santos",
     away:"Atlético-MG",
     channels:["📺 ESPN"]
@@ -753,7 +653,7 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"19:30",
-    comp:"🏆 Brasileirão Série B",
+    comp:"Brasileirão Série B",
     home:"Fortaleza",
     away:"Avaí",
     channels:["📺 ESPN 4"]
@@ -762,7 +662,8 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"21:30",
-    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    comp:"CONMEBOL Libertadores",
+    compExtra:" (QF-ida)",
     home:"Estudiantes",
     away:"Corinthians",
     channels:["📺 Globo"]
@@ -771,7 +672,7 @@ const gamesData = [
   {
     date:"2026-09-09",
     time:"21:30",
-    comp:"🏆 Brasileirão Série B",
+    comp:"Brasileirão Série B",
     home:"Atlético-GO",
     away:"Ceará",
     channels:["📺 Xsports","📺 ESPN","📺 SportyNet"]
@@ -781,7 +682,7 @@ const gamesData = [
   {
     date:"2026-09-10",
     time:"13:45",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Fenerbahçe",
     away:"Roma",
     channels:["📺 TNT"]
@@ -790,7 +691,7 @@ const gamesData = [
   {
     date:"2026-09-10",
     time:"13:45",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"PSV",
     away:"Shakhtar Donetsk",
     channels:["📺 Space"]
@@ -799,7 +700,7 @@ const gamesData = [
   {
     date:"2026-09-10",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Bayern de Munique",
     away:"Bodo/Glimt",
     channels:["📺 TNT"]
@@ -808,7 +709,7 @@ const gamesData = [
   {
     date:"2026-09-10",
     time:"16:00",
-    comp:"🏆 UEFA Champions League",
+    comp:"UEFA Champions League",
     home:"Manchester United",
     away:"Sabah",
     channels:["📺 Space"]
@@ -817,7 +718,8 @@ const gamesData = [
   {
     date:"2026-09-10",
     time:"21:30",
-    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    comp:"CONMEBOL Libertadores",
+    compExtra:" (QF-ida)",
     home:"Independiente del Valle",
     away:"Flamengo",
     channels:["📺 ESPN","📺 Disney+"]
@@ -826,7 +728,7 @@ const gamesData = [
   {
     date:"2026-09-10",
     time:"21:30",
-    comp:"🏆 Brasileirão Série B",
+    comp:"Brasileirão Série B",
     home:"Sport Recife",
     away:"Ponte Preta",
     channels:["📺 Xsports","📺 ESPN 4","📺 SportyNet"]
@@ -836,12 +738,12 @@ const gamesData = [
 
 
 /* =========================================================
-   DATA
+   DATAS
    ========================================================= */
 
 function formatDate(dateObj){
 
-  const daysOfWeek = [
+  const daysOfWeek=[
     "DOMINGO",
     "SEGUNDA-FEIRA",
     "TERÇA-FEIRA",
@@ -851,16 +753,16 @@ function formatDate(dateObj){
     "SÁBADO"
   ];
 
-  const dayName =
+  const dayName=
     daysOfWeek[dateObj.getDay()];
 
-  const day =
+  const day=
     String(dateObj.getDate()).padStart(2,"0");
 
-  const month =
+  const month=
     String(dateObj.getMonth()+1).padStart(2,"0");
 
-  const year =
+  const year=
     dateObj.getFullYear();
 
   return `📅 ${dayName} – ${day}/${month}/${year}`;
@@ -869,7 +771,7 @@ function formatDate(dateObj){
 
 function parseDate(dateString){
 
-  const parts =
+  const parts=
     dateString.split("-");
 
   return new Date(
@@ -877,12 +779,13 @@ function parseDate(dateString){
     Number(parts[1])-1,
     Number(parts[2])
   );
+
 }
 
 
 function getToday(){
 
-  const now = new Date();
+  const now=new Date();
 
   return new Date(
     now.getFullYear(),
@@ -895,18 +798,17 @@ function getToday(){
 
 function dateToString(dateObj){
 
-  const year =
+  const year=
     dateObj.getFullYear();
 
-  const month =
-    String(dateObj.getMonth()+1)
-      .padStart(2,"0");
+  const month=
+    String(dateObj.getMonth()+1).padStart(2,"0");
 
-  const day =
-    String(dateObj.getDate())
-      .padStart(2,"0");
+  const day=
+    String(dateObj.getDate()).padStart(2,"0");
 
   return `${year}-${month}-${day}`;
+
 }
 
 
@@ -918,10 +820,8 @@ function sortGames(games){
 
   return games.sort((a,b)=>{
 
-    if(a.date !== b.date){
-
+    if(a.date!==b.date){
       return a.date.localeCompare(b.date);
-
     }
 
     return a.time.localeCompare(b.time);
@@ -932,30 +832,23 @@ function sortGames(games){
 
 
 /* =========================================================
-   ESCUDO
+   LOGO DO TIME
    ========================================================= */
 
 function createLogo(team){
 
-  const png =
-    logos[team] || "";
+  const url=logos[team];
 
-  const fallback =
-    logoFallback[team] || "";
-
-  if(!png){
-
+  if(!url){
     return "";
-
   }
 
   return `
     <img
       class="team-logo"
-      src="${png}"
+      src="${url}"
       alt="Escudo ${team}"
       loading="lazy"
-      onerror="this.onerror=null;this.src='${fallback}'"
     >
   `;
 
@@ -963,26 +856,57 @@ function createLogo(team){
 
 
 /* =========================================================
-   JOGOS HTML
+   LOGO DA COMPETIÇÃO
+   ========================================================= */
+
+function createCompetitionLogo(comp){
+
+  const url=
+    competitionLogos[comp];
+
+  if(!url){
+    return "";
+  }
+
+  return `
+    <img
+      class="competition-logo"
+      src="${url}"
+      alt="${comp}"
+      loading="lazy"
+    >
+  `;
+
+}
+
+
+/* =========================================================
+   HTML DOS JOGOS
    ========================================================= */
 
 function createGamesHTML(games){
 
-  let html = "";
+  let html="";
 
   games.forEach(game=>{
 
-    const channelsHTML =
+    const channelsHTML=
       game.channels
       .map(channel=>`
+
         <div class="channel">
           ${channel}
         </div>
+
       `)
       .join("");
 
 
-    html += `
+    const competitionExtra=
+      game.compExtra || "";
+
+
+    html+=`
 
       <div class="game">
 
@@ -993,7 +917,13 @@ function createGamesHTML(games){
           </span>
 
           <span class="competition">
-            ${game.comp}
+
+            ${createCompetitionLogo(game.comp)}
+
+            <span>
+              ${game.comp}${competitionExtra}
+            </span>
+
           </span>
 
         </div>
@@ -1057,13 +987,13 @@ function buildSection(
   dateText
 ){
 
-  const container =
+  const container=
     document.getElementById(sectionId);
 
 
-  if(games.length === 0){
+  if(games.length===0){
 
-    container.innerHTML = `
+    container.innerHTML=`
 
       <div class="date">
         ${dateText}
@@ -1080,11 +1010,11 @@ function buildSection(
   }
 
 
-  games =
+  games=
     sortGames(games);
 
 
-  container.innerHTML = `
+  container.innerHTML=`
 
     <div class="date">
       ${dateText}
@@ -1098,16 +1028,16 @@ function buildSection(
 
 
 /* =========================================================
-   RENDERIZAÇÃO
+   RENDERIZAR
    ========================================================= */
 
 function renderGames(){
 
-  const today =
+  const today=
     getToday();
 
 
-  const tomorrow =
+  const tomorrow=
     new Date(today);
 
 
@@ -1116,27 +1046,27 @@ function renderGames(){
   );
 
 
-  const todayStr =
+  const todayStr=
     dateToString(today);
 
 
-  const tomorrowStr =
+  const tomorrowStr=
     dateToString(tomorrow);
 
 
-  const todayGames =
+  const todayGames=
     gamesData.filter(
       game=>game.date===todayStr
     );
 
 
-  const tomorrowGames =
+  const tomorrowGames=
     gamesData.filter(
       game=>game.date===tomorrowStr
     );
 
 
-  const nextGames =
+  const nextGames=
     gamesData.filter(
       game=>game.date>tomorrowStr
     );
@@ -1156,13 +1086,13 @@ function renderGames(){
   );
 
 
-  const nextContainer =
+  const nextContainer=
     document.getElementById("next");
 
 
-  if(nextGames.length === 0){
+  if(nextGames.length===0){
 
-    nextContainer.innerHTML = `
+    nextContainer.innerHTML=`
 
       <div class="date">
         📅 PRÓXIMOS JOGOS
@@ -1179,19 +1109,17 @@ function renderGames(){
   }
 
 
-  const sortedNextGames =
+  const sortedNextGames=
     sortGames(nextGames);
 
 
-  const grouped = {};
+  const grouped={};
 
 
   sortedNextGames.forEach(game=>{
 
     if(!grouped[game.date]){
-
-      grouped[game.date] = [];
-
+      grouped[game.date]=[];
     }
 
     grouped[game.date].push(game);
@@ -1199,18 +1127,18 @@ function renderGames(){
   });
 
 
-  let html = "";
+  let html="";
 
 
   Object.keys(grouped)
     .sort()
     .forEach((date,index)=>{
 
-      const dateObj =
+      const dateObj=
         parseDate(date);
 
 
-      html += `
+      html+=`
 
         <div class="date ${
           index>0 ? "next-date" : ""
@@ -1223,7 +1151,7 @@ function renderGames(){
       `;
 
 
-      html +=
+      html+=
         createGamesHTML(
           grouped[date]
         );
@@ -1231,7 +1159,7 @@ function renderGames(){
     });
 
 
-  nextContainer.innerHTML =
+  nextContainer.innerHTML=
     html;
 
 }
@@ -1246,18 +1174,14 @@ function showDay(id,button){
   document
     .querySelectorAll(".day")
     .forEach(day=>{
-
       day.classList.remove("active");
-
     });
 
 
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
-
       tab.classList.remove("active");
-
     });
 
 
