@@ -78,15 +78,32 @@ header{
   padding:8px 12px 40px;
 }
 
+
+/* =========================================================
+   DIA E DATA CENTRALIZADOS
+   ========================================================= */
+
 .day-title{
-  margin:12px 0 12px;
+  margin:16px 0 12px;
   padding:12px 14px;
   background:var(--card2);
   border:1px solid var(--border);
   border-radius:12px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
   font-size:15px;
   font-weight:800;
 }
+
+
+/* =========================================================
+   CARD DO JOGO
+   ========================================================= */
 
 .game{
   background:linear-gradient(145deg,var(--card),var(--card2));
@@ -97,26 +114,57 @@ header{
   box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
 
+
+/* =========================================================
+   TOPO DO JOGO
+   ========================================================= */
+
 .game-top{
+  position:relative;
+
   display:flex;
   align-items:center;
-  gap:9px;
-  padding:10px 12px 8px;
+  justify-content:center;
+
+  min-height:48px;
+
+  padding:8px 12px;
+
   border-bottom:1px solid rgba(255,255,255,.05);
 }
 
+
+/* HORÁRIO */
+
 .time{
+  position:absolute;
+  left:12px;
+
   font-size:18px;
   font-weight:900;
   color:#fff;
+
   min-width:58px;
+
+  text-align:left;
 }
+
+
+/* =========================================================
+   COMPETIÇÃO CENTRALIZADA
+   ========================================================= */
 
 .competition{
   display:flex;
   align-items:center;
-  gap:6px;
-  min-width:0;
+  justify-content:center;
+
+  gap:7px;
+
+  max-width:75%;
+
+  text-align:center;
+
   font-size:12px;
   font-weight:800;
   color:var(--muted);
@@ -125,7 +173,9 @@ header{
 .competition-logo{
   width:22px;
   height:22px;
+
   object-fit:contain;
+
   flex:none;
 }
 
@@ -145,18 +195,29 @@ header{
   line-height:1.15;
 }
 
+
+/* =========================================================
+   TIMES
+   ========================================================= */
+
 .teams{
   display:grid;
+
   grid-template-columns:1fr 35px 1fr;
+
   align-items:center;
+
   gap:8px;
+
   padding:12px 12px 8px;
 }
 
 .team{
   display:flex;
   align-items:center;
+
   gap:9px;
+
   min-width:0;
 }
 
@@ -179,43 +240,75 @@ header{
 .team-logo{
   width:42px;
   height:42px;
+
   object-fit:contain;
+
   flex:none;
 }
 
 .vs{
   text-align:center;
+
   font-size:11px;
   font-weight:900;
+
   color:var(--muted);
 }
+
+
+/* =========================================================
+   CANAIS
+   ========================================================= */
 
 .channels{
   display:flex;
   flex-wrap:wrap;
+
   justify-content:center;
+
   gap:7px;
+
   padding:2px 12px 12px;
 }
 
 .channel{
   background:#0b1118;
+
   border:1px solid var(--border);
+
   border-radius:8px;
+
   padding:6px 10px;
+
   color:#fff;
+
   font-size:12px;
   font-weight:800;
 }
 
+
+/* =========================================================
+   SEM JOGOS
+   ========================================================= */
+
 .empty{
   text-align:center;
+
   color:var(--muted);
+
   padding:35px 15px;
+
   border:1px dashed var(--border);
+
   border-radius:12px;
+
   margin-top:15px;
 }
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
 
 @media(max-width:600px){
 
@@ -238,19 +331,42 @@ header{
     padding-right:8px;
   }
 
-  .game-top{
-    gap:6px;
-    padding:9px 9px 7px;
+
+  /* DIA CENTRALIZADO */
+
+  .day-title{
+    font-size:14px;
+    padding:11px 8px;
   }
+
+
+  /* TOPO */
+
+  .game-top{
+    min-height:45px;
+    padding:7px 8px;
+  }
+
+
+  /* HORÁRIO */
 
   .time{
-    font-size:16px;
-    min-width:52px;
+    left:8px;
+
+    font-size:15px;
+
+    min-width:48px;
   }
 
+
+  /* COMPETIÇÃO */
+
   .competition{
-    font-size:10px;
+    max-width:70%;
+
     gap:5px;
+
+    font-size:10px;
   }
 
   .competition-logo{
@@ -258,9 +374,14 @@ header{
     height:20px;
   }
 
+
+  /* TIMES */
+
   .teams{
     grid-template-columns:1fr 28px 1fr;
+
     gap:5px;
+
     padding:11px 8px 7px;
   }
 
@@ -281,10 +402,14 @@ header{
     font-size:9px;
   }
 
+
+  /* CANAIS */
+
   .channel{
     font-size:11px;
     padding:5px 8px;
   }
+
 }
 
 </style>
@@ -296,15 +421,29 @@ header{
   ⚽ Programação de Jogos e Transmissões
 </header>
 
+
 <div class="tabs">
-  <button class="tab active" data-tab="today">HOJE</button>
-  <button class="tab" data-tab="tomorrow">AMANHÃ</button>
-  <button class="tab" data-tab="next">PRÓXIMOS</button>
+
+  <button class="tab active" data-tab="today">
+    HOJE
+  </button>
+
+  <button class="tab" data-tab="tomorrow">
+    AMANHÃ
+  </button>
+
+  <button class="tab" data-tab="next">
+    PRÓXIMOS
+  </button>
+
 </div>
+
 
 <div class="container" id="gamesContainer"></div>
 
+
 <script>
+
 
 /* =========================================================
    LOGOS DAS COMPETIÇÕES
@@ -925,6 +1064,7 @@ function renderGames(tab){
 
   let filteredGames = [];
 
+
   if(tab === "today"){
 
     filteredGames = gamesData.filter(game =>
@@ -933,6 +1073,7 @@ function renderGames(tab){
 
   }
 
+
   else if(tab === "tomorrow"){
 
     filteredGames = gamesData.filter(game =>
@@ -940,6 +1081,7 @@ function renderGames(tab){
     );
 
   }
+
 
   else if(tab === "next"){
 
@@ -975,6 +1117,7 @@ function renderGames(tab){
 
   const groups = {};
 
+
   filteredGames.forEach(game => {
 
     if(!groups[game.date]){
@@ -998,6 +1141,7 @@ function renderGames(tab){
           📅 ${formatDate(date)}
         </div>
       `;
+
 
       groups[date].forEach(game => {
 
