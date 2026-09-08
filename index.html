@@ -63,6 +63,11 @@ header{
   border-radius:10px;
   cursor:pointer;
   font-weight:bold;
+  transition:.2s;
+}
+
+.tab:hover{
+  border-color:var(--accent);
 }
 
 .tab.active{
@@ -118,6 +123,7 @@ header{
   padding:5px 9px;
   border-radius:7px;
   font-size:14px;
+  white-space:nowrap;
 }
 
 .competition{
@@ -151,8 +157,8 @@ header{
 }
 
 .team-logo{
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   object-fit:contain;
   flex-shrink:0;
 }
@@ -268,7 +274,9 @@ footer{
   </div>
 
   <section id="today" class="day active"></section>
+
   <section id="tomorrow" class="day"></section>
+
   <section id="next" class="day"></section>
 
 </main>
@@ -277,151 +285,155 @@ footer{
   © 2026 • Jogos e Transmissões
 </footer>
 
+
 <script>
 
 /* =====================================================
    ESCUDOS DOS TIMES
+   BASE ATUALIZADA
 ===================================================== */
 
 const logos = {
 
   "Club Brugge":
-  "https://media.api-sports.io/football/teams/569.png",
+  "https://assets.footylogos.com/logos/club-brugge/club-brugge-logo-footylogos.svg",
 
   "Aston Villa":
-  "https://media.api-sports.io/football/teams/66.png",
+  "https://assets.footylogos.com/logos/aston-villa/aston-villa-logo-footylogos.svg",
 
   "Real Madrid":
-  "https://media.api-sports.io/football/teams/541.png",
+  "https://assets.footylogos.com/logos/real-madrid/real-madrid-logo-footylogos.svg",
 
   "Inter de Milão":
-  "https://media.api-sports.io/football/teams/505.png",
+  "https://assets.footylogos.com/logos/inter-milan/inter-milan-logo-footylogos.svg",
 
   "Porto":
-  "https://media.api-sports.io/football/teams/212.png",
+  "https://assets.footylogos.com/logos/fc-porto/fc-porto-logo-footylogos.svg",
 
   "Manchester City":
-  "https://media.api-sports.io/football/teams/50.png",
+  "https://assets.footylogos.com/logos/manchester-city/manchester-city-logo-footylogos.svg",
 
   "Fluminense":
-  "https://media.api-sports.io/football/teams/124.png",
+  "https://assets.footylogos.com/logos/fluminense/fluminense-logo-footylogos.svg",
 
   "Platense":
-  "https://media.api-sports.io/football/teams/2365.png",
+  "https://assets.footylogos.com/logos/platense/platense-logo-footylogos.svg",
 
   "Independiente Santa Fe":
-  "https://media.api-sports.io/football/teams/1126.png",
+  "https://assets.footylogos.com/logos/independiente-santa-fe/independiente-santa-fe-logo-footylogos.svg",
 
   "Vasco da Gama":
-  "https://media.api-sports.io/football/teams/133.png",
+  "https://assets.footylogos.com/logos/vasco-da-gama/vasco-da-gama-logo-footylogos.svg",
 
   "Boca Juniors":
-  "https://media.api-sports.io/football/teams/451.png",
+  "https://assets.footylogos.com/logos/boca-juniors/boca-juniors-logo-footylogos.svg",
 
   "São Paulo":
-  "https://media.api-sports.io/football/teams/126.png",
+  "https://assets.footylogos.com/logos/sao-paulo/sao-paulo-logo-footylogos.svg",
 
   "Barcelona":
-  "https://media.api-sports.io/football/teams/529.png",
+  "https://assets.footylogos.com/logos/fc-barcelona/fc-barcelona-logo-footylogos.svg",
 
   "Feyenoord":
-  "https://media.api-sports.io/football/teams/234.png",
+  "https://assets.footylogos.com/logos/feyenoord/feyenoord-logo-footylogos.svg",
 
   "Al-Nassr":
-  "https://media.api-sports.io/football/teams/2933.png",
+  "https://assets.footylogos.com/logos/al-nassr/al-nassr-logo-footylogos.svg",
 
   "Abha":
-  "https://media.api-sports.io/football/teams/2935.png",
+  "https://assets.footylogos.com/logos/abha/abha-logo-footylogos.svg",
 
   "Liverpool":
-  "https://media.api-sports.io/football/teams/40.png",
+  "https://assets.footylogos.com/logos/liverpool-fc/liverpool-fc-logo-footylogos.svg",
 
   "Atlético de Madrid":
-  "https://media.api-sports.io/football/teams/530.png",
+  "https://assets.footylogos.com/logos/atletico-madrid/atletico-madrid-logo-footylogos.svg",
 
   "Napoli":
-  "https://media.api-sports.io/football/teams/492.png",
+  "https://assets.footylogos.com/logos/napoli/napoli-logo-footylogos.svg",
 
   "Arsenal":
-  "https://media.api-sports.io/football/teams/42.png",
+  "https://assets.footylogos.com/logos/arsenal/arsenal-logo-footylogos.svg",
 
   "PSG":
-  "https://media.api-sports.io/football/teams/85.png",
+  "https://assets.footylogos.com/logos/paris-saint-germain/paris-saint-germain-logo-footylogos.svg",
 
   "Slovan Bratislava":
-  "https://media.api-sports.io/football/teams/688.png",
+  "https://assets.footylogos.com/logos/slovan-bratislava/slovan-bratislava-logo-footylogos.svg",
 
   "Chelsea":
-  "https://media.api-sports.io/football/teams/49.png",
+  "https://assets.footylogos.com/logos/chelsea/chelsea-logo-footylogos.svg",
 
   "Leeds United":
-  "https://media.api-sports.io/football/teams/63.png",
+  "https://assets.footylogos.com/logos/leeds-united/leeds-united-logo-footylogos.svg",
 
   "Palmeiras":
-  "https://media.api-sports.io/football/teams/121.png",
+  "https://assets.footylogos.com/logos/palmeiras/palmeiras-logo-footylogos.svg",
 
   "LDU":
-  "https://media.api-sports.io/football/teams/1162.png",
+  "https://assets.footylogos.com/logos/ldu-quito/ldu-quito-logo-footylogos.svg",
 
   "Santos":
-  "https://media.api-sports.io/football/teams/1241.png",
+  "https://assets.footylogos.com/logos/santos-fc/santos-fc-logo-footylogos.svg",
 
   "Atlético-MG":
-  "https://media.api-sports.io/football/teams/1062.png",
+  "https://assets.footylogos.com/logos/atletico-mineiro/atletico-mineiro-logo-footylogos.svg",
 
   "Fortaleza":
-  "https://media.api-sports.io/football/teams/127.png",
+  "https://assets.footylogos.com/logos/fortaleza/fortaleza-logo-footylogos.svg",
 
   "Avaí":
-  "https://media.api-sports.io/football/teams/135.png",
+  "https://assets.footylogos.com/logos/avai-fc/avai-fc-logo-footylogos.svg",
 
   "Estudiantes":
-  "https://media.api-sports.io/football/teams/115.png",
+  "https://assets.footylogos.com/logos/estudiantes/estudiantes-logo-footylogos.svg",
 
   "Corinthians":
-  "https://media.api-sports.io/football/teams/131.png",
+  "https://assets.footylogos.com/logos/corinthians/corinthians-logo-footylogos.svg",
 
   "Atlético-GO":
-  "https://media.api-sports.io/football/teams/144.png",
+  "https://assets.footylogos.com/logos/atletico-goianiense/atletico-goianiense-logo-footylogos.svg",
 
   "Ceará":
-  "https://media.api-sports.io/football/teams/129.png",
+  "https://assets.footylogos.com/logos/ceara-sc/ceara-sc-logo-footylogos.svg",
 
   "Fenerbahçe":
-  "https://media.api-sports.io/football/teams/611.png",
+  "https://assets.footylogos.com/logos/fenerbahce/fenerbahce-logo-footylogos.svg",
 
   "Roma":
-  "https://media.api-sports.io/football/teams/497.png",
+  "https://assets.footylogos.com/logos/as-roma/as-roma-logo-footylogos.svg",
 
   "PSV":
-  "https://media.api-sports.io/football/teams/197.png",
+  "https://assets.footylogos.com/logos/psv-eindhoven/psv-eindhoven-logo-footylogos.svg",
 
   "Shakhtar Donetsk":
-  "https://media.api-sports.io/football/teams/550.png",
+  "https://assets.footylogos.com/logos/shakhtar-donetsk/shakhtar-donetsk-logo-footylogos.svg",
 
   "Bayern de Munique":
-  "https://media.api-sports.io/football/teams/157.png",
+  "https://assets.footylogos.com/logos/bayern-munich/bayern-munich-logo-footylogos.svg",
 
   "Bodo/Glimt":
-  "https://media.api-sports.io/football/teams/327.png",
+  "https://assets.footylogos.com/logos/bodo-glimt/bodo-glimt-logo-footylogos.svg",
 
   "Manchester United":
-  "https://media.api-sports.io/football/teams/33.png",
+  "https://assets.footylogos.com/logos/manchester-united/manchester-united-logo-footylogos.svg",
 
   "Sabah":
-  "https://media.api-sports.io/football/teams/5525.png",
+  "https://assets.footylogos.com/logos/sabah-fk/sabah-fk-logo-footylogos.svg",
 
   "Independiente del Valle":
-  "https://media.api-sports.io/football/teams/1158.png",
+  "https://assets.footylogos.com/logos/independiente-del-valle/independiente-del-valle-logo-footylogos.svg",
 
   "Flamengo":
-  "https://media.api-sports.io/football/teams/127.png",
+  "https://assets.footylogos.com/logos/flamengo/flamengo-logo-footylogos.svg",
+
+  /* CORRIGIDOS */
 
   "Sport Recife":
-  "https://media.api-sports.io/football/teams/1242.png",
+  "https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg",
 
   "Ponte Preta":
-  "https://media.api-sports.io/football/teams/1352.png"
+  "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg"
 
 };
 
@@ -432,7 +444,9 @@ const logos = {
 
 const gamesData = [
 
-  /* TERÇA – 08/09/2026 */
+  /* =====================================================
+     TERÇA-FEIRA – 08/09/2026
+  ===================================================== */
 
   {
     date:"2026-09-08",
@@ -489,7 +503,9 @@ const gamesData = [
   },
 
 
-  /* QUARTA – 09/09/2026 */
+  /* =====================================================
+     QUARTA-FEIRA – 09/09/2026
+  ===================================================== */
 
   {
     date:"2026-09-09",
@@ -591,7 +607,9 @@ const gamesData = [
   },
 
 
-  /* QUINTA – 10/09/2026 */
+  /* =====================================================
+     QUINTA-FEIRA – 10/09/2026
+  ===================================================== */
 
   {
     date:"2026-09-10",
@@ -651,7 +669,56 @@ const gamesData = [
 
 
 /* =====================================================
-   DATA
+   FORMATAÇÃO
+===================================================== */
+
+function formatDate(dateObj){
+
+  const daysOfWeek=[
+    "DOMINGO",
+    "SEGUNDA-FEIRA",
+    "TERÇA-FEIRA",
+    "QUARTA-FEIRA",
+    "QUINTA-FEIRA",
+    "SEXTA-FEIRA",
+    "SÁBADO"
+  ];
+
+  const dayName=
+    daysOfWeek[dateObj.getDay()];
+
+  const day=
+    String(dateObj.getDate()).padStart(2,"0");
+
+  const month=
+    String(dateObj.getMonth()+1).padStart(2,"0");
+
+  const year=
+    dateObj.getFullYear();
+
+  return `📅 ${dayName} – ${day}/${month}/${year}`;
+}
+
+
+/* =====================================================
+   CONVERTER DATA
+===================================================== */
+
+function parseDate(dateString){
+
+  const parts=
+    dateString.split("-");
+
+  return new Date(
+    Number(parts[0]),
+    Number(parts[1])-1,
+    Number(parts[2])
+  );
+}
+
+
+/* =====================================================
+   DATA ATUAL
 ===================================================== */
 
 function getToday(){
@@ -663,54 +730,51 @@ function getToday(){
     now.getMonth(),
     now.getDate()
   );
-
 }
+
+
+/* =====================================================
+   DATA PARA STRING
+===================================================== */
 
 function dateToString(dateObj){
 
-  return `${dateObj.getFullYear()}-${
-    String(dateObj.getMonth()+1).padStart(2,"0")
-  }-${
-    String(dateObj.getDate()).padStart(2,"0")
-  }`;
+  const year=
+    dateObj.getFullYear();
 
+  const month=
+    String(dateObj.getMonth()+1)
+    .padStart(2,"0");
+
+  const day=
+    String(dateObj.getDate())
+    .padStart(2,"0");
+
+  return `${year}-${month}-${day}`;
 }
 
-function parseDate(dateString){
 
-  const parts=dateString.split("-");
+/* =====================================================
+   ORDENAR JOGOS
+===================================================== */
 
-  return new Date(
-    Number(parts[0]),
-    Number(parts[1])-1,
-    Number(parts[2])
-  );
+function sortGames(games){
 
-}
+  return games.sort((a,b)=>{
 
-function formatDate(dateObj){
+    if(a.date!==b.date){
+      return a.date.localeCompare(b.date);
+    }
 
-  const days=[
-    "DOMINGO",
-    "SEGUNDA-FEIRA",
-    "TERÇA-FEIRA",
-    "QUARTA-FEIRA",
-    "QUINTA-FEIRA",
-    "SEXTA-FEIRA",
-    "SÁBADO"
-  ];
+    return a.time.localeCompare(b.time);
 
-  return `📅 ${days[dateObj.getDay()]} – ${
-    String(dateObj.getDate()).padStart(2,"0")
-  }/${
-    String(dateObj.getMonth()+1).padStart(2,"0")
-  }/${dateObj.getFullYear()}`;
+  });
 
 }
 
 
 /* =====================================================
-   JOGO HTML
+   CRIAR HTML DOS JOGOS
 ===================================================== */
 
 function createGamesHTML(games){
@@ -719,12 +783,18 @@ function createGamesHTML(games){
 
   games.forEach(game=>{
 
-    const homeLogo=logos[game.home] || "";
-    const awayLogo=logos[game.away] || "";
+    const homeLogo=
+      logos[game.home] || "";
 
-    const channelsHTML=game.channels
+    const awayLogo=
+      logos[game.away] || "";
+
+    const channelsHTML=
+      game.channels
       .map(channel=>`
-        <div class="channel">${channel}</div>
+        <div class="channel">
+          ${channel}
+        </div>
       `)
       .join("");
 
@@ -744,6 +814,7 @@ function createGamesHTML(games){
 
         </div>
 
+
         <div class="teams">
 
           <div class="team">
@@ -756,13 +827,16 @@ function createGamesHTML(games){
               class="team-logo"
               src="${homeLogo}"
               alt="${game.home}"
+              onerror="this.style.display='none'"
             >
 
           </div>
 
+
           <div class="vs">
             X
           </div>
+
 
           <div class="team">
 
@@ -770,6 +844,7 @@ function createGamesHTML(games){
               class="team-logo"
               src="${awayLogo}"
               alt="${game.away}"
+              onerror="this.style.display='none'"
             >
 
             <span class="team-name">
@@ -779,6 +854,7 @@ function createGamesHTML(games){
           </div>
 
         </div>
+
 
         <div class="info">
           ${channelsHTML}
@@ -791,25 +867,6 @@ function createGamesHTML(games){
   });
 
   return html;
-
-}
-
-
-/* =====================================================
-   ORDENAR
-===================================================== */
-
-function sortGames(games){
-
-  return games.sort((a,b)=>{
-
-    if(a.date!==b.date)
-      return a.date.localeCompare(b.date);
-
-    return a.time.localeCompare(b.time);
-
-  });
-
 }
 
 
@@ -817,9 +874,14 @@ function sortGames(games){
    MONTAR SEÇÃO
 ===================================================== */
 
-function buildSection(sectionId,games,dateText){
+function buildSection(
+  sectionId,
+  games,
+  dateText
+){
 
-  const container=document.getElementById(sectionId);
+  const container=
+    document.getElementById(sectionId);
 
   if(games.length===0){
 
@@ -836,10 +898,10 @@ function buildSection(sectionId,games,dateText){
     `;
 
     return;
-
   }
 
-  sortGames(games);
+  games=
+    sortGames(games);
 
   container.innerHTML=`
 
@@ -850,44 +912,57 @@ function buildSection(sectionId,games,dateText){
     ${createGamesHTML(games)}
 
   `;
-
 }
 
 
 /* =====================================================
-   RENDERIZAR
+   RENDERIZAR JOGOS
 ===================================================== */
 
 function renderGames(){
 
-  const today=getToday();
+  const today=
+    getToday();
 
-  const tomorrow=new Date(today);
+  const tomorrow=
+    new Date(today);
 
   tomorrow.setDate(
     tomorrow.getDate()+1
   );
 
-  const todayStr=dateToString(today);
-  const tomorrowStr=dateToString(tomorrow);
 
-  const todayGames=gamesData.filter(
-    game=>game.date===todayStr
-  );
+  const todayStr=
+    dateToString(today);
 
-  const tomorrowGames=gamesData.filter(
-    game=>game.date===tomorrowStr
-  );
+  const tomorrowStr=
+    dateToString(tomorrow);
 
-  const nextGames=gamesData.filter(
-    game=>game.date>tomorrowStr
-  );
+
+  const todayGames=
+    gamesData.filter(
+      game=>game.date===todayStr
+    );
+
+
+  const tomorrowGames=
+    gamesData.filter(
+      game=>game.date===tomorrowStr
+    );
+
+
+  const nextGames=
+    gamesData.filter(
+      game=>game.date>tomorrowStr
+    );
+
 
   buildSection(
     "today",
     todayGames,
     formatDate(today)
   );
+
 
   buildSection(
     "tomorrow",
@@ -896,7 +971,9 @@ function renderGames(){
   );
 
 
-  const nextContainer=document.getElementById("next");
+  const nextContainer=
+    document.getElementById("next");
+
 
   if(nextGames.length===0){
 
@@ -913,18 +990,20 @@ function renderGames(){
     `;
 
     return;
-
   }
 
 
-  sortGames(nextGames);
+  const sortedNextGames=
+    sortGames(nextGames);
 
   const grouped={};
 
-  nextGames.forEach(game=>{
 
-    if(!grouped[game.date])
+  sortedNextGames.forEach(game=>{
+
+    if(!grouped[game.date]){
       grouped[game.date]=[];
+    }
 
     grouped[game.date].push(game);
 
@@ -933,30 +1012,38 @@ function renderGames(){
 
   let html="";
 
+
   Object.keys(grouped)
     .sort()
     .forEach((date,index)=>{
 
+      const dateObj=
+        parseDate(date);
+
       html+=`
 
         <div class="date ${index>0?"next-date":""}">
-          ${formatDate(parseDate(date))}
+          ${formatDate(dateObj)}
         </div>
 
-        ${createGamesHTML(grouped[date])}
-
       `;
+
+      html+=
+        createGamesHTML(
+          grouped[date]
+        );
 
     });
 
 
-  nextContainer.innerHTML=html;
+  nextContainer.innerHTML=
+    html;
 
 }
 
 
 /* =====================================================
-   ABAS
+   TROCAR ABA
 ===================================================== */
 
 function showDay(id,button){
@@ -967,15 +1054,18 @@ function showDay(id,button){
       day.classList.remove("active");
     });
 
+
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
       tab.classList.remove("active");
     });
 
+
   document
     .getElementById(id)
     .classList.add("active");
+
 
   button.classList.add("active");
 
