@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0f14">
 
-<title>JTV | Jogos de Hoje</title>
+<title>Programação de Jogos e Transmissões</title>
 
 <style>
 
@@ -31,40 +32,24 @@ body{
   min-height:100vh;
 }
 
-/* CABEÇALHO */
-
 header{
   text-align:center;
-  padding:30px 15px 20px;
-  border-bottom:1px solid var(--border);
-  background:rgba(10,14,20,.9);
-}
-
-.logo{
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-.logo span{
-  color:var(--accent);
+  padding:22px 15px 8px;
 }
 
 .sub{
-  color:var(--muted);
-  font-size:14px;
-  margin-top:7px;
+  color:var(--text);
+  font-size:17px;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:15px;
 }
-
-/* CONTAINER */
 
 .container{
   max-width:760px;
   margin:auto;
-  padding:20px 14px 50px;
+  padding:15px 14px 50px;
 }
-
-/* ABAS */
 
 .tabs{
   display:flex;
@@ -81,6 +66,11 @@ header{
   border-radius:10px;
   cursor:pointer;
   font-weight:bold;
+  transition:.2s;
+}
+
+.tab:hover{
+  border-color:var(--accent);
 }
 
 .tab.active{
@@ -89,8 +79,6 @@ header{
   border-color:var(--accent);
 }
 
-/* DIAS */
-
 .day{
   display:none;
 }
@@ -98,8 +86,6 @@ header{
 .day.active{
   display:block;
 }
-
-/* DATA */
 
 .date{
   text-align:center;
@@ -112,7 +98,9 @@ header{
   font-weight:bold;
 }
 
-/* JOGO */
+.next-date{
+  margin-top:25px;
+}
 
 .game{
   background:var(--card);
@@ -122,8 +110,6 @@ header{
   margin-bottom:12px;
   box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
-
-/* HORÁRIO + COMPETIÇÃO */
 
 .time-row{
   display:flex;
@@ -140,97 +126,149 @@ header{
   padding:5px 9px;
   border-radius:7px;
   font-size:14px;
+  white-space:nowrap;
 }
 
-/* COMPETIÇÃO */
 
-.time-row .competition{
-  margin:0;
-  color:#f4f7fb;
-  font-weight:800;
-  font-size:15px;
+/* =========================================================
+   COMPETIÇÃO
+   ========================================================= */
 
+.competition{
   display:flex;
   align-items:center;
   gap:7px;
+  color:#f4f7fb;
+  font-weight:800;
+  font-size:15px;
+  line-height:1.2;
 }
-
-/* LOGO DA COMPETIÇÃO */
 
 .competition-logo{
   width:25px;
   height:25px;
   object-fit:contain;
-  display:inline-block;
   flex-shrink:0;
+  display:block;
 }
 
-/* UEFA CHAMPIONS LEAGUE
-   O FILTRO TRANSFORMA O LOGO EM BRANCO.
-   O MIX-BLEND FAZ O FUNDO PRETO DESAPARECER.
-*/
+
+/* =========================================================
+   UEFA CHAMPIONS LEAGUE
+   LOGO BRANCO
+   ========================================================= */
 
 .competition-logo.champions-logo{
-  filter:invert(1);
-  mix-blend-mode:screen;
+  filter:
+    brightness(0)
+    invert(1);
 }
 
-/* LOGO LIBERTADORES */
+
+/* =========================================================
+   LIBERTADORES
+   ========================================================= */
 
 .competition-logo.libertadores-logo{
-  width:28px;
-  height:28px;
+  width:27px;
+  height:27px;
   object-fit:contain;
 }
 
-/* LOGOS BRASILEIRÃO */
 
-.competition-logo.brasileirao-logo{
-  width:28px;
-  height:28px;
+/* =========================================================
+   SUL-AMERICANA
+   ========================================================= */
+
+.competition-logo.sulamericana-logo{
+  width:27px;
+  height:27px;
   object-fit:contain;
 }
 
-/* TIMES */
+
+/* =========================================================
+   TIMES
+   ========================================================= */
 
 .teams{
-  font-size:19px;
-  font-weight:800;
-  margin:12px 0 14px;
+  display:grid;
+  grid-template-columns:1fr 35px 1fr;
+  align-items:center;
+  gap:8px;
+  margin:15px 0 14px;
+  min-height:52px;
 }
 
-/* INFORMAÇÕES */
+.team{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+  font-weight:800;
+  min-width:0;
+}
+
+.team.home{
+  justify-content:flex-end;
+  text-align:right;
+}
+
+.team.away{
+  justify-content:flex-start;
+  text-align:left;
+}
+
+.team-name{
+  line-height:1.15;
+}
+
+.team-logo{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  flex-shrink:0;
+  display:block;
+}
+
+.vs{
+  text-align:center;
+  font-size:15px;
+  font-weight:900;
+  color:#9aa7b7;
+}
+
+
+/* =========================================================
+   CANAIS
+   ========================================================= */
 
 .info{
   border-top:1px solid var(--border);
   padding-top:10px;
   margin-top:8px;
-  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
 }
 
 .channel{
   color:#fff;
-  font-weight:900;
-  font-size:18px;
-  margin:3px 0;
+  font-weight:bold;
+  font-size:16px;
+  margin-top:0;
+  white-space:nowrap;
 }
-
-/* COMPETIÇÃO SEM LOGO */
-
-.competition-fallback{
-  color:#b9c4d0;
-  font-weight:800;
-}
-
-/* VAZIO */
 
 .empty{
   text-align:center;
   color:var(--muted);
   padding:40px 10px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
 }
-
-/* RODAPÉ */
 
 footer{
   text-align:center;
@@ -239,16 +277,52 @@ footer{
   padding:20px;
 }
 
-/* CELULAR */
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .teams{
+    grid-template-columns:1fr 28px 1fr;
+    gap:5px;
+  }
+
+  .team{
+    font-size:16px;
+    gap:7px;
+  }
+
+  .team-logo{
+    width:38px;
+    height:38px;
+  }
+
+}
 
 @media(max-width:480px){
 
-  .logo{
-    font-size:28px;
+  .sub{
+    font-size:16px;
   }
 
-  .teams{
-    font-size:17px;
+  .team{
+    font-size:14px;
+  }
+
+  .team-logo{
+    width:34px;
+    height:34px;
+  }
+
+  .competition{
+    font-size:14px;
+  }
+
+  .competition-logo{
+    width:22px;
+    height:22px;
   }
 
   .tab{
@@ -257,33 +331,25 @@ footer{
   }
 
   .channel{
-    font-size:17px;
-  }
-
-  .time-row .competition{
     font-size:14px;
   }
 
-  .competition-logo{
-    width:23px;
-    height:23px;
+  .info{
+    gap:12px;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
 
-  <div class="logo">
-    J<span>TV</span>
-  </div>
-
   <div class="sub">
-    ⚽ Programação de Jogos e Transmissões
+    ⚽ <strong>Programação de Jogos e Transmissões</strong>
   </div>
 
 </header>
@@ -291,403 +357,45 @@ footer{
 
 <main class="container">
 
-  <!-- ABAS -->
-
   <div class="tabs">
 
-    <button
-      class="tab active"
-      onclick="showDay('today',this)">
+    <button class="tab active" onclick="showDay('today',this)">
       HOJE
     </button>
 
-    <button
-      class="tab"
-      onclick="showDay('tomorrow',this)">
+    <button class="tab" onclick="showDay('tomorrow',this)">
       AMANHÃ
     </button>
 
-    <button
-      class="tab"
-      onclick="showDay('next',this)">
+    <button class="tab" onclick="showDay('next',this)">
       PRÓXIMOS
     </button>
 
   </div>
 
 
-  <!-- ================================================= -->
-  <!-- HOJE -->
-  <!-- ================================================= -->
+  <section id="today" class="day active"></section>
 
-  <section id="today" class="day active">
+  <section id="tomorrow" class="day"></section>
 
-    <div class="date">
-      📅 QUINTA-FEIRA – 03/09/2026
-    </div>
-
-
-    <!-- JOGO 1 -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          16:00
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Copa Itália">
-          🏆 Copa Itália
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Cagliari x Hellas Verona
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 SportyNet
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO 2 -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          20:00
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Copa do Brasil">
-          🏆 Copa do Brasil
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Grêmio x Internacional
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 Prime Video
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO 3 -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          20:00
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Brasileirão Série B">
-          🏆 Brasileirão Série B
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Náutico x Botafogo-SP
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 Sportv
-        </div>
-
-        <div class="channel">
-          📺 Premiere
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================================================= -->
-  <!-- AMANHÃ -->
-  <!-- ================================================= -->
-
-  <section id="tomorrow" class="day">
-
-    <div class="date">
-      📅 SEXTA-FEIRA – 04/09/2026
-    </div>
-
-
-    <!-- JOGO -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          14:00
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Ligue 1">
-          🏆 Ligue 1
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Lyon x Auxerre
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 Xsports
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          16:00
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Premier League">
-          🏆 Premier League
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Ipswich Town x Liverpool
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 ESPN
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          16:00
-        </span>
-
-        <span
-          class="competition"
-          data-competition="LaLiga">
-          🏆 LaLiga
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Real Bétis x Real Madrid
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 CazeTV
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          16:05
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Ligue 1">
-          🏆 Ligue 1
-        </span>
-
-      </div>
-
-      <div class="teams">
-        PSG x Monaco
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 Xsports
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          19:30
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Brasileirão Série B">
-          🏆 Brasileirão Série B
-        </span>
-
-      </div>
-
-      <div class="teams">
-        Criciúma x Cuiabá
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 ESPN
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- JOGO -->
-
-    <div class="game">
-
-      <div class="time-row">
-
-        <span class="time">
-          21:30
-        </span>
-
-        <span
-          class="competition"
-          data-competition="Brasileirão Série B">
-          🏆 Brasileirão Série B
-        </span>
-
-      </div>
-
-      <div class="teams">
-        CRB x América-MG
-      </div>
-
-      <div class="info">
-
-        <div class="channel">
-          📺 Xsports
-        </div>
-
-        <div class="channel">
-          📺 SportyNet
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================================================= -->
-  <!-- PRÓXIMOS -->
-  <!-- ================================================= -->
-
-  <section id="next" class="day">
-
-    <div class="date">
-      📅 PRÓXIMOS JOGOS
-    </div>
-
-    <div class="empty">
-      Em breve novas partidas.
-    </div>
-
-  </section>
+  <section id="next" class="day"></section>
 
 </main>
 
 
 <footer>
-
-  © 2026 JTV • Jogos e Transmissões
-
+  © 2026 • Jogos e Transmissões
 </footer>
 
 
 <script>
 
-/* =====================================================
+
+/* =========================================================
    LOGOS DAS COMPETIÇÕES
-   ===================================================== */
+   ========================================================= */
 
 const competitionLogos = {
-
-  /* LIBERTADORES */
-
-  "Libertadores":
-    "https://cdn.conmebol.com/wp-content/uploads/2020/11/whatsapp_image_2020-11-25_at_15.28.28_0.jpeg",
-
-  "Copa Libertadores":
-    "https://cdn.conmebol.com/wp-content/uploads/2020/11/whatsapp_image_2020-11-25_at_15.28.28_0.jpeg",
 
 
   /* UEFA CHAMPIONS LEAGUE */
@@ -695,122 +403,897 @@ const competitionLogos = {
   "UEFA Champions League":
     "https://cdn-img.staticzz.com/img/logos/competicoes/27_imgbank_lc_20250314102703.png",
 
-  "Champions League":
-    "https://cdn-img.staticzz.com/img/logos/competicoes/27_imgbank_lc_20250314102703.png",
+
+  /* LIBERTADORES */
+
+  "CONMEBOL Libertadores":
+    "https://cdn.conmebol.com/wp-content/uploads/2020/11/whatsapp_image_2020-11-25_at_15.28.28_0.jpeg",
 
 
-  /* BRASILEIRÃO SÉRIE A */
+  /* SUL-AMERICANA */
 
-  "Brasileirão Série A":
-    "https://assets.footylogos.com/logos/brasileirao-serie-a-white-logo-footylogos.png",
+  "CONMEBOL Sul-Americana":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Conmebol-sudamericana.svg",
+
+
+  /* LIGA SAUDITA */
+
+  "Liga Saudita":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Saudi_Pro_League_Logo.svg",
+
+
+  /* COPA DA LIGA INGLESA */
+
+  "Copa da Liga Inglesa":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/EFL_(Carabao)_Cup_Logo.svg",
 
 
   /* BRASILEIRÃO SÉRIE B */
 
   "Brasileirão Série B":
-    "https://upload.wikimedia.org/wikipedia/pt/d/d6/Campeonato_Brasileiro_de_Futebol_S%C3%A9rie_B.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20260322045212"
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Campeonato_Brasileiro_S%C3%A9rie_B_logo_(2025).svg",
+
+
+  /* BRASILEIRÃO SÉRIE A */
+
+  "Brasileirão Série A":
+    "https://assets.footylogos.com/logos/brasileirao-serie-a-white-logo-footylogos.png"
 
 };
 
 
-/* =====================================================
-   CLASSE ESPECIAL PARA CADA LOGO
-   ===================================================== */
 
-function getLogoClass(competition){
+/* =========================================================
+   ESCUDOS DOS TIMES
+   ========================================================= */
 
-  if(
-    competition === "UEFA Champions League" ||
-    competition === "Champions League"
-  ){
-    return "champions-logo";
+const logos = {
+
+  "Club Brugge":
+    "https://assets.footylogos.com/logos/club-brugge/club-brugge-logo-footylogos.svg",
+
+  "Aston Villa":
+    "https://assets.footylogos.com/logos/aston-villa/aston-villa-logo-footylogos.svg",
+
+  "Real Madrid":
+    "https://assets.footylogos.com/logos/real-madrid/real-madrid-logo-footylogos.svg",
+
+  "Inter de Milão":
+    "https://assets.footylogos.com/logos/inter-milan/inter-milan-logo-footylogos.svg",
+
+  "Porto":
+    "https://assets.footylogos.com/logos/fc-porto/fc-porto-logo-footylogos.svg",
+
+  "Manchester City":
+    "https://assets.footylogos.com/logos/manchester-city/manchester-city-logo-footylogos.svg",
+
+  "Fluminense":
+    "https://assets.footylogos.com/logos/fluminense/fluminense-logo-footylogos.svg",
+
+  "Platense":
+    "https://assets.footylogos.com/logos/platense/platense-logo-footylogos.svg",
+
+  "Independiente Santa Fe":
+    "https://assets.footylogos.com/logos/independiente-santa-fe/independiente-santa-fe-logo-footylogos.svg",
+
+  "Vasco da Gama":
+    "https://assets.footylogos.com/logos/vasco-da-gama/vasco-da-gama-logo-footylogos.svg",
+
+  "Boca Juniors":
+    "https://assets.footylogos.com/logos/boca-juniors/boca-juniors-logo-footylogos.svg",
+
+  "São Paulo":
+    "https://assets.footylogos.com/logos/sao-paulo/sao-paulo-logo-footylogos.svg",
+
+  "Barcelona":
+    "https://assets.footylogos.com/logos/fc-barcelona/fc-barcelona-logo-footylogos.svg",
+
+  "Feyenoord":
+    "https://assets.footylogos.com/logos/feyenoord/feyenoord-logo-footylogos.svg",
+
+  "Al-Nassr":
+    "https://assets.footylogos.com/logos/al-nassr/al-nassr-logo-footylogos.svg",
+
+  "Abha":
+    "https://assets.footylogos.com/logos/abha/abha-logo-footylogos.svg",
+
+  "Liverpool":
+    "https://assets.footylogos.com/logos/liverpool-fc/liverpool-fc-logo-footylogos.svg",
+
+  "Atlético de Madrid":
+    "https://assets.footylogos.com/logos/atletico-madrid/atletico-madrid-logo-footylogos.svg",
+
+  "Napoli":
+    "https://assets.footylogos.com/logos/napoli/napoli-logo-footylogos.svg",
+
+  "Arsenal":
+    "https://assets.footylogos.com/logos/arsenal/arsenal-logo-footylogos.svg",
+
+  "PSG":
+    "https://assets.footylogos.com/logos/paris-saint-germain/paris-saint-germain-logo-footylogos.svg",
+
+  "Slovan Bratislava":
+    "https://assets.footylogos.com/logos/slovan-bratislava/slovan-bratislava-logo-footylogos.svg",
+
+  "Chelsea":
+    "https://assets.footylogos.com/logos/chelsea/chelsea-logo-footylogos.svg",
+
+  "Leeds United":
+    "https://assets.footylogos.com/logos/leeds-united/leeds-united-logo-footylogos.svg",
+
+  "Palmeiras":
+    "https://assets.footylogos.com/logos/palmeiras/palmeiras-logo-footylogos.svg",
+
+  "LDU":
+    "https://assets.footylogos.com/logos/ldu-quito/ldu-quito-logo-footylogos.svg",
+
+  "Santos":
+    "https://assets.footylogos.com/logos/santos-fc/santos-fc-logo-footylogos.svg",
+
+  "Atlético-MG":
+    "https://assets.footylogos.com/logos/atletico-mineiro/atletico-mineiro-logo-footylogos.svg",
+
+  "Fortaleza":
+    "https://assets.footylogos.com/logos/fortaleza/fortaleza-logo-footylogos.svg",
+
+  "Avaí":
+    "https://assets.footylogos.com/logos/avai-fc/avai-fc-logo-footylogos.svg",
+
+  "Estudiantes":
+    "https://assets.footylogos.com/logos/estudiantes-de-la-plata/estudiantes-de-la-plata-logo-footylogos.svg",
+
+  "Corinthians":
+    "https://assets.footylogos.com/logos/corinthians/corinthians-logo-footylogos.svg",
+
+  "Atlético-GO":
+    "https://assets.footylogos.com/logos/atletico-goianiense/atletico-goianiense-logo-footylogos.svg",
+
+  "Ceará":
+    "https://assets.footylogos.com/logos/ceara-sc/ceara-sc-logo-footylogos.svg",
+
+  "Fenerbahçe":
+    "https://assets.footylogos.com/logos/fenerbahce/fenerbahce-logo-footylogos.svg",
+
+  "Roma":
+    "https://assets.footylogos.com/logos/roma/roma-logo-footylogos.svg",
+
+  "PSV":
+    "https://assets.footylogos.com/logos/psv-eindhoven/psv-eindhoven-logo-footylogos.svg",
+
+  "Shakhtar Donetsk":
+    "https://assets.footylogos.com/logos/shakhtar-donetsk/shakhtar-donetsk-logo-footylogos.svg",
+
+  "Bayern de Munique":
+    "https://assets.footylogos.com/logos/bayern-munich/bayern-munich-logo-footylogos.svg",
+
+  "Bodo/Glimt":
+    "https://assets.footylogos.com/logos/fk-bodo-glimt/fk-bodo-glimt-logo-footylogos.svg",
+
+  "Manchester United":
+    "https://assets.footylogos.com/logos/manchester-united/manchester-united-logo-footylogos.svg",
+
+  "Sabah":
+    "https://assets.footylogos.com/logos/sabah-fk/sabah-fk-logo-footylogos.svg",
+
+  "Independiente del Valle":
+    "https://assets.footylogos.com/logos/independiente-del-valle/independiente-del-valle-logo-footylogos.svg",
+
+  "Flamengo":
+    "https://assets.footylogos.com/logos/flamengo/flamengo-logo-footylogos.svg",
+
+  "Sport Recife":
+    "https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg",
+
+  "Ponte Preta":
+    "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg"
+
+};
+
+
+
+/* =========================================================
+   JOGOS
+   ========================================================= */
+
+const gamesData = [
+
+  {
+    date:"2026-09-08",
+    time:"13:45",
+    comp:"UEFA Champions League",
+    home:"Club Brugge",
+    away:"Aston Villa",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-08",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"Real Madrid",
+    away:"Inter de Milão",
+    channels:["📺 SBT","📺 TNT"]
+  },
+
+  {
+    date:"2026-09-08",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"Porto",
+    away:"Manchester City",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-08",
+    time:"19:00",
+    comp:"CONMEBOL Libertadores",
+    home:"Fluminense",
+    away:"Platense",
+    channels:["📺 ESPN"]
+  },
+
+  {
+    date:"2026-09-08",
+    time:"19:00",
+    comp:"CONMEBOL Sul-Americana",
+    compExtra:" (QF-ida)",
+    home:"Independiente Santa Fe",
+    away:"Vasco da Gama",
+    channels:["📺 Paramount+"]
+  },
+
+  {
+    date:"2026-09-08",
+    time:"21:30",
+    comp:"CONMEBOL Sul-Americana",
+    compExtra:" (QF-ida)",
+    home:"Boca Juniors",
+    away:"São Paulo",
+    channels:["📺 SBT","📺 ESPN"]
+  },
+
+
+  {
+    date:"2026-09-09",
+    time:"13:45",
+    comp:"UEFA Champions League",
+    home:"Barcelona",
+    away:"Feyenoord",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"15:00",
+    comp:"Liga Saudita",
+    home:"Al-Nassr",
+    away:"Abha",
+    channels:["📺 Xsports","📺 Sporty"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"Liverpool",
+    away:"Atlético de Madrid",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"Napoli",
+    away:"Arsenal",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"PSG",
+    away:"Slovan Bratislava",
+    channels:["📺 HBO MAX"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"16:00",
+    comp:"Copa da Liga Inglesa",
+    home:"Chelsea",
+    away:"Leeds United",
+    channels:["📺 ESPN"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"19:00",
+    comp:"CONMEBOL Libertadores",
+    compExtra:" (QF-ida)",
+    home:"Palmeiras",
+    away:"LDU",
+    channels:["📺 Paramount+"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"19:00",
+    comp:"CONMEBOL Sul-Americana",
+    compExtra:" (QF-ida)",
+    home:"Santos",
+    away:"Atlético-MG",
+    channels:["📺 ESPN"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"19:30",
+    comp:"Brasileirão Série B",
+    home:"Fortaleza",
+    away:"Avaí",
+    channels:["📺 ESPN 4"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"21:30",
+    comp:"CONMEBOL Libertadores",
+    compExtra:" (QF-ida)",
+    home:"Estudiantes",
+    away:"Corinthians",
+    channels:["📺 Globo"]
+  },
+
+  {
+    date:"2026-09-09",
+    time:"21:30",
+    comp:"Brasileirão Série B",
+    home:"Atlético-GO",
+    away:"Ceará",
+    channels:["📺 Xsports","📺 ESPN","📺 SportyNet"]
+  },
+
+
+  {
+    date:"2026-09-10",
+    time:"13:45",
+    comp:"UEFA Champions League",
+    home:"Fenerbahçe",
+    away:"Roma",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"13:45",
+    comp:"UEFA Champions League",
+    home:"PSV",
+    away:"Shakhtar Donetsk",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"Bayern de Munique",
+    away:"Bodo/Glimt",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"16:00",
+    comp:"UEFA Champions League",
+    home:"Manchester United",
+    away:"Sabah",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"21:30",
+    comp:"CONMEBOL Libertadores",
+    compExtra:" (QF-ida)",
+    home:"Independiente del Valle",
+    away:"Flamengo",
+    channels:["📺 ESPN","📺 Disney+"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"21:30",
+    comp:"Brasileirão Série B",
+    home:"Sport Recife",
+    away:"Ponte Preta",
+    channels:["📺 Xsports","📺 ESPN 4","📺 SportyNet"]
   }
 
-  if(
-    competition === "Libertadores" ||
-    competition === "Copa Libertadores"
-  ){
-    return "libertadores-logo";
-  }
+];
 
-  if(
-    competition === "Brasileirão Série A" ||
-    competition === "Brasileirão Série B"
-  ){
-    return "brasileirao-logo";
-  }
 
-  return "";
+
+/* =========================================================
+   DATAS
+   ========================================================= */
+
+function formatDate(dateObj){
+
+  const daysOfWeek=[
+    "DOMINGO",
+    "SEGUNDA-FEIRA",
+    "TERÇA-FEIRA",
+    "QUARTA-FEIRA",
+    "QUINTA-FEIRA",
+    "SEXTA-FEIRA",
+    "SÁBADO"
+  ];
+
+  const dayName=
+    daysOfWeek[dateObj.getDay()];
+
+  const day=
+    String(dateObj.getDate()).padStart(2,"0");
+
+  const month=
+    String(dateObj.getMonth()+1).padStart(2,"0");
+
+  const year=
+    dateObj.getFullYear();
+
+  return `📅 ${dayName} – ${day}/${month}/${year}`;
+}
+
+
+function parseDate(dateString){
+
+  const parts=
+    dateString.split("-");
+
+  return new Date(
+    Number(parts[0]),
+    Number(parts[1])-1,
+    Number(parts[2])
+  );
 
 }
 
 
-/* =====================================================
-   COLOCA OS LOGOS AUTOMATICAMENTE
-   ===================================================== */
+function getToday(){
 
-document
-  .querySelectorAll(".competition")
-  .forEach(function(element){
+  const now=new Date();
 
-    const competition =
-      element.getAttribute("data-competition");
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
 
-    const logo =
-      competitionLogos[competition];
+}
 
 
-    /* SE EXISTIR LOGO */
+function dateToString(dateObj){
 
-    if(logo){
+  const year=
+    dateObj.getFullYear();
 
-      const logoClass =
-        getLogoClass(competition);
+  const month=
+    String(dateObj.getMonth()+1).padStart(2,"0");
+
+  const day=
+    String(dateObj.getDate()).padStart(2,"0");
+
+  return `${year}-${month}-${day}`;
+
+}
 
 
-      element.innerHTML =
 
-        '<img ' +
+/* =========================================================
+   ORDENAÇÃO
+   ========================================================= */
 
-        'src="' + logo + '" ' +
+function sortGames(games){
 
-        'alt="' + competition + '" ' +
+  return games.sort((a,b)=>{
 
-        'class="competition-logo ' +
-        logoClass + '" ' +
-
-        'onerror="this.style.display=\'none\'">' +
-
-        '<span>' +
-        competition +
-        '</span>';
-
+    if(a.date!==b.date){
+      return a.date.localeCompare(b.date);
     }
+
+    return a.time.localeCompare(b.time);
+
+  });
+
+}
+
+
+
+/* =========================================================
+   LOGO DO TIME
+   ========================================================= */
+
+function createLogo(team){
+
+  const url=logos[team];
+
+  if(!url){
+    return "";
+  }
+
+  return `
+    <img
+      class="team-logo"
+      src="${url}"
+      alt="Escudo ${team}"
+      loading="lazy"
+    >
+  `;
+
+}
+
+
+
+/* =========================================================
+   LOGO DA COMPETIÇÃO
+   ========================================================= */
+
+function createCompetitionLogo(comp){
+
+  const url=
+    competitionLogos[comp];
+
+  if(!url){
+    return "";
+  }
+
+
+  let extraClass="";
+
+
+  if(comp==="UEFA Champions League"){
+    extraClass=" champions-logo";
+  }
+
+
+  if(comp==="CONMEBOL Libertadores"){
+    extraClass=" libertadores-logo";
+  }
+
+
+  if(comp==="CONMEBOL Sul-Americana"){
+    extraClass=" sulamericana-logo";
+  }
+
+
+  return `
+    <img
+      class="competition-logo${extraClass}"
+      src="${url}"
+      alt="${comp}"
+      loading="lazy"
+      onerror="this.style.display='none'"
+    >
+  `;
+
+}
+
+
+
+/* =========================================================
+   HTML DOS JOGOS
+   ========================================================= */
+
+function createGamesHTML(games){
+
+  let html="";
+
+
+  games.forEach(game=>{
+
+    const channelsHTML=
+      game.channels
+      .map(channel=>`
+
+        <div class="channel">
+          ${channel}
+        </div>
+
+      `)
+      .join("");
+
+
+    const competitionExtra=
+      game.compExtra || "";
+
+
+    html+=`
+
+      <div class="game">
+
+        <div class="time-row">
+
+          <span class="time">
+            ${game.time}
+          </span>
+
+
+          <span class="competition">
+
+            ${createCompetitionLogo(game.comp)}
+
+            <span>
+              ${game.comp}${competitionExtra}
+            </span>
+
+          </span>
+
+        </div>
+
+
+        <div class="teams">
+
+
+          <div class="team home">
+
+            <span class="team-name">
+              ${game.home}
+            </span>
+
+            ${createLogo(game.home)}
+
+          </div>
+
+
+          <div class="vs">
+            X
+          </div>
+
+
+          <div class="team away">
+
+            ${createLogo(game.away)}
+
+            <span class="team-name">
+              ${game.away}
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="info">
+
+          ${channelsHTML}
+
+        </div>
+
+
+      </div>
+
+    `;
 
   });
 
 
-/* =====================================================
-   TROCA DE ABAS
-   ===================================================== */
+  return html;
+
+}
+
+
+
+/* =========================================================
+   SEÇÃO
+   ========================================================= */
+
+function buildSection(
+  sectionId,
+  games,
+  dateText
+){
+
+  const container=
+    document.getElementById(sectionId);
+
+
+  if(games.length===0){
+
+    container.innerHTML=`
+
+      <div class="date">
+        ${dateText}
+      </div>
+
+      <div class="empty">
+        Nenhuma partida agendada.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  games=
+    sortGames(games);
+
+
+  container.innerHTML=`
+
+    <div class="date">
+      ${dateText}
+    </div>
+
+    ${createGamesHTML(games)}
+
+  `;
+
+}
+
+
+
+/* =========================================================
+   RENDERIZAR
+   ========================================================= */
+
+function renderGames(){
+
+  const today=
+    getToday();
+
+
+  const tomorrow=
+    new Date(today);
+
+
+  tomorrow.setDate(
+    tomorrow.getDate()+1
+  );
+
+
+  const todayStr=
+    dateToString(today);
+
+
+  const tomorrowStr=
+    dateToString(tomorrow);
+
+
+  const todayGames=
+    gamesData.filter(
+      game=>game.date===todayStr
+    );
+
+
+  const tomorrowGames=
+    gamesData.filter(
+      game=>game.date===tomorrowStr
+    );
+
+
+  const nextGames=
+    gamesData.filter(
+      game=>game.date>tomorrowStr
+    );
+
+
+  buildSection(
+    "today",
+    todayGames,
+    formatDate(today)
+  );
+
+
+  buildSection(
+    "tomorrow",
+    tomorrowGames,
+    formatDate(tomorrow)
+  );
+
+
+  const nextContainer=
+    document.getElementById("next");
+
+
+  if(nextGames.length===0){
+
+    nextContainer.innerHTML=`
+
+      <div class="date">
+        📅 PRÓXIMOS JOGOS
+      </div>
+
+      <div class="empty">
+        Nenhuma partida futura cadastrada.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  const sortedNextGames=
+    sortGames(nextGames);
+
+
+  const grouped={};
+
+
+  sortedNextGames.forEach(game=>{
+
+    if(!grouped[game.date]){
+      grouped[game.date]=[];
+    }
+
+    grouped[game.date].push(game);
+
+  });
+
+
+  let html="";
+
+
+  Object.keys(grouped)
+    .sort()
+    .forEach((date,index)=>{
+
+      const dateObj=
+        parseDate(date);
+
+
+      html+=`
+
+        <div class="date ${
+          index>0 ? "next-date" : ""
+        }">
+
+          ${formatDate(dateObj)}
+
+        </div>
+
+      `;
+
+
+      html+=
+        createGamesHTML(
+          grouped[date]
+        );
+
+    });
+
+
+  nextContainer.innerHTML=
+    html;
+
+}
+
+
+
+/* =========================================================
+   ABAS
+   ========================================================= */
 
 function showDay(id,button){
 
   document
     .querySelectorAll(".day")
-    .forEach(function(day){
-
+    .forEach(day=>{
       day.classList.remove("active");
-
     });
 
 
   document
     .querySelectorAll(".tab")
-    .forEach(function(tab){
-
+    .forEach(tab=>{
       tab.classList.remove("active");
-
     });
 
 
@@ -823,7 +1306,16 @@ function showDay(id,button){
 
 }
 
+
+
+/* =========================================================
+   INICIAR
+   ========================================================= */
+
+renderGames();
+
 </script>
 
 </body>
+
 </html>
