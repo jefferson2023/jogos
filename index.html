@@ -129,10 +129,7 @@ header{
   white-space:nowrap;
 }
 
-
-/* =========================================================
-   LOGO + NOME DA COMPETIÇÃO
-   ========================================================= */
+/* COMPETIÇÃO */
 
 .competition{
   display:flex;
@@ -145,24 +142,14 @@ header{
 }
 
 .competition-logo{
-  width:25px;
-  height:25px;
+  width:22px;
+  height:22px;
   object-fit:contain;
   flex-shrink:0;
   display:block;
-
-  /* LOGO BRANCA */
-  filter:
-    brightness(0)
-    invert(1);
-
-  opacity:.96;
 }
 
-
-/* =========================================================
-   TIMES
-   ========================================================= */
+/* TIMES */
 
 .teams{
   display:grid;
@@ -211,10 +198,7 @@ header{
   color:#9aa7b7;
 }
 
-
-/* =========================================================
-   CANAIS
-   ========================================================= */
+/* CANAIS */
 
 .info{
   border-top:1px solid var(--border);
@@ -234,11 +218,6 @@ header{
   white-space:nowrap;
 }
 
-
-/* =========================================================
-   VAZIO
-   ========================================================= */
-
 .empty{
   text-align:center;
   color:var(--muted);
@@ -248,22 +227,12 @@ header{
   border-radius:14px;
 }
 
-
-/* =========================================================
-   RODAPÉ
-   ========================================================= */
-
 footer{
   text-align:center;
   color:#647080;
   font-size:12px;
   padding:20px;
 }
-
-
-/* =========================================================
-   RESPONSIVO
-   ========================================================= */
 
 @media(max-width:600px){
 
@@ -304,8 +273,8 @@ footer{
   }
 
   .competition-logo{
-    width:22px;
-    height:22px;
+    width:21px;
+    height:21px;
   }
 
   .tab{
@@ -329,7 +298,6 @@ footer{
 
 <body>
 
-
 <header>
 
   <div class="sub">
@@ -338,9 +306,7 @@ footer{
 
 </header>
 
-
 <main class="container">
-
 
   <div class="tabs">
 
@@ -358,16 +324,13 @@ footer{
 
   </div>
 
-
   <section id="today" class="day active"></section>
 
   <section id="tomorrow" class="day"></section>
 
   <section id="next" class="day"></section>
 
-
 </main>
-
 
 <footer>
   © 2026 • Jogos e Transmissões
@@ -375,7 +338,6 @@ footer{
 
 
 <script>
-
 
 /* =========================================================
    LOGOS DAS COMPETIÇÕES
@@ -588,7 +550,6 @@ const gamesData = [
     date:"2026-09-08",
     time:"19:00",
     comp:"CONMEBOL Libertadores",
-    compExtra:" (QF-ida)",
     home:"Fluminense",
     away:"Platense",
     channels:["📺 ESPN"]
@@ -630,7 +591,7 @@ const gamesData = [
     comp:"Liga Saudita",
     home:"Al-Nassr",
     away:"Abha",
-    channels:["📺 Xsports","📺 Sportv"]
+    channels:["📺 Xsports","📺 Sporty"]
   },
 
   {
@@ -805,7 +766,6 @@ function formatDate(dateObj){
     dateObj.getFullYear();
 
   return `📅 ${dayName} – ${day}/${month}/${year}`;
-
 }
 
 
@@ -842,12 +802,10 @@ function dateToString(dateObj){
     dateObj.getFullYear();
 
   const month=
-    String(dateObj.getMonth()+1)
-      .padStart(2,"0");
+    String(dateObj.getMonth()+1).padStart(2,"0");
 
   const day=
-    String(dateObj.getDate())
-      .padStart(2,"0");
+    String(dateObj.getDate()).padStart(2,"0");
 
   return `${year}-${month}-${day}`;
 
@@ -952,14 +910,11 @@ function createGamesHTML(games){
 
       <div class="game">
 
-
         <div class="time-row">
-
 
           <span class="time">
             ${game.time}
           </span>
-
 
           <span class="competition">
 
@@ -971,12 +926,10 @@ function createGamesHTML(games){
 
           </span>
 
-
         </div>
 
 
         <div class="teams">
-
 
           <div class="team home">
 
@@ -1004,7 +957,6 @@ function createGamesHTML(games){
 
           </div>
 
-
         </div>
 
 
@@ -1013,7 +965,6 @@ function createGamesHTML(games){
           ${channelsHTML}
 
         </div>
-
 
       </div>
 
@@ -1077,7 +1028,7 @@ function buildSection(
 
 
 /* =========================================================
-   RENDERIZAÇÃO
+   RENDERIZAR
    ========================================================= */
 
 function renderGames(){
@@ -1223,18 +1174,14 @@ function showDay(id,button){
   document
     .querySelectorAll(".day")
     .forEach(day=>{
-
       day.classList.remove("active");
-
     });
 
 
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
-
       tab.classList.remove("active");
-
     });
 
 
