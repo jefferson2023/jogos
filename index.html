@@ -214,6 +214,7 @@ footer{
 <main class="container">
 
   <div class="tabs">
+
     <button class="tab active" onclick="showDay('today',this)">
       HOJE
     </button>
@@ -225,6 +226,7 @@ footer{
     <button class="tab" onclick="showDay('next',this)">
       PRÓXIMOS
     </button>
+
   </div>
 
   <section id="today" class="day active"></section>
@@ -238,6 +240,7 @@ footer{
 <footer>
   © 2026 • Jogos e Transmissões
 </footer>
+
 
 <script>
 
@@ -386,6 +389,59 @@ const gamesData = [
     comp:"🏆 Brasileirão Série B",
     teams:"Atlético-GO x Ceará",
     channels:["📺 Xsports","📺 ESPN","📺 SportyNet"]
+  },
+
+
+  /* =====================================================
+     QUINTA-FEIRA – 10/09/2026
+  ===================================================== */
+
+  {
+    date:"2026-09-10",
+    time:"13:45",
+    comp:"🏆 UEFA Champions League",
+    teams:"Fenerbahçe x Roma",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"13:45",
+    comp:"🏆 UEFA Champions League",
+    teams:"PSV x Shakhtar Donetsk",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"16:00",
+    comp:"🏆 UEFA Champions League",
+    teams:"Bayern de Munique x Bodo/Glimt",
+    channels:["📺 TNT"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"16:00",
+    comp:"🏆 UEFA Champions League",
+    teams:"Manchester United x Sabah",
+    channels:["📺 Space"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"21:30",
+    comp:"🏆 CONMEBOL Libertadores (QF-ida)",
+    teams:"Independiente del Valle x Flamengo",
+    channels:["📺 ESPN","📺 Disney+"]
+  },
+
+  {
+    date:"2026-09-10",
+    time:"21:30",
+    comp:"🏆 Brasileirão Série B",
+    teams:"Sport Recife x Ponte Preta",
+    channels:["📺 Xsports","📺 ESPN 4","📺 SportyNet"]
   }
 
 ];
@@ -511,9 +567,11 @@ function createGamesHTML(games){
     const channelsHTML=
       game.channels
       .map(channel=>`
+
         <div class="channel">
           ${channel}
         </div>
+
       `)
       .join("");
 
