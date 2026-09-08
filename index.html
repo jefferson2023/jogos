@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Programação de Jogos e Transmissões</title>
 
 <style>
+
 :root{
   --bg:#0b0f14;
   --card:#151b23;
@@ -126,48 +130,58 @@ header{
   white-space:nowrap;
 }
 
-.competition{
+.time-row .competition{
+  margin:0;
   color:#f4f7fb;
   font-weight:800;
   font-size:15px;
 }
 
 .teams{
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 35px 1fr;
   align-items:center;
-  justify-content:center;
-  gap:14px;
-  margin:18px 0;
-  font-size:17px;
-  font-weight:800;
-  text-align:center;
+  gap:8px;
+  margin:15px 0 14px;
+  min-height:52px;
 }
 
 .team{
   display:flex;
   align-items:center;
-  justify-content:center;
-  gap:9px;
-  flex:1;
+  gap:10px;
+  font-size:18px;
+  font-weight:800;
   min-width:0;
 }
 
+.team.home{
+  justify-content:flex-end;
+  text-align:right;
+}
+
+.team.away{
+  justify-content:flex-start;
+  text-align:left;
+}
+
 .team-name{
-  line-height:1.2;
+  line-height:1.15;
 }
 
 .team-logo{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   object-fit:contain;
   flex-shrink:0;
+  display:block;
 }
 
 .vs{
-  font-size:14px;
-  color:var(--muted);
+  text-align:center;
+  font-size:15px;
   font-weight:900;
-  flex-shrink:0;
+  color:#9aa7b7;
 }
 
 .info{
@@ -184,6 +198,7 @@ header{
   color:#fff;
   font-weight:bold;
   font-size:16px;
+  margin-top:0;
   white-space:nowrap;
 }
 
@@ -203,6 +218,25 @@ footer{
   padding:20px;
 }
 
+@media(max-width:600px){
+
+  .teams{
+    grid-template-columns:1fr 28px 1fr;
+    gap:5px;
+  }
+
+  .team{
+    font-size:16px;
+    gap:7px;
+  }
+
+  .team-logo{
+    width:38px;
+    height:38px;
+  }
+
+}
+
 @media(max-width:480px){
 
   .sub{
@@ -210,21 +244,16 @@ footer{
   }
 
   .teams{
-    gap:7px;
-    font-size:14px;
+    font-size:15px;
   }
 
   .team{
-    gap:5px;
+    font-size:14px;
   }
 
   .team-logo{
-    width:36px;
-    height:36px;
-  }
-
-  .vs{
-    font-size:12px;
+    width:34px;
+    height:34px;
   }
 
   .tab{
@@ -236,23 +265,28 @@ footer{
     font-size:14px;
   }
 
-  .competition{
+  .time-row .competition{
     font-size:14px;
   }
 
   .info{
     gap:12px;
   }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
   <div class="sub">
     ⚽ <strong>Programação de Jogos e Transmissões</strong>
   </div>
+
 </header>
 
 <main class="container">
@@ -288,165 +322,306 @@ footer{
 
 <script>
 
-/* =====================================================
-   ESCUDOS DOS TIMES
-   BASE ATUALIZADA
-===================================================== */
+/* =========================================================
+   ESCUDOS
+   PNG PRINCIPAL + SVG COMO RESERVA
+   ========================================================= */
 
 const logos = {
 
   "Club Brugge":
-  "https://assets.footylogos.com/logos/club-brugge/club-brugge-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/club-brugge-logo-footylogos.png",
 
   "Aston Villa":
-  "https://assets.footylogos.com/logos/aston-villa/aston-villa-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/aston-villa-logo-footylogos.png",
 
   "Real Madrid":
-  "https://assets.footylogos.com/logos/real-madrid/real-madrid-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/real-madrid-logo-footylogos.png",
 
   "Inter de Milão":
-  "https://assets.footylogos.com/logos/inter-milan/inter-milan-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/inter-milan-logo-footylogos.png",
 
   "Porto":
-  "https://assets.footylogos.com/logos/fc-porto/fc-porto-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/fc-porto-logo-footylogos.png",
 
   "Manchester City":
-  "https://assets.footylogos.com/logos/manchester-city/manchester-city-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/manchester-city-logo-footylogos.png",
 
   "Fluminense":
-  "https://assets.footylogos.com/logos/fluminense/fluminense-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/fluminense-logo-footylogos.png",
 
   "Platense":
-  "https://assets.footylogos.com/logos/platense/platense-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/platense-logo-footylogos.png",
 
   "Independiente Santa Fe":
-  "https://assets.footylogos.com/logos/independiente-santa-fe/independiente-santa-fe-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/independiente-santa-fe-logo-footylogos.png",
 
   "Vasco da Gama":
-  "https://assets.footylogos.com/logos/vasco-da-gama/vasco-da-gama-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/vasco-da-gama-logo-footylogos.png",
 
   "Boca Juniors":
-  "https://assets.footylogos.com/logos/boca-juniors/boca-juniors-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/boca-juniors-logo-footylogos.png",
 
   "São Paulo":
-  "https://assets.footylogos.com/logos/sao-paulo/sao-paulo-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/sao-paulo-logo-footylogos.png",
 
   "Barcelona":
-  "https://assets.footylogos.com/logos/fc-barcelona/fc-barcelona-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/fc-barcelona-logo-footylogos.png",
 
   "Feyenoord":
-  "https://assets.footylogos.com/logos/feyenoord/feyenoord-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/feyenoord-logo-footylogos.png",
 
   "Al-Nassr":
-  "https://assets.footylogos.com/logos/al-nassr/al-nassr-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/al-nassr-logo-footylogos.png",
 
   "Abha":
-  "https://assets.footylogos.com/logos/abha/abha-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/abha-logo-footylogos.png",
 
   "Liverpool":
-  "https://assets.footylogos.com/logos/liverpool-fc/liverpool-fc-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/liverpool-fc-logo-footylogos.png",
 
   "Atlético de Madrid":
-  "https://assets.footylogos.com/logos/atletico-madrid/atletico-madrid-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/atletico-madrid-logo-footylogos.png",
 
   "Napoli":
-  "https://assets.footylogos.com/logos/napoli/napoli-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/napoli-logo-footylogos.png",
 
   "Arsenal":
-  "https://assets.footylogos.com/logos/arsenal/arsenal-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/arsenal-logo-footylogos.png",
 
   "PSG":
-  "https://assets.footylogos.com/logos/paris-saint-germain/paris-saint-germain-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/paris-saint-germain-logo-footylogos.png",
 
   "Slovan Bratislava":
-  "https://assets.footylogos.com/logos/slovan-bratislava/slovan-bratislava-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/slovan-bratislava-logo-footylogos.png",
 
   "Chelsea":
-  "https://assets.footylogos.com/logos/chelsea/chelsea-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/chelsea-logo-footylogos.png",
 
   "Leeds United":
-  "https://assets.footylogos.com/logos/leeds-united/leeds-united-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/leeds-united-logo-footylogos.png",
 
   "Palmeiras":
-  "https://assets.footylogos.com/logos/palmeiras/palmeiras-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/palmeiras-logo-footylogos.png",
 
   "LDU":
-  "https://assets.footylogos.com/logos/ldu-quito/ldu-quito-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/ldu-quito-logo-footylogos.png",
 
   "Santos":
-  "https://assets.footylogos.com/logos/santos-fc/santos-fc-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/santos-fc-logo-footylogos.png",
 
   "Atlético-MG":
-  "https://assets.footylogos.com/logos/atletico-mineiro/atletico-mineiro-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/atletico-mineiro-logo-footylogos.png",
 
   "Fortaleza":
-  "https://assets.footylogos.com/logos/fortaleza/fortaleza-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/fortaleza-logo-footylogos.png",
 
   "Avaí":
-  "https://assets.footylogos.com/logos/avai-fc/avai-fc-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/avai-fc-logo-footylogos.png",
 
   "Estudiantes":
-  "https://assets.footylogos.com/logos/estudiantes/estudiantes-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/estudiantes-de-la-plata-logo-footylogos.png",
 
   "Corinthians":
-  "https://assets.footylogos.com/logos/corinthians/corinthians-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/corinthians-logo-footylogos.png",
 
   "Atlético-GO":
-  "https://assets.footylogos.com/logos/atletico-goianiense/atletico-goianiense-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/atletico-goianiense-logo-footylogos.png",
 
   "Ceará":
-  "https://assets.footylogos.com/logos/ceara-sc/ceara-sc-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/ceara-sc-logo-footylogos.png",
 
   "Fenerbahçe":
-  "https://assets.footylogos.com/logos/fenerbahce/fenerbahce-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/fenerbahce-logo-footylogos.png",
 
   "Roma":
-  "https://assets.footylogos.com/logos/as-roma/as-roma-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/roma-logo-footylogos.png",
 
   "PSV":
-  "https://assets.footylogos.com/logos/psv-eindhoven/psv-eindhoven-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/psv-eindhoven-logo-footylogos.png",
 
   "Shakhtar Donetsk":
-  "https://assets.footylogos.com/logos/shakhtar-donetsk/shakhtar-donetsk-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/shakhtar-donetsk-logo-footylogos.png",
 
   "Bayern de Munique":
-  "https://assets.footylogos.com/logos/bayern-munich/bayern-munich-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/bayern-munich-logo-footylogos.png",
 
   "Bodo/Glimt":
-  "https://assets.footylogos.com/logos/bodo-glimt/bodo-glimt-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/fk-bodo-glimt-logo-footylogos.png",
 
   "Manchester United":
-  "https://assets.footylogos.com/logos/manchester-united/manchester-united-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/manchester-united-logo-footylogos.png",
 
   "Sabah":
-  "https://assets.footylogos.com/logos/sabah-fk/sabah-fk-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/sabah-fk-logo-footylogos.png",
 
   "Independiente del Valle":
-  "https://assets.footylogos.com/logos/independiente-del-valle/independiente-del-valle-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/independiente-del-valle-logo-footylogos.png",
 
   "Flamengo":
-  "https://assets.footylogos.com/logos/flamengo/flamengo-logo-footylogos.svg",
-
-  /* CORRIGIDOS */
+    "https://www.footylogos.com/downloads/logo/flamengo-logo-footylogos.png",
 
   "Sport Recife":
-  "https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg",
+    "https://www.footylogos.com/downloads/logo/sport-recife-logo-footylogos.png",
 
   "Ponte Preta":
-  "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg"
+    "https://www.footylogos.com/downloads/logo/ponte-preta-logo-footylogos.png"
 
 };
 
 
-/* =====================================================
+/* =========================================================
+   RESERVA SVG
+   ========================================================= */
+
+const logoFallback = {
+
+  "Club Brugge":
+    "https://assets.footylogos.com/logos/club-brugge/club-brugge-logo-footylogos.svg",
+
+  "Aston Villa":
+    "https://assets.footylogos.com/logos/aston-villa/aston-villa-logo-footylogos.svg",
+
+  "Real Madrid":
+    "https://assets.footylogos.com/logos/real-madrid/real-madrid-logo-footylogos.svg",
+
+  "Inter de Milão":
+    "https://assets.footylogos.com/logos/inter-milan/inter-milan-logo-footylogos.svg",
+
+  "Porto":
+    "https://assets.footylogos.com/logos/fc-porto/fc-porto-logo-footylogos.svg",
+
+  "Manchester City":
+    "https://assets.footylogos.com/logos/manchester-city/manchester-city-logo-footylogos.svg",
+
+  "Fluminense":
+    "https://assets.footylogos.com/logos/fluminense/fluminense-logo-footylogos.svg",
+
+  "Platense":
+    "https://assets.footylogos.com/logos/platense/platense-logo-footylogos.svg",
+
+  "Independiente Santa Fe":
+    "https://assets.footylogos.com/logos/independiente-santa-fe/independiente-santa-fe-logo-footylogos.svg",
+
+  "Vasco da Gama":
+    "https://assets.footylogos.com/logos/vasco-da-gama/vasco-da-gama-logo-footylogos.svg",
+
+  "Boca Juniors":
+    "https://assets.footylogos.com/logos/boca-juniors/boca-juniors-logo-footylogos.svg",
+
+  "São Paulo":
+    "https://assets.footylogos.com/logos/sao-paulo/sao-paulo-logo-footylogos.svg",
+
+  "Barcelona":
+    "https://assets.footylogos.com/logos/fc-barcelona/fc-barcelona-logo-footylogos.svg",
+
+  "Feyenoord":
+    "https://assets.footylogos.com/logos/feyenoord/feyenoord-logo-footylogos.svg",
+
+  "Al-Nassr":
+    "https://assets.footylogos.com/logos/al-nassr/al-nassr-logo-footylogos.svg",
+
+  "Abha":
+    "https://assets.footylogos.com/logos/abha/abha-logo-footylogos.svg",
+
+  "Liverpool":
+    "https://assets.footylogos.com/logos/liverpool-fc/liverpool-fc-logo-footylogos.svg",
+
+  "Atlético de Madrid":
+    "https://assets.footylogos.com/logos/atletico-madrid/atletico-madrid-logo-footylogos.svg",
+
+  "Napoli":
+    "https://assets.footylogos.com/logos/napoli/napoli-logo-footylogos.svg",
+
+  "Arsenal":
+    "https://assets.footylogos.com/logos/arsenal/arsenal-logo-footylogos.svg",
+
+  "PSG":
+    "https://assets.footylogos.com/logos/paris-saint-germain/paris-saint-germain-logo-footylogos.svg",
+
+  "Slovan Bratislava":
+    "https://assets.footylogos.com/logos/slovan-bratislava/slovan-bratislava-logo-footylogos.svg",
+
+  "Chelsea":
+    "https://assets.footylogos.com/logos/chelsea/chelsea-logo-footylogos.svg",
+
+  "Leeds United":
+    "https://assets.footylogos.com/logos/leeds-united/leeds-united-logo-footylogos.svg",
+
+  "Palmeiras":
+    "https://assets.footylogos.com/logos/palmeiras/palmeiras-logo-footylogos.svg",
+
+  "LDU":
+    "https://assets.footylogos.com/logos/ldu-quito/ldu-quito-logo-footylogos.svg",
+
+  "Santos":
+    "https://assets.footylogos.com/logos/santos-fc/santos-fc-logo-footylogos.svg",
+
+  "Atlético-MG":
+    "https://assets.footylogos.com/logos/atletico-mineiro/atletico-mineiro-logo-footylogos.svg",
+
+  "Fortaleza":
+    "https://assets.footylogos.com/logos/fortaleza/fortaleza-logo-footylogos.svg",
+
+  "Avaí":
+    "https://assets.footylogos.com/logos/avai-fc/avai-fc-logo-footylogos.svg",
+
+  "Estudiantes":
+    "https://assets.footylogos.com/logos/estudiantes-de-la-plata/estudiantes-de-la-plata-logo-footylogos.svg",
+
+  "Corinthians":
+    "https://assets.footylogos.com/logos/corinthians/corinthians-logo-footylogos.svg",
+
+  "Atlético-GO":
+    "https://assets.footylogos.com/logos/atletico-goianiense/atletico-goianiense-logo-footylogos.svg",
+
+  "Ceará":
+    "https://assets.footylogos.com/logos/ceara-sc/ceara-sc-logo-footylogos.svg",
+
+  "Fenerbahçe":
+    "https://assets.footylogos.com/logos/fenerbahce/fenerbahce-logo-footylogos.svg",
+
+  "Roma":
+    "https://assets.footylogos.com/logos/roma/roma-logo-footylogos.svg",
+
+  "PSV":
+    "https://assets.footylogos.com/logos/psv-eindhoven/psv-eindhoven-logo-footylogos.svg",
+
+  "Shakhtar Donetsk":
+    "https://assets.footylogos.com/logos/shakhtar-donetsk/shakhtar-donetsk-logo-footylogos.svg",
+
+  "Bayern de Munique":
+    "https://assets.footylogos.com/logos/bayern-munich/bayern-munich-logo-footylogos.svg",
+
+  "Bodo/Glimt":
+    "https://assets.footylogos.com/logos/fk-bodo-glimt/fk-bodo-glimt-logo-footylogos.svg",
+
+  "Manchester United":
+    "https://assets.footylogos.com/logos/manchester-united/manchester-united-logo-footylogos.svg",
+
+  "Sabah":
+    "https://assets.footylogos.com/logos/sabah-fk/sabah-fk-logo-footylogos.svg",
+
+  "Independiente del Valle":
+    "https://assets.footylogos.com/logos/independiente-del-valle/independiente-del-valle-logo-footylogos.svg",
+
+  "Flamengo":
+    "https://assets.footylogos.com/logos/flamengo/flamengo-logo-footylogos.svg",
+
+  "Sport Recife":
+    "https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg",
+
+  "Ponte Preta":
+    "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg"
+
+};
+
+
+/* =========================================================
    JOGOS
-===================================================== */
+   ========================================================= */
 
 const gamesData = [
-
-  /* =====================================================
-     TERÇA-FEIRA – 08/09/2026
-  ===================================================== */
 
   {
     date:"2026-09-08",
@@ -502,10 +677,6 @@ const gamesData = [
     channels:["📺 SBT","📺 ESPN"]
   },
 
-
-  /* =====================================================
-     QUARTA-FEIRA – 09/09/2026
-  ===================================================== */
 
   {
     date:"2026-09-09",
@@ -607,10 +778,6 @@ const gamesData = [
   },
 
 
-  /* =====================================================
-     QUINTA-FEIRA – 10/09/2026
-  ===================================================== */
-
   {
     date:"2026-09-10",
     time:"13:45",
@@ -668,13 +835,13 @@ const gamesData = [
 ];
 
 
-/* =====================================================
-   FORMATAÇÃO
-===================================================== */
+/* =========================================================
+   DATA
+   ========================================================= */
 
 function formatDate(dateObj){
 
-  const daysOfWeek=[
+  const daysOfWeek = [
     "DOMINGO",
     "SEGUNDA-FEIRA",
     "TERÇA-FEIRA",
@@ -684,29 +851,25 @@ function formatDate(dateObj){
     "SÁBADO"
   ];
 
-  const dayName=
+  const dayName =
     daysOfWeek[dateObj.getDay()];
 
-  const day=
+  const day =
     String(dateObj.getDate()).padStart(2,"0");
 
-  const month=
+  const month =
     String(dateObj.getMonth()+1).padStart(2,"0");
 
-  const year=
+  const year =
     dateObj.getFullYear();
 
   return `📅 ${dayName} – ${day}/${month}/${year}`;
 }
 
 
-/* =====================================================
-   CONVERTER DATA
-===================================================== */
-
 function parseDate(dateString){
 
-  const parts=
+  const parts =
     dateString.split("-");
 
   return new Date(
@@ -717,53 +880,48 @@ function parseDate(dateString){
 }
 
 
-/* =====================================================
-   DATA ATUAL
-===================================================== */
-
 function getToday(){
 
-  const now=new Date();
+  const now = new Date();
 
   return new Date(
     now.getFullYear(),
     now.getMonth(),
     now.getDate()
   );
+
 }
 
 
-/* =====================================================
-   DATA PARA STRING
-===================================================== */
-
 function dateToString(dateObj){
 
-  const year=
+  const year =
     dateObj.getFullYear();
 
-  const month=
+  const month =
     String(dateObj.getMonth()+1)
-    .padStart(2,"0");
+      .padStart(2,"0");
 
-  const day=
+  const day =
     String(dateObj.getDate())
-    .padStart(2,"0");
+      .padStart(2,"0");
 
   return `${year}-${month}-${day}`;
 }
 
 
-/* =====================================================
-   ORDENAR JOGOS
-===================================================== */
+/* =========================================================
+   ORDENAÇÃO
+   ========================================================= */
 
 function sortGames(games){
 
   return games.sort((a,b)=>{
 
-    if(a.date!==b.date){
+    if(a.date !== b.date){
+
       return a.date.localeCompare(b.date);
+
     }
 
     return a.time.localeCompare(b.time);
@@ -773,23 +931,48 @@ function sortGames(games){
 }
 
 
-/* =====================================================
-   CRIAR HTML DOS JOGOS
-===================================================== */
+/* =========================================================
+   ESCUDO
+   ========================================================= */
+
+function createLogo(team){
+
+  const png =
+    logos[team] || "";
+
+  const fallback =
+    logoFallback[team] || "";
+
+  if(!png){
+
+    return "";
+
+  }
+
+  return `
+    <img
+      class="team-logo"
+      src="${png}"
+      alt="Escudo ${team}"
+      loading="lazy"
+      onerror="this.onerror=null;this.src='${fallback}'"
+    >
+  `;
+
+}
+
+
+/* =========================================================
+   JOGOS HTML
+   ========================================================= */
 
 function createGamesHTML(games){
 
-  let html="";
+  let html = "";
 
   games.forEach(game=>{
 
-    const homeLogo=
-      logos[game.home] || "";
-
-    const awayLogo=
-      logos[game.away] || "";
-
-    const channelsHTML=
+    const channelsHTML =
       game.channels
       .map(channel=>`
         <div class="channel">
@@ -798,7 +981,8 @@ function createGamesHTML(games){
       `)
       .join("");
 
-    html+=`
+
+    html += `
 
       <div class="game">
 
@@ -817,18 +1001,13 @@ function createGamesHTML(games){
 
         <div class="teams">
 
-          <div class="team">
+          <div class="team home">
 
             <span class="team-name">
               ${game.home}
             </span>
 
-            <img
-              class="team-logo"
-              src="${homeLogo}"
-              alt="${game.home}"
-              onerror="this.style.display='none'"
-            >
+            ${createLogo(game.home)}
 
           </div>
 
@@ -838,14 +1017,9 @@ function createGamesHTML(games){
           </div>
 
 
-          <div class="team">
+          <div class="team away">
 
-            <img
-              class="team-logo"
-              src="${awayLogo}"
-              alt="${game.away}"
-              onerror="this.style.display='none'"
-            >
+            ${createLogo(game.away)}
 
             <span class="team-name">
               ${game.away}
@@ -857,7 +1031,9 @@ function createGamesHTML(games){
 
 
         <div class="info">
+
           ${channelsHTML}
+
         </div>
 
       </div>
@@ -867,12 +1043,13 @@ function createGamesHTML(games){
   });
 
   return html;
+
 }
 
 
-/* =====================================================
-   MONTAR SEÇÃO
-===================================================== */
+/* =========================================================
+   SEÇÃO
+   ========================================================= */
 
 function buildSection(
   sectionId,
@@ -880,12 +1057,13 @@ function buildSection(
   dateText
 ){
 
-  const container=
+  const container =
     document.getElementById(sectionId);
 
-  if(games.length===0){
 
-    container.innerHTML=`
+  if(games.length === 0){
+
+    container.innerHTML = `
 
       <div class="date">
         ${dateText}
@@ -898,12 +1076,15 @@ function buildSection(
     `;
 
     return;
+
   }
 
-  games=
+
+  games =
     sortGames(games);
 
-  container.innerHTML=`
+
+  container.innerHTML = `
 
     <div class="date">
       ${dateText}
@@ -912,46 +1093,50 @@ function buildSection(
     ${createGamesHTML(games)}
 
   `;
+
 }
 
 
-/* =====================================================
-   RENDERIZAR JOGOS
-===================================================== */
+/* =========================================================
+   RENDERIZAÇÃO
+   ========================================================= */
 
 function renderGames(){
 
-  const today=
+  const today =
     getToday();
 
-  const tomorrow=
+
+  const tomorrow =
     new Date(today);
+
 
   tomorrow.setDate(
     tomorrow.getDate()+1
   );
 
 
-  const todayStr=
+  const todayStr =
     dateToString(today);
 
-  const tomorrowStr=
+
+  const tomorrowStr =
     dateToString(tomorrow);
 
 
-  const todayGames=
+  const todayGames =
     gamesData.filter(
       game=>game.date===todayStr
     );
 
 
-  const tomorrowGames=
+  const tomorrowGames =
     gamesData.filter(
       game=>game.date===tomorrowStr
     );
 
 
-  const nextGames=
+  const nextGames =
     gamesData.filter(
       game=>game.date>tomorrowStr
     );
@@ -971,13 +1156,13 @@ function renderGames(){
   );
 
 
-  const nextContainer=
+  const nextContainer =
     document.getElementById("next");
 
 
-  if(nextGames.length===0){
+  if(nextGames.length === 0){
 
-    nextContainer.innerHTML=`
+    nextContainer.innerHTML = `
 
       <div class="date">
         📅 PRÓXIMOS JOGOS
@@ -990,19 +1175,23 @@ function renderGames(){
     `;
 
     return;
+
   }
 
 
-  const sortedNextGames=
+  const sortedNextGames =
     sortGames(nextGames);
 
-  const grouped={};
+
+  const grouped = {};
 
 
   sortedNextGames.forEach(game=>{
 
     if(!grouped[game.date]){
-      grouped[game.date]=[];
+
+      grouped[game.date] = [];
+
     }
 
     grouped[game.date].push(game);
@@ -1010,25 +1199,31 @@ function renderGames(){
   });
 
 
-  let html="";
+  let html = "";
 
 
   Object.keys(grouped)
     .sort()
     .forEach((date,index)=>{
 
-      const dateObj=
+      const dateObj =
         parseDate(date);
 
-      html+=`
 
-        <div class="date ${index>0?"next-date":""}">
+      html += `
+
+        <div class="date ${
+          index>0 ? "next-date" : ""
+        }">
+
           ${formatDate(dateObj)}
+
         </div>
 
       `;
 
-      html+=
+
+      html +=
         createGamesHTML(
           grouped[date]
         );
@@ -1036,29 +1231,33 @@ function renderGames(){
     });
 
 
-  nextContainer.innerHTML=
+  nextContainer.innerHTML =
     html;
 
 }
 
 
-/* =====================================================
-   TROCAR ABA
-===================================================== */
+/* =========================================================
+   ABAS
+   ========================================================= */
 
 function showDay(id,button){
 
   document
     .querySelectorAll(".day")
     .forEach(day=>{
+
       day.classList.remove("active");
+
     });
 
 
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
+
       tab.classList.remove("active");
+
     });
 
 
@@ -1072,13 +1271,14 @@ function showDay(id,button){
 }
 
 
-/* =====================================================
+/* =========================================================
    INICIAR
-===================================================== */
+   ========================================================= */
 
 renderGames();
 
 </script>
 
 </body>
+
 </html>
