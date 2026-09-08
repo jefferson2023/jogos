@@ -123,7 +123,7 @@ header{
   box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
 
-/* LINHA HORÁRIO + COMPETIÇÃO */
+/* HORÁRIO + COMPETIÇÃO */
 
 .time-row{
   display:flex;
@@ -131,8 +131,6 @@ header{
   gap:10px;
   flex-wrap:wrap;
 }
-
-/* HORÁRIO */
 
 .time{
   display:inline-block;
@@ -144,48 +142,53 @@ header{
   font-size:14px;
 }
 
-/* LOGO DA COMPETIÇÃO */
+/* COMPETIÇÃO */
 
-.competition{
-  display:flex;
-  align-items:center;
-  gap:7px;
+.time-row .competition{
   margin:0;
   color:#f4f7fb;
   font-weight:800;
   font-size:15px;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
-/* IMAGEM DO LOGO */
+/* LOGO DA COMPETIÇÃO */
 
 .competition-logo{
+  width:25px;
+  height:25px;
+  object-fit:contain;
+  display:inline-block;
+  flex-shrink:0;
+}
+
+/* UEFA CHAMPIONS LEAGUE
+   O FILTRO TRANSFORMA O LOGO EM BRANCO.
+   O MIX-BLEND FAZ O FUNDO PRETO DESAPARECER.
+*/
+
+.competition-logo.champions-logo{
+  filter:invert(1);
+  mix-blend-mode:screen;
+}
+
+/* LOGO LIBERTADORES */
+
+.competition-logo.libertadores-logo{
   width:28px;
   height:28px;
   object-fit:contain;
-  display:block;
 }
 
-/* LOGOS ESPECÍFICOS */
+/* LOGOS BRASILEIRÃO */
 
-.logo-libertadores{
-  width:30px;
-  height:30px;
-}
-
-.logo-champions{
-  width:30px;
-  height:30px;
-  filter:invert(1);
-}
-
-.logo-serie-b{
-  width:30px;
-  height:30px;
-}
-
-.logo-serie-a{
-  width:30px;
-  height:30px;
+.competition-logo.brasileirao-logo{
+  width:28px;
+  height:28px;
+  object-fit:contain;
 }
 
 /* TIMES */
@@ -209,10 +212,17 @@ header{
   color:#fff;
   font-weight:900;
   font-size:18px;
-  margin-bottom:4px;
+  margin:3px 0;
 }
 
-/* QUANDO NÃO EXISTIR JOGO */
+/* COMPETIÇÃO SEM LOGO */
+
+.competition-fallback{
+  color:#b9c4d0;
+  font-weight:800;
+}
+
+/* VAZIO */
 
 .empty{
   text-align:center;
@@ -250,13 +260,13 @@ footer{
     font-size:17px;
   }
 
-  .competition{
+  .time-row .competition{
     font-size:14px;
   }
 
   .competition-logo{
-    width:26px;
-    height:26px;
+    width:23px;
+    height:23px;
   }
 
 }
@@ -306,9 +316,9 @@ footer{
   </div>
 
 
-  <!-- ========================= -->
+  <!-- ================================================= -->
   <!-- HOJE -->
-  <!-- ========================= -->
+  <!-- ================================================= -->
 
   <section id="today" class="day active">
 
@@ -317,7 +327,7 @@ footer{
     </div>
 
 
-    <!-- COPA ITÁLIA -->
+    <!-- JOGO 1 -->
 
     <div class="game">
 
@@ -327,9 +337,11 @@ footer{
           16:00
         </span>
 
-        <div class="competition">
+        <span
+          class="competition"
+          data-competition="Copa Itália">
           🏆 Copa Itália
-        </div>
+        </span>
 
       </div>
 
@@ -348,7 +360,7 @@ footer{
     </div>
 
 
-    <!-- COPA DO BRASIL -->
+    <!-- JOGO 2 -->
 
     <div class="game">
 
@@ -358,9 +370,11 @@ footer{
           20:00
         </span>
 
-        <div class="competition">
+        <span
+          class="competition"
+          data-competition="Copa do Brasil">
           🏆 Copa do Brasil
-        </div>
+        </span>
 
       </div>
 
@@ -379,7 +393,7 @@ footer{
     </div>
 
 
-    <!-- BRASILEIRÃO SÉRIE B -->
+    <!-- JOGO 3 -->
 
     <div class="game">
 
@@ -389,16 +403,11 @@ footer{
           20:00
         </span>
 
-        <div class="competition">
-
-          <img
-            class="competition-logo logo-serie-b"
-            src="https://upload.wikimedia.org/wikipedia/pt/d/d6/Campeonato_Brasileiro_de_Futebol_S%C3%A9rie_B.png"
-            alt="Brasileirão Série B">
-
-          Brasileirão Série B
-
-        </div>
+        <span
+          class="competition"
+          data-competition="Brasileirão Série B">
+          🏆 Brasileirão Série B
+        </span>
 
       </div>
 
@@ -423,9 +432,9 @@ footer{
   </section>
 
 
-  <!-- ========================= -->
+  <!-- ================================================= -->
   <!-- AMANHÃ -->
-  <!-- ========================= -->
+  <!-- ================================================= -->
 
   <section id="tomorrow" class="day">
 
@@ -434,7 +443,7 @@ footer{
     </div>
 
 
-    <!-- LIGUE 1 -->
+    <!-- JOGO -->
 
     <div class="game">
 
@@ -444,9 +453,11 @@ footer{
           14:00
         </span>
 
-        <div class="competition">
+        <span
+          class="competition"
+          data-competition="Ligue 1">
           🏆 Ligue 1
-        </div>
+        </span>
 
       </div>
 
@@ -465,7 +476,7 @@ footer{
     </div>
 
 
-    <!-- PREMIER LEAGUE -->
+    <!-- JOGO -->
 
     <div class="game">
 
@@ -475,9 +486,11 @@ footer{
           16:00
         </span>
 
-        <div class="competition">
+        <span
+          class="competition"
+          data-competition="Premier League">
           🏆 Premier League
-        </div>
+        </span>
 
       </div>
 
@@ -496,7 +509,7 @@ footer{
     </div>
 
 
-    <!-- LALIGA -->
+    <!-- JOGO -->
 
     <div class="game">
 
@@ -506,9 +519,11 @@ footer{
           16:00
         </span>
 
-        <div class="competition">
+        <span
+          class="competition"
+          data-competition="LaLiga">
           🏆 LaLiga
-        </div>
+        </span>
 
       </div>
 
@@ -527,7 +542,7 @@ footer{
     </div>
 
 
-    <!-- LIGUE 1 -->
+    <!-- JOGO -->
 
     <div class="game">
 
@@ -537,9 +552,11 @@ footer{
           16:05
         </span>
 
-        <div class="competition">
+        <span
+          class="competition"
+          data-competition="Ligue 1">
           🏆 Ligue 1
-        </div>
+        </span>
 
       </div>
 
@@ -558,7 +575,7 @@ footer{
     </div>
 
 
-    <!-- BRASILEIRÃO SÉRIE B -->
+    <!-- JOGO -->
 
     <div class="game">
 
@@ -568,16 +585,11 @@ footer{
           19:30
         </span>
 
-        <div class="competition">
-
-          <img
-            class="competition-logo logo-serie-b"
-            src="https://upload.wikimedia.org/wikipedia/pt/d/d6/Campeonato_Brasileiro_de_Futebol_S%C3%A9rie_B.png"
-            alt="Brasileirão Série B">
-
-          Brasileirão Série B
-
-        </div>
+        <span
+          class="competition"
+          data-competition="Brasileirão Série B">
+          🏆 Brasileirão Série B
+        </span>
 
       </div>
 
@@ -596,7 +608,7 @@ footer{
     </div>
 
 
-    <!-- BRASILEIRÃO SÉRIE B -->
+    <!-- JOGO -->
 
     <div class="game">
 
@@ -606,16 +618,11 @@ footer{
           21:30
         </span>
 
-        <div class="competition">
-
-          <img
-            class="competition-logo logo-serie-b"
-            src="https://upload.wikimedia.org/wikipedia/pt/d/d6/Campeonato_Brasileiro_de_Futebol_S%C3%A9rie_B.png"
-            alt="Brasileirão Série B">
-
-          Brasileirão Série B
-
-        </div>
+        <span
+          class="competition"
+          data-competition="Brasileirão Série B">
+          🏆 Brasileirão Série B
+        </span>
 
       </div>
 
@@ -640,9 +647,9 @@ footer{
   </section>
 
 
-  <!-- ========================= -->
+  <!-- ================================================= -->
   <!-- PRÓXIMOS -->
-  <!-- ========================= -->
+  <!-- ================================================= -->
 
   <section id="next" class="day">
 
@@ -668,21 +675,151 @@ footer{
 
 <script>
 
+/* =====================================================
+   LOGOS DAS COMPETIÇÕES
+   ===================================================== */
+
+const competitionLogos = {
+
+  /* LIBERTADORES */
+
+  "Libertadores":
+    "https://cdn.conmebol.com/wp-content/uploads/2020/11/whatsapp_image_2020-11-25_at_15.28.28_0.jpeg",
+
+  "Copa Libertadores":
+    "https://cdn.conmebol.com/wp-content/uploads/2020/11/whatsapp_image_2020-11-25_at_15.28.28_0.jpeg",
+
+
+  /* UEFA CHAMPIONS LEAGUE */
+
+  "UEFA Champions League":
+    "https://cdn-img.staticzz.com/img/logos/competicoes/27_imgbank_lc_20250314102703.png",
+
+  "Champions League":
+    "https://cdn-img.staticzz.com/img/logos/competicoes/27_imgbank_lc_20250314102703.png",
+
+
+  /* BRASILEIRÃO SÉRIE A */
+
+  "Brasileirão Série A":
+    "https://assets.footylogos.com/logos/brasileirao-serie-a-white-logo-footylogos.png",
+
+
+  /* BRASILEIRÃO SÉRIE B */
+
+  "Brasileirão Série B":
+    "https://upload.wikimedia.org/wikipedia/pt/d/d6/Campeonato_Brasileiro_de_Futebol_S%C3%A9rie_B.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20260322045212"
+
+};
+
+
+/* =====================================================
+   CLASSE ESPECIAL PARA CADA LOGO
+   ===================================================== */
+
+function getLogoClass(competition){
+
+  if(
+    competition === "UEFA Champions League" ||
+    competition === "Champions League"
+  ){
+    return "champions-logo";
+  }
+
+  if(
+    competition === "Libertadores" ||
+    competition === "Copa Libertadores"
+  ){
+    return "libertadores-logo";
+  }
+
+  if(
+    competition === "Brasileirão Série A" ||
+    competition === "Brasileirão Série B"
+  ){
+    return "brasileirao-logo";
+  }
+
+  return "";
+
+}
+
+
+/* =====================================================
+   COLOCA OS LOGOS AUTOMATICAMENTE
+   ===================================================== */
+
+document
+  .querySelectorAll(".competition")
+  .forEach(function(element){
+
+    const competition =
+      element.getAttribute("data-competition");
+
+    const logo =
+      competitionLogos[competition];
+
+
+    /* SE EXISTIR LOGO */
+
+    if(logo){
+
+      const logoClass =
+        getLogoClass(competition);
+
+
+      element.innerHTML =
+
+        '<img ' +
+
+        'src="' + logo + '" ' +
+
+        'alt="' + competition + '" ' +
+
+        'class="competition-logo ' +
+        logoClass + '" ' +
+
+        'onerror="this.style.display=\'none\'">' +
+
+        '<span>' +
+        competition +
+        '</span>';
+
+    }
+
+  });
+
+
+/* =====================================================
+   TROCA DE ABAS
+   ===================================================== */
+
 function showDay(id,button){
 
   document
-    .querySelectorAll('.day')
-    .forEach(d => d.classList.remove('active'));
+    .querySelectorAll(".day")
+    .forEach(function(day){
+
+      day.classList.remove("active");
+
+    });
+
 
   document
-    .querySelectorAll('.tab')
-    .forEach(b => b.classList.remove('active'));
+    .querySelectorAll(".tab")
+    .forEach(function(tab){
+
+      tab.classList.remove("active");
+
+    });
+
 
   document
     .getElementById(id)
-    .classList.add('active');
+    .classList.add("active");
 
-  button.classList.add('active');
+
+  button.classList.add("active");
 
 }
 
