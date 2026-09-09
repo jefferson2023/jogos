@@ -7,7 +7,6 @@
 <title>Programação de Jogos e Transmissões</title>
 
 <style>
-
 :root{
   --bg:#0b0f14;
   --card:#151b23;
@@ -29,59 +28,58 @@ body{
   font-family:Arial,Helvetica,sans-serif;
 }
 
-header{
-  text-align:center;
-  padding:20px 12px 14px;
-  font-size:22px;
-  font-weight:800;
-  border-bottom:1px solid var(--border);
+.container{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding:14px;
 }
 
+/* CABEÇALHO */
+
+header{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px 14px;
+  text-align:center;
+  margin-bottom:12px;
+}
+
+header h1{
+  margin:0;
+  font-size:20px;
+  font-weight:900;
+}
+
+/* ABAS */
+
 .tabs{
-  display:flex;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:8px;
-  padding:14px 10px;
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(11,15,20,.96);
-  backdrop-filter:blur(8px);
+  margin-bottom:14px;
 }
 
 .tab{
   border:1px solid var(--border);
   background:var(--card);
   color:var(--muted);
-  padding:10px 18px;
   border-radius:10px;
-  font-size:14px;
-  font-weight:800;
+  padding:11px 8px;
+  font-size:13px;
+  font-weight:900;
   cursor:pointer;
-  transition:.2s;
-}
-
-.tab:hover{
-  border-color:var(--accent);
+  text-align:center;
 }
 
 .tab.active{
   background:var(--accent);
-  color:#07120c;
   border-color:var(--accent);
+  color:#06130c;
 }
 
-.container{
-  width:100%;
-  max-width:900px;
-  margin:0 auto;
-  padding:8px 12px 40px;
-}
-
-
-/* =========================================================
-   DIA E DATA CENTRALIZADOS
-   ========================================================= */
+/* DIA */
 
 .day-title{
   margin:16px 0 12px;
@@ -89,82 +87,53 @@ header{
   background:var(--card2);
   border:1px solid var(--border);
   border-radius:12px;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
   text-align:center;
-
   font-size:15px;
   font-weight:800;
 }
 
-
-/* =========================================================
-   CARD DO JOGO
-   ========================================================= */
+/* JOGO */
 
 .game{
-  background:linear-gradient(145deg,var(--card),var(--card2));
+  background:var(--card);
   border:1px solid var(--border);
   border-radius:14px;
-  margin-bottom:10px;
+  margin-bottom:12px;
   overflow:hidden;
-  box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
 
-
-/* =========================================================
-   TOPO DO JOGO
-   ========================================================= */
+/* TOPO DO JOGO */
 
 .game-top{
   position:relative;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   min-height:48px;
-
   padding:8px 12px;
-
   border-bottom:1px solid rgba(255,255,255,.05);
 }
-
-
-/* HORÁRIO */
 
 .time{
   position:absolute;
   left:12px;
-
   font-size:18px;
   font-weight:900;
   color:#fff;
-
   min-width:58px;
-
   text-align:left;
 }
-
-
-/* =========================================================
-   COMPETIÇÃO CENTRALIZADA
-   ========================================================= */
 
 .competition{
   display:flex;
   align-items:center;
   justify-content:center;
-
   gap:7px;
-
   max-width:75%;
-
   text-align:center;
-
   font-size:12px;
   font-weight:800;
   color:var(--muted);
@@ -173,9 +142,7 @@ header{
 .competition-logo{
   width:22px;
   height:22px;
-
   object-fit:contain;
-
   flex:none;
 }
 
@@ -191,33 +158,20 @@ header{
   filter:none;
 }
 
-.competition-name{
-  line-height:1.15;
-}
-
-
-/* =========================================================
-   TIMES
-   ========================================================= */
+/* TIMES */
 
 .teams{
   display:grid;
-
   grid-template-columns:1fr 35px 1fr;
-
   align-items:center;
-
   gap:8px;
-
   padding:12px 12px 8px;
 }
 
 .team{
   display:flex;
   align-items:center;
-
-  gap:9px;
-
+  gap:8px;
   min-width:0;
 }
 
@@ -240,133 +194,78 @@ header{
 .team-logo{
   width:42px;
   height:42px;
-
   object-fit:contain;
-
   flex:none;
 }
 
 .vs{
   text-align:center;
-
-  font-size:11px;
-  font-weight:900;
-
   color:var(--muted);
+  font-size:12px;
+  font-weight:900;
 }
 
-
-/* =========================================================
-   CANAIS
-   ========================================================= */
+/* CANAIS */
 
 .channels{
   display:flex;
   flex-wrap:wrap;
-
   justify-content:center;
-
-  gap:7px;
-
-  padding:2px 12px 12px;
+  gap:6px;
+  padding:7px 12px 13px;
 }
 
 .channel{
-  background:#0b1118;
-
+  background:#0e141b;
   border:1px solid var(--border);
-
   border-radius:8px;
-
-  padding:6px 10px;
-
-  color:#fff;
-
+  padding:6px 9px;
   font-size:12px;
   font-weight:800;
+  color:#fff;
 }
 
-
-/* =========================================================
-   SEM JOGOS
-   ========================================================= */
+/* SEM JOGOS */
 
 .empty{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:25px 15px;
   text-align:center;
-
   color:var(--muted);
-
-  padding:35px 15px;
-
-  border:1px dashed var(--border);
-
-  border-radius:12px;
-
-  margin-top:15px;
+  font-size:14px;
 }
 
-
-/* =========================================================
-   CELULAR
-   ========================================================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
-  header{
-    font-size:18px;
-    padding:17px 8px 13px;
+  .container{
+    padding:10px;
   }
 
-  .tabs{
-    gap:5px;
+  header h1{
+    font-size:17px;
   }
 
   .tab{
-    padding:9px 12px;
-    font-size:12px;
+    font-size:11px;
+    padding:10px 5px;
   }
-
-  .container{
-    padding-left:8px;
-    padding-right:8px;
-  }
-
-
-  /* DIA CENTRALIZADO */
-
-  .day-title{
-    font-size:14px;
-    padding:11px 8px;
-  }
-
-
-  /* TOPO */
 
   .game-top{
     min-height:45px;
-    padding:7px 8px;
   }
-
-
-  /* HORÁRIO */
 
   .time{
-    left:8px;
-
-    font-size:15px;
-
-    min-width:48px;
+    font-size:16px;
+    left:10px;
   }
 
-
-  /* COMPETIÇÃO */
-
   .competition{
+    font-size:11px;
     max-width:70%;
-
-    gap:5px;
-
-    font-size:10px;
   }
 
   .competition-logo{
@@ -374,19 +273,10 @@ header{
     height:20px;
   }
 
-
-  /* TIMES */
-
   .teams{
-    grid-template-columns:1fr 28px 1fr;
-
+    grid-template-columns:1fr 30px 1fr;
     gap:5px;
-
     padding:11px 8px 7px;
-  }
-
-  .team{
-    gap:6px;
   }
 
   .team-logo{
@@ -399,55 +289,39 @@ header{
   }
 
   .vs{
-    font-size:9px;
+    font-size:11px;
   }
-
-
-  /* CANAIS */
 
   .channel{
     font-size:11px;
-    padding:5px 8px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <header>
-  ⚽ Programação de Jogos e Transmissões
+  <h1>⚽ Programação de Jogos e Transmissões</h1>
 </header>
 
-
 <div class="tabs">
+  <button class="tab active" data-tab="today">HOJE</button>
+  <button class="tab" data-tab="tomorrow">AMANHÃ</button>
+  <button class="tab" data-tab="next">PRÓXIMOS</button>
+</div>
 
-  <button class="tab active" data-tab="today">
-    HOJE
-  </button>
-
-  <button class="tab" data-tab="tomorrow">
-    AMANHÃ
-  </button>
-
-  <button class="tab" data-tab="next">
-    PRÓXIMOS
-  </button>
+<div id="games"></div>
 
 </div>
 
-
-<div class="container" id="gamesContainer"></div>
-
-
 <script>
-
 
 /* =========================================================
    LOGOS DAS COMPETIÇÕES
-   ========================================================= */
+========================================================= */
 
 const competitionLogos = {
 
@@ -467,14 +341,32 @@ const competitionLogos = {
     "https://commons.wikimedia.org/wiki/Special:FilePath/EFL_(Carabao)_Cup_Logo.svg",
 
   "Brasileirão Série B":
-    "https://commons.wikimedia.org/wiki/Special:FilePath/Campeonato_Brasileiro_Série_B_logo_(2025).svg"
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Campeonato_Brasileiro_Série_B_logo_(2025).svg",
+
+  "Bundesliga":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Bundesliga_logo.svg",
+
+  "Serie A":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Serie_A_logo.svg",
+
+  "Ligue 1":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Ligue_1_Logo.svg",
+
+  "La Liga":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/LaLiga_EA_Sports_2023_Vertical_Logo.svg",
+
+  "Brasileirão Série A":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_S%C3%A9rie_A_logo_2025.svg",
+
+  "Liga Argentina":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Liga_Profesional_de_F%C3%BAtbol_Argentina_logo.svg"
 
 };
 
 
 /* =========================================================
-   ESCUDOS DOS TIMES
-   ========================================================= */
+   LOGOS DOS TIMES
+========================================================= */
 
 const logos = {
 
@@ -614,14 +506,49 @@ const logos = {
     "https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg",
 
   "Ponte Preta":
-    "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg"
+    "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg",
+
+  /* NOVOS TIMES - SEXTA */
+
+  "Union Berlin":
+    "https://assets.footylogos.com/logos/union-berlin/union-berlin-logo-footylogos.svg",
+
+  "Schalke 04":
+    "https://assets.footylogos.com/logos/schalke-04/schalke-04-logo-footylogos.svg",
+
+  "Venezia":
+    "https://assets.footylogos.com/logos/venezia/venezia-logo-footylogos.svg",
+
+  "Fiorentina":
+    "https://assets.footylogos.com/logos/fiorentina/fiorentina-logo-footylogos.svg",
+
+  "Rennes":
+    "https://assets.footylogos.com/logos/rennes/rennes-logo-footylogos.svg",
+
+  "Olympique de Marseille":
+    "https://assets.footylogos.com/logos/marseille/marseille-logo-footylogos.svg",
+
+  "Sevilla":
+    "https://assets.footylogos.com/logos/sevilla/sevilla-logo-footylogos.svg",
+
+  "Valencia":
+    "https://assets.footylogos.com/logos/valencia/valencia-logo-footylogos.svg",
+
+  "Coritiba":
+    "https://assets.footylogos.com/logos/coritiba/coritiba-logo-footylogos.svg",
+
+  "Athletico-PR":
+    "https://assets.footylogos.com/logos/athletico-paranaense/athletico-paranaense-logo-footylogos.svg",
+
+  "Central Córdoba":
+    "https://assets.footylogos.com/logos/central-cordoba/central-cordoba-logo-footylogos.svg"
 
 };
 
 
 /* =========================================================
    JOGOS
-   ========================================================= */
+========================================================= */
 
 const gamesData = [
 
@@ -665,7 +592,6 @@ const gamesData = [
     date:"2026-09-08",
     time:"19:00",
     comp:"CONMEBOL Sul-Americana",
-    compExtra:" (QF-ida)",
     home:"Independiente Santa Fe",
     away:"Vasco da Gama",
     channels:["📺 Paramount+"]
@@ -675,7 +601,6 @@ const gamesData = [
     date:"2026-09-08",
     time:"21:30",
     comp:"CONMEBOL Sul-Americana",
-    compExtra:" (QF-ida)",
     home:"Boca Juniors",
     away:"São Paulo",
     channels:["📺 SBT","📺 ESPN"]
@@ -739,7 +664,6 @@ const gamesData = [
     date:"2026-09-09",
     time:"19:00",
     comp:"CONMEBOL Libertadores",
-    compExtra:" (QF-ida)",
     home:"Palmeiras",
     away:"LDU",
     channels:["📺 Paramount+"]
@@ -749,7 +673,6 @@ const gamesData = [
     date:"2026-09-09",
     time:"19:00",
     comp:"CONMEBOL Sul-Americana",
-    compExtra:" (QF-ida)",
     home:"Santos",
     away:"Atlético-MG",
     channels:["📺 ESPN"]
@@ -768,7 +691,6 @@ const gamesData = [
     date:"2026-09-09",
     time:"21:30",
     comp:"CONMEBOL Libertadores",
-    compExtra:" (QF-ida)",
     home:"Estudiantes",
     away:"Corinthians",
     channels:["📺 Globo"]
@@ -823,7 +745,6 @@ const gamesData = [
     date:"2026-09-10",
     time:"21:30",
     comp:"CONMEBOL Libertadores",
-    compExtra:" (QF-ida)",
     home:"Independiente del Valle",
     away:"Flamengo",
     channels:["📺 ESPN","📺 Disney+"]
@@ -836,120 +757,180 @@ const gamesData = [
     home:"Sport Recife",
     away:"Ponte Preta",
     channels:["📺 Xsports","📺 ESPN 4","📺 SportyNet"]
+  },
+
+  /* =====================================================
+     SEXTA-FEIRA 11/09/2026
+  ===================================================== */
+
+  {
+    date:"2026-09-11",
+    time:"15:30",
+    comp:"Bundesliga",
+    home:"Union Berlin",
+    away:"Schalke 04",
+    channels:["📺 SporTV"]
+  },
+
+  {
+    date:"2026-09-11",
+    time:"15:45",
+    comp:"Serie A",
+    home:"Venezia",
+    away:"Fiorentina",
+    channels:["📺 SportyNet"]
+  },
+
+  {
+    date:"2026-09-11",
+    time:"15:45",
+    comp:"Ligue 1",
+    home:"Rennes",
+    away:"Olympique de Marseille",
+    channels:["📺 XSports"]
+  },
+
+  {
+    date:"2026-09-11",
+    time:"16:00",
+    comp:"La Liga",
+    home:"Sevilla",
+    away:"Valencia",
+    channels:["📺 YouTube (CazéTV)"]
+  },
+
+  {
+    date:"2026-09-11",
+    time:"21:00",
+    comp:"Brasileirão Série A",
+    home:"Coritiba",
+    away:"Athletico-PR",
+    channels:["📺 SporTV","📺 Premiere"]
+  },
+
+  {
+    date:"2026-09-11",
+    time:"21:30",
+    comp:"Liga Argentina",
+    home:"Boca Juniors",
+    away:"Central Córdoba",
+    channels:["📺 ESPN"]
   }
 
 ];
 
 
 /* =========================================================
-   DATA ATUAL
-   ========================================================= */
+   DATA
+========================================================= */
 
 function getLocalDate(){
 
   const now = new Date();
 
   const year = now.getFullYear();
+
   const month = String(now.getMonth()+1).padStart(2,"0");
+
   const day = String(now.getDate()).padStart(2,"0");
 
   return `${year}-${month}-${day}`;
-
 }
 
 
-/* =========================================================
-   ADICIONAR DIAS
-   ========================================================= */
+function addDays(dateString,days){
 
-function addDays(dateString, days){
+  const parts = dateString.split("-").map(Number);
 
-  const date = new Date(dateString + "T12:00:00");
+  const date = new Date(
+    parts[0],
+    parts[1]-1,
+    parts[2]
+  );
 
-  date.setDate(date.getDate() + days);
+  date.setDate(date.getDate()+days);
 
-  const year = date.getFullYear();
-  const month = String(date.getMonth()+1).padStart(2,"0");
-  const day = String(date.getDate()).padStart(2,"0");
+  const y = date.getFullYear();
 
-  return `${year}-${month}-${day}`;
+  const m = String(date.getMonth()+1).padStart(2,"0");
 
+  const d = String(date.getDate()).padStart(2,"0");
+
+  return `${y}-${m}-${d}`;
 }
 
-
-/* =========================================================
-   FORMATAÇÃO DA DATA
-   ========================================================= */
 
 function formatDate(dateString){
 
-  const date = new Date(dateString + "T12:00:00");
+  const parts = dateString.split("-").map(Number);
 
-  const days = [
-    "DOMINGO",
-    "SEGUNDA-FEIRA",
-    "TERÇA-FEIRA",
-    "QUARTA-FEIRA",
-    "QUINTA-FEIRA",
-    "SEXTA-FEIRA",
-    "SÁBADO"
-  ];
+  const date = new Date(
+    parts[0],
+    parts[1]-1,
+    parts[2]
+  );
 
-  return `${days[date.getDay()]} – ${date.toLocaleDateString("pt-BR")}`;
-
+  return date.toLocaleDateString(
+    "pt-BR",
+    {
+      weekday:"long",
+      day:"2-digit",
+      month:"2-digit",
+      year:"numeric"
+    }
+  ).replace(/^./,m=>m.toUpperCase());
 }
 
 
 /* =========================================================
    LOGO DA COMPETIÇÃO
-   ========================================================= */
+========================================================= */
 
 function createCompetitionLogo(comp){
 
-  const src = competitionLogos[comp];
+  const url = competitionLogos[comp];
 
-  if(!src){
+  if(!url){
     return "";
   }
 
-  let extraClass = "";
+  let className = "competition-logo";
 
   if(comp === "UEFA Champions League"){
-    extraClass = " champions-logo";
+    className += " champions-logo";
   }
 
   if(comp === "CONMEBOL Libertadores"){
-    extraClass = " libertadores-logo";
+    className += " libertadores-logo";
   }
 
   if(comp === "CONMEBOL Sul-Americana"){
-    extraClass = " sulamericana-logo";
+    className += " sulamericana-logo";
   }
 
   return `
     <img
-      class="competition-logo${extraClass}"
-      src="${src}"
-      alt=""
+      src="${url}"
+      class="${className}"
+      alt="${comp}"
       onerror="this.style.display='none'"
     >
   `;
-
 }
 
 
 /* =========================================================
-   CRIAR JOGO
-   ========================================================= */
+   CRIA JOGO
+========================================================= */
 
 function createGame(game){
 
   const homeLogo = logos[game.home] || "";
+
   const awayLogo = logos[game.away] || "";
 
-  const competitionLogo = createCompetitionLogo(game.comp);
-
-  const competitionExtra = game.compExtra || "";
+  const competitionLogo =
+    createCompetitionLogo(game.comp);
 
   return `
 
@@ -965,8 +946,8 @@ function createGame(game){
 
           ${competitionLogo}
 
-          <span class="competition-name">
-            ${game.comp}${competitionExtra}
+          <span>
+            ${game.comp}
           </span>
 
         </div>
@@ -985,14 +966,12 @@ function createGame(game){
           ${
             homeLogo
             ?
-            `
-            <img
-              class="team-logo"
+            `<img
               src="${homeLogo}"
+              class="team-logo"
               alt="${game.home}"
               onerror="this.style.display='none'"
-            >
-            `
+            >`
             :
             ""
           }
@@ -1010,14 +989,12 @@ function createGame(game){
           ${
             awayLogo
             ?
-            `
-            <img
-              class="team-logo"
+            `<img
               src="${awayLogo}"
+              class="team-logo"
               alt="${game.away}"
               onerror="this.style.display='none'"
-            >
-            `
+            >`
             :
             ""
           }
@@ -1035,9 +1012,9 @@ function createGame(game){
 
         ${
           game.channels.map(channel => `
-            <div class="channel">
+            <span class="channel">
               ${channel}
-            </div>
+            </span>
           `).join("")
         }
 
@@ -1046,67 +1023,72 @@ function createGame(game){
     </div>
 
   `;
-
 }
 
 
 /* =========================================================
-   RENDERIZAR
-   ========================================================= */
+   RENDERIZA
+========================================================= */
 
 function renderGames(tab){
 
-  const container = document.getElementById("gamesContainer");
+  const container =
+    document.getElementById("games");
 
-  const today = getLocalDate();
+  const today =
+    getLocalDate();
 
-  const tomorrow = addDays(today,1);
+  const tomorrow =
+    addDays(today,1);
 
-  let filteredGames = [];
-
+  let filtered = [];
 
   if(tab === "today"){
 
-    filteredGames = gamesData.filter(game =>
-      game.date === today
-    );
+    filtered =
+      gamesData.filter(
+        game => game.date === today
+      );
 
   }
-
 
   else if(tab === "tomorrow"){
 
-    filteredGames = gamesData.filter(game =>
-      game.date === tomorrow
-    );
+    filtered =
+      gamesData.filter(
+        game => game.date === tomorrow
+      );
 
   }
-
 
   else if(tab === "next"){
 
-    filteredGames = gamesData.filter(game =>
-      game.date > tomorrow
-    );
+    filtered =
+      gamesData.filter(
+        game => game.date > tomorrow
+      );
 
   }
 
 
-  filteredGames.sort((a,b) => {
+  filtered.sort((a,b)=>{
 
-    const dateA = `${a.date} ${a.time}`;
-    const dateB = `${b.date} ${b.time}`;
+    if(a.date !== b.date){
 
-    return dateA.localeCompare(dateB);
+      return a.date.localeCompare(b.date);
+
+    }
+
+    return a.time.localeCompare(b.time);
 
   });
 
 
-  if(filteredGames.length === 0){
+  if(filtered.length === 0){
 
     container.innerHTML = `
       <div class="empty">
-        Nenhum jogo programado para esta data.
+        Nenhum jogo programado para este período.
       </div>
     `;
 
@@ -1117,11 +1099,12 @@ function renderGames(tab){
 
   const groups = {};
 
-
-  filteredGames.forEach(game => {
+  filtered.forEach(game=>{
 
     if(!groups[game.date]){
+
       groups[game.date] = [];
+
     }
 
     groups[game.date].push(game);
@@ -1132,24 +1115,24 @@ function renderGames(tab){
   let html = "";
 
 
-  Object.keys(groups)
-    .sort()
-    .forEach(date => {
+  Object.keys(groups).forEach(date=>{
 
-      html += `
-        <div class="day-title">
-          📅 ${formatDate(date)}
-        </div>
-      `;
+    html += `
+
+      <div class="day-title">
+        📅 ${formatDate(date)}
+      </div>
+
+    `;
 
 
-      groups[date].forEach(game => {
+    groups[date].forEach(game=>{
 
-        html += createGame(game);
-
-      });
+      html += createGame(game);
 
     });
+
+  });
 
 
   container.innerHTML = html;
@@ -1159,20 +1142,26 @@ function renderGames(tab){
 
 /* =========================================================
    ABAS
-   ========================================================= */
+========================================================= */
 
-document.querySelectorAll(".tab").forEach(tab => {
+document.querySelectorAll(".tab")
+.forEach(button=>{
 
-  tab.addEventListener("click", () => {
+  button.addEventListener("click",()=>{
 
-    document.querySelectorAll(".tab")
-      .forEach(button =>
-        button.classList.remove("active")
-      );
+    document
+      .querySelectorAll(".tab")
+      .forEach(tab=>{
+        tab.classList.remove("active");
+      });
 
-    tab.classList.add("active");
 
-    renderGames(tab.dataset.tab);
+    button.classList.add("active");
+
+
+    renderGames(
+      button.dataset.tab
+    );
 
   });
 
@@ -1180,8 +1169,8 @@ document.querySelectorAll(".tab").forEach(tab => {
 
 
 /* =========================================================
-   INICIAR
-   ========================================================= */
+   INICIAL
+========================================================= */
 
 renderGames("today");
 
