@@ -105,7 +105,7 @@ header h1{
   overflow:hidden;
 }
 
-/* TOPO DO JOGO */
+/* TOPO */
 
 .game-top{
   position:relative;
@@ -359,7 +359,10 @@ const competitionLogos = {
     "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_S%C3%A9rie_A_logo_2025.svg",
 
   "Liga Argentina":
-    "https://commons.wikimedia.org/wiki/Special:FilePath/Liga_Profesional_de_F%C3%BAtbol_Argentina_logo.svg"
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Liga_Profesional_de_F%C3%BAtbol_Argentina_logo.svg",
+
+  "Premier League":
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Premier_League_Logo.svg"
 
 };
 
@@ -508,7 +511,7 @@ const logos = {
   "Ponte Preta":
     "https://assets.footylogos.com/logos/ponte-preta/ponte-preta-logo-footylogos.svg",
 
-  /* NOVOS TIMES - SEXTA */
+  /* SEXTA */
 
   "Union Berlin":
     "https://assets.footylogos.com/logos/union-berlin/union-berlin-logo-footylogos.svg",
@@ -541,7 +544,39 @@ const logos = {
     "https://assets.footylogos.com/logos/athletico-paranaense/athletico-paranaense-logo-footylogos.svg",
 
   "Central Córdoba":
-    "https://assets.footylogos.com/logos/central-cordoba/central-cordoba-logo-footylogos.svg"
+    "https://assets.footylogos.com/logos/central-cordoba/central-cordoba-logo-footylogos.svg",
+
+  /* SÁBADO */
+
+  "Fulham":
+    "https://assets.footylogos.com/logos/fulham/fulham-logo-footylogos.svg",
+
+  "Hull City":
+    "https://assets.footylogos.com/logos/hull-city/hull-city-logo-footylogos.svg",
+
+  "Sunderland":
+    "https://assets.footylogos.com/logos/sunderland/sunderland-logo-footylogos.svg",
+
+  "Rayo Vallecano":
+    "https://assets.footylogos.com/logos/rayo-vallecano/rayo-vallecano-logo-footylogos.svg",
+
+  "Grêmio":
+    "https://assets.footylogos.com/logos/gremio/gremio-logo-footylogos.svg",
+
+  "Chapecoense":
+    "https://assets.footylogos.com/logos/chapecoense/chapecoense-logo-footylogos.svg",
+
+  "Internacional":
+    "https://assets.footylogos.com/logos/internacional/internacional-logo-footylogos.svg",
+
+  "Botafogo":
+    "https://assets.footylogos.com/logos/botafogo/botafogo-logo-footylogos.svg",
+
+  "RB Bragantino":
+    "https://assets.footylogos.com/logos/red-bull-bragantino/red-bull-bragantino-logo-footylogos.svg",
+
+  "Cruzeiro":
+    "https://assets.footylogos.com/logos/cruzeiro/cruzeiro-logo-footylogos.svg"
 
 };
 
@@ -551,6 +586,8 @@ const logos = {
 ========================================================= */
 
 const gamesData = [
+
+  /* ===================== 08/09 ===================== */
 
   {
     date:"2026-09-08",
@@ -605,6 +642,8 @@ const gamesData = [
     away:"São Paulo",
     channels:["📺 SBT","📺 ESPN"]
   },
+
+  /* ===================== 09/09 ===================== */
 
   {
     date:"2026-09-09",
@@ -705,6 +744,8 @@ const gamesData = [
     channels:["📺 Xsports","📺 ESPN","📺 SportyNet"]
   },
 
+  /* ===================== 10/09 ===================== */
+
   {
     date:"2026-09-10",
     time:"13:45",
@@ -759,9 +800,7 @@ const gamesData = [
     channels:["📺 Xsports","📺 ESPN 4","📺 SportyNet"]
   },
 
-  /* =====================================================
-     SEXTA-FEIRA 11/09/2026
-  ===================================================== */
+  /* ===================== 11/09 ===================== */
 
   {
     date:"2026-09-11",
@@ -815,6 +854,102 @@ const gamesData = [
     home:"Boca Juniors",
     away:"Central Córdoba",
     channels:["📺 ESPN"]
+  },
+
+  /* ===================== 12/09 ===================== */
+
+  {
+    date:"2026-09-12",
+    time:"11:00",
+    comp:"Premier League",
+    home:"Liverpool",
+    away:"Fulham",
+    channels:["📺 Disney+"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"11:00",
+    comp:"Premier League",
+    home:"Chelsea",
+    away:"Hull City",
+    channels:["📺 Disney+"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"16:00",
+    comp:"Premier League",
+    home:"Sunderland",
+    away:"Arsenal",
+    channels:["📺 Disney+"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"16:00",
+    comp:"La Liga",
+    home:"Real Madrid",
+    away:"Rayo Vallecano",
+    channels:["📺 YouTube (CazéTV)"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"16:00",
+    comp:"Brasileirão Série A",
+    home:"Atlético-MG",
+    away:"Fluminense",
+    channels:["📺 Premiere"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"16:00",
+    comp:"Brasileirão Série A",
+    home:"Grêmio",
+    away:"Vasco da Gama",
+    channels:["📺 Premiere"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"17:00",
+    comp:"Brasileirão Série A",
+    home:"Chapecoense",
+    away:"Internacional",
+    channels:[
+      "📺 Record",
+      "📺 YouTube (CazéTV)",
+      "📺 Premiere"
+    ]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"18:30",
+    comp:"Brasileirão Série A",
+    home:"Palmeiras",
+    away:"São Paulo",
+    channels:["📺 Premiere"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"20:30",
+    comp:"Brasileirão Série A",
+    home:"Botafogo",
+    away:"RB Bragantino",
+    channels:["📺 Prime Video"]
+  },
+
+  {
+    date:"2026-09-12",
+    time:"21:00",
+    comp:"Brasileirão Série A",
+    home:"Santos",
+    away:"Cruzeiro",
+    channels:["📺 SporTV","📺 Premiere"]
   }
 
 ];
@@ -829,9 +964,7 @@ function getLocalDate(){
   const now = new Date();
 
   const year = now.getFullYear();
-
   const month = String(now.getMonth()+1).padStart(2,"0");
-
   const day = String(now.getDate()).padStart(2,"0");
 
   return `${year}-${month}-${day}`;
@@ -851,9 +984,7 @@ function addDays(dateString,days){
   date.setDate(date.getDate()+days);
 
   const y = date.getFullYear();
-
   const m = String(date.getMonth()+1).padStart(2,"0");
-
   const d = String(date.getDate()).padStart(2,"0");
 
   return `${y}-${m}-${d}`;
@@ -870,15 +1001,17 @@ function formatDate(dateString){
     parts[2]
   );
 
-  return date.toLocaleDateString(
-    "pt-BR",
-    {
-      weekday:"long",
-      day:"2-digit",
-      month:"2-digit",
-      year:"numeric"
-    }
-  ).replace(/^./,m=>m.toUpperCase());
+  return date
+    .toLocaleDateString(
+      "pt-BR",
+      {
+        weekday:"long",
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    )
+    .replace(/^./,m=>m.toUpperCase());
 }
 
 
@@ -926,7 +1059,6 @@ function createCompetitionLogo(comp){
 function createGame(game){
 
   const homeLogo = logos[game.home] || "";
-
   const awayLogo = logos[game.away] || "";
 
   const competitionLogo =
@@ -1074,9 +1206,7 @@ function renderGames(tab){
   filtered.sort((a,b)=>{
 
     if(a.date !== b.date){
-
       return a.date.localeCompare(b.date);
-
     }
 
     return a.time.localeCompare(b.time);
@@ -1093,18 +1223,16 @@ function renderGames(tab){
     `;
 
     return;
-
   }
 
 
   const groups = {};
 
+
   filtered.forEach(game=>{
 
     if(!groups[game.date]){
-
       groups[game.date] = [];
-
     }
 
     groups[game.date].push(game);
@@ -1144,28 +1272,27 @@ function renderGames(tab){
    ABAS
 ========================================================= */
 
-document.querySelectorAll(".tab")
-.forEach(button=>{
+document
+  .querySelectorAll(".tab")
+  .forEach(button=>{
 
-  button.addEventListener("click",()=>{
+    button.addEventListener("click",()=>{
 
-    document
-      .querySelectorAll(".tab")
-      .forEach(tab=>{
-        tab.classList.remove("active");
-      });
+      document
+        .querySelectorAll(".tab")
+        .forEach(tab=>{
+          tab.classList.remove("active");
+        });
 
+      button.classList.add("active");
 
-    button.classList.add("active");
+      renderGames(
+        button.dataset.tab
+      );
 
-
-    renderGames(
-      button.dataset.tab
-    );
+    });
 
   });
-
-});
 
 
 /* =========================================================
