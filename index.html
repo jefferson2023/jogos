@@ -122,6 +122,7 @@ header{
   flex:none;
 }
 .competition-logo.champions-logo{filter:brightness(0) invert(1)}
+.competition-logo.afc-logo{filter:none;background:transparent}
 .competition-logo.libertadores-logo{filter:none}
 .competition-logo.sulamericana-logo{filter:none}
 .teams{
@@ -188,7 +189,7 @@ header{
   .channel{font-size:11px;padding:6px 7px}
 }
 .team-logo{object-fit:contain;display:block;flex:none;}
-</style>
+.channel{font-size:13px !important;}\n</style>
 </head>
 <body>
 <div class="container">
@@ -206,6 +207,7 @@ header{
 <script>
 const competitionLogos = {
   "UEFA Champions League":"https://cdn-img.staticzz.com/img/logos/competicoes/27_imgbank_lc_20250314102703.png",
+  "AFC Champions League":"https://city-png.b-cdn.net/preview/preview_public/uploads/preview/afc-champions-league-official-logo-hd-png-701751712234554kcwfnociug.png",
   "CONMEBOL Libertadores":"https://i.namu.wiki/i/6etqHRk8O1QOE_MWKvT8SFcIOgLkr4xmIjpATrs9S5hWby4oRqGgI--6xZBNHtlzVP0tJe3F9lpS6X8Nk2YLw7UswwB5W1XpLLywWrSa4ScEe-YzhdvahLfhZ_Uri08uSxMpOqDDzpFyCsV6ILhCcg.webp",
   "CONMEBOL Sul-Americana":"https://commons.wikimedia.org/wiki/Special:FilePath/Conmebol-sudamericana.svg",
   "Liga Saudita":"https://commons.wikimedia.org/wiki/Special:FilePath/Saudi_Pro_League_Logo.svg",
@@ -487,6 +489,7 @@ function createCompetitionLogo(comp){
   if(!src)return "";
   let cls="competition-logo";
   if(comp==="UEFA Champions League")cls+=" champions-logo";
+  if(comp==="AFC Champions League")cls+=" afc-logo";
   if(comp==="CONMEBOL Libertadores")cls+=" libertadores-logo";
   if(comp==="CONMEBOL Sul-Americana")cls+=" sulamericana-logo";
   return `<img class="${cls}" src="${src}" alt="" onerror="this.style.display='none'">`;
