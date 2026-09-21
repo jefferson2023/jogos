@@ -121,10 +121,15 @@ header{
   object-fit:contain;
   flex:none;
 }
-.competition-logo.champions-logo{filter:brightness(0) invert(1)}
-.competition-logo.afc-logo{filter:none;background:transparent}
-.competition-logo.libertadores-logo{filter:none}
-.competition-logo.sulamericana-logo{filter:none}
+.competition-logo{
+  filter:brightness(0) invert(1);
+  opacity:.96;
+  background:transparent;
+}
+.competition-logo.champions-logo,
+.competition-logo.afc-logo,
+.competition-logo.libertadores-logo,
+.competition-logo.sulamericana-logo{filter:brightness(0) invert(1)}
 .teams{
   display:grid;
   grid-template-columns:1fr 35px 1fr;
@@ -282,6 +287,9 @@ const logos = {
   "Boca Juniors":"https://assets.footylogos.com/logos/boca-juniors/boca-juniors-logo-footylogos.svg",
   "São Paulo":"https://assets.footylogos.com/logos/sao-paulo/sao-paulo-logo-footylogos.svg",
   "Barcelona":"https://assets.footylogos.com/logos/fc-barcelona/fc-barcelona-logo-footylogos.svg",
+  "Paris FC":"https://s.sde.globo.com/media/organizations/2023/01/30/paris-fc-58462.svg",
+  "Lyon":"https://s.sde.globo.com/media/organizations/2019/03/10/Olympique_Lyonnais-01.svg",
+  "Paraguai":"https://assets.footylogos.com/previews/paraguay-national-team/paraguay-national-team-logo-footylogos-1200.webp",
   "Feyenoord":"https://assets.footylogos.com/logos/feyenoord/feyenoord-logo-footylogos.svg",
   "Al-Nassr":"https://assets.footylogos.com/logos/al-nassr/al-nassr-logo-footylogos.svg",
   "Abha":"https://assets.footylogos.com/logos/abha/abha-logo-footylogos.svg",
@@ -509,14 +517,31 @@ function formatDate(dateString){
   return `${weekday.charAt(0).toUpperCase()+weekday.slice(1)} — ${date}`;
 }
 function createCompetitionLogo(comp){
-  const src=competitionLogos[comp];
+  let src=competitionLogos[comp];
+
+  if(!src){
+    const c=comp.toLowerCase();
+
+    if(c.includes("champions league") && !c.includes("women")) src=competitionLogos["UEFA Champions League"];
+    else if(c.includes("afc champions")) src=competitionLogos["AFC Champions League"];
+    else if(c.includes("libertadores")) src=competitionLogos["CONMEBOL Libertadores"];
+    else if(c.includes("sul-americana")) src=competitionLogos["CONMEBOL Sul-Americana"];
+    else if(c.includes("liga saudita")) src=competitionLogos["Liga Saudita"];
+    else if(c.includes("copa da liga inglesa")) src=competitionLogos["Copa da Liga Inglesa"];
+    else if(c.includes("série a")) src=competitionLogos["Brasileirão Série A"];
+    else if(c.includes("série b")) src=competitionLogos["Brasileirão Série B"];
+    else if(c.includes("série c")) src=competitionLogos["Brasileirão Série C"];
+    else if(c.includes("bundesliga") || c.includes("alemão")) src=competitionLogos["Bundesliga"];
+    else if(c.includes("serie a") || c.includes("italiano")) src=competitionLogos["Serie A"];
+    else if(c.includes("ligue 1") || c.includes("francês")) src=competitionLogos["Ligue 1"];
+    else if(c.includes("la liga") || c.includes("espanhol")) src=competitionLogos["La Liga"];
+    else if(c.includes("liga argentina")) src=competitionLogos["Liga Argentina"];
+    else if(c.includes("premier league") || c.includes("inglês")) src=competitionLogos["Premier League"];
+  }
+
   if(!src)return "";
-  let cls="competition-logo";
-  if(comp==="UEFA Champions League")cls+=" champions-logo";
-  if(comp==="AFC Champions League")cls+=" afc-logo";
-  if(comp==="CONMEBOL Libertadores")cls+=" libertadores-logo";
-  if(comp==="CONMEBOL Sul-Americana")cls+=" sulamericana-logo";
-  return `<img class="${cls}" src="${src}" alt="" onerror="this.style.display='none'">`;
+
+  return `<img class="competition-logo" src="${src}" alt="" onerror="this.style.display='none'">`;
 }
 function createGame(game){
   const homeLogo=logos[game.home]||"";
