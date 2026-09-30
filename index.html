@@ -412,7 +412,13 @@ const logos = {
   "Maringá":"https://assets.footylogos.com/logos/maringa/maringa-logo-footylogos.svg",
   "Floresta":"https://assets.footylogos.com/logos/floresta/floresta-logo-footylogos.svg",
   "Santa Cruz":"https://assets.footylogos.com/logos/santa-cruz/santa-cruz-logo-footylogos.svg",
-  "Sport":"https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg"
+  "Sport":"https://assets.footylogos.com/logos/sport-recife/sport-recife-logo-footylogos.svg",
+  "Cazaquistão":"https://assets.footylogos.com/logos/kazakhstan-national-team/kazakhstan-national-team-logo-footylogos.svg",
+  "Moldávia":"https://assets.footylogos.com/logos/moldova-national-team/moldova-national-team-logo-footylogos.svg",
+  "Chipre":"https://assets.footylogos.com/logos/cyprus-national-team/cyprus-national-team-logo-footylogos.svg",
+  "Índia":"https://assets.footylogos.com/logos/india-national-team/india-national-team-logo-footylogos.svg",
+  "Suíça":"https://assets.footylogos.com/logos/switzerland-national-team/switzerland-national-team-logo-footylogos.svg",
+  "México":"https://assets.footylogos.com/logos/mexico-national-team/mexico-national-team-logo-footylogos.svg"
 };
 
 const gamesData = [
@@ -632,6 +638,18 @@ const gamesData = [
   {date:"2026-10-01",time:"21:00",comp:"Brasileirão - Série B (31ª Rodada)",home:"Novorizontino",away:"Goiás",channels:["📺 XSports","📺 ESPN","📺 SportyNet"]},
   {date:"2026-10-01",time:"21:15",comp:"Copa Argentina (Quartas de Final)",home:"Platense",away:"Estudiantes",channels:["📺 XSports"]},
 
+  /* Sexta-feira — 02/10/2026 */
+  {date:"2026-10-02",time:"11:00",comp:"UEFA Nations League - C (3ª Rodada)",home:"Cazaquistão",away:"Moldávia",channels:["📺 ESPN 4","📺 Disney+"]},
+  {date:"2026-10-02",time:"13:00",comp:"UEFA Nations League - C (3ª Rodada)",home:"Chipre",away:"Armênia",channels:["📺 ESPN 4","📺 Disney+"]},
+  {date:"2026-10-02",time:"15:45",comp:"UEFA Nations League - A (3ª Rodada)",home:"França",away:"Itália",channels:["📺 ESPN","📺 Disney+"]},
+  {date:"2026-10-02",time:"15:45",comp:"UEFA Nations League - A (3ª Rodada)",home:"Bélgica",away:"Turquia",channels:["📺 SporTV"]},
+  {date:"2026-10-02",time:"15:45",comp:"UEFA Nations League - B (3ª Rodada)",home:"Polônia",away:"Romênia",channels:["📺 ESPN 4","📺 Disney+"]},
+  {date:"2026-10-02",time:"19:30",comp:"Brasileirão - Série B (31ª Rodada)",home:"São Bernardo FC",away:"CRB",channels:["📺 Premiere"]},
+  {date:"2026-10-02",time:"20:00",comp:"Brasileirão - Série A (21ª Rodada)",home:"São Paulo",away:"Santos",channels:["📺 SporTV","📺 Premiere"]},
+  {date:"2026-10-02",time:"20:30",comp:"Brasileirão - Série B (31ª Rodada)",home:"Londrina",away:"Criciúma",channels:["📺 Disney+"]},
+  {date:"2026-10-02",time:"20:45",comp:"Brasileirão - Série B (31ª Rodada)",home:"Juventude",away:"Operário-PR",channels:["📺 XSports","📺 SportyNet","📺 YouTube (SportyNet)","📺 Disney+"]},
+  {date:"2026-10-02",time:"21:35",comp:"Brasileirão - Série B (31ª Rodada)",home:"Fortaleza",away:"Náutico",channels:["📺 RedeTV!","📺 ESPN","📺 YouTube (GOAT)","📺 Disney+"]},
+
 ];
 
 function getLocalDate(){
@@ -676,6 +694,7 @@ function createCompetitionLogo(comp){
     else if(c.includes("la liga") || c.includes("espanhol")) src=competitionLogos["La Liga"];
     else if(c.includes("liga argentina")) src=competitionLogos["Liga Argentina"];
     else if(c.includes("premier league") || c.includes("inglês")) src=competitionLogos["Premier League"];
+    else if(c.includes("nations league")) src=competitionLogos["UEFA Nations League"];
   }
 
   if(!src)return "";
