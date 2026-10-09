@@ -122,8 +122,9 @@ header{
   flex:none;
 }
 .competition-logo{
-  opacity:.96;
+  opacity:1;
   background:transparent;
+  filter:none;
 }
 .teams{
   display:grid;
@@ -144,6 +145,7 @@ header{
 .team.away{justify-content:flex-start;text-align:left}
 .team-name{line-height:1.15}
 .team-logo{
+  filter:none;
   width:42px;
   height:42px;
   object-fit:contain;
@@ -324,6 +326,9 @@ const logos = {
   "Liverpool":"https://assets.footylogos.com/logos/liverpool-fc/liverpool-fc-logo-footylogos.svg",
   "Atlético de Madrid":"https://assets.footylogos.com/logos/atletico-madrid/atletico-madrid-logo-footylogos.svg",
   "Napoli":"https://assets.footylogos.com/logos/napoli/napoli-logo-footylogos.svg",
+  "Lille":"https://assets.footylogos.com/logos/lille/lille-logo-footylogos.svg",
+  "RB Leipzig":"https://assets.footylogos.com/logos/rb-leipzig/rb-leipzig-logo-footylogos.svg",
+  "Viking":"https://assets.footylogos.com/logos/viking/viking-logo-footylogos.svg",
   "Arsenal":"https://assets.footylogos.com/logos/arsenal/arsenal-logo-footylogos.svg",
   "PSG":"https://s.sde.globo.com/media/teams/2018/03/12/paris-saint-germain.svg",
   "Slovan Bratislava":"https://assets.footylogos.com/logos/slovan-bratislava/slovan-bratislava-logo-footylogos.svg",
@@ -774,6 +779,17 @@ const gamesData = [
   {date:"2026-10-12",time:"19:30",comp:"Brasileirão - Série B (33ª Rodada)",home:"Criciúma",away:"América-MG",channels:["📺 Disney+"]},
   {date:"2026-10-12",time:"21:00",comp:"Brasileirão - Série A (30ª Rodada)",home:"RB Bragantino",away:"Cruzeiro",channels:["📺 SporTV e Premiere"]},
   {date:"2026-10-12",time:"21:00",comp:"Brasileirão - Série B (33ª Rodada)",home:"Botafogo-SP",away:"Ceará",channels:["📺 XSports, ESPN"]},
+  /* Terça-feira — 13/10/2026 */
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"Arsenal",away:"Lille",channels:["📺 HBO MAX"]},
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"Atlético de Madrid",away:"Manchester United",channels:["📺 Space"]},
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"Galatasaray",away:"Barcelona",channels:["📺 TNT","📺 SBT"]},
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"Internazionale",away:"Club Brugge",channels:["📺 HBO MAX"]},
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"RB Leipzig",away:"PSV",channels:["📺 HBO MAX"]},
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"Viking",away:"Bayern de Munique",channels:["📺 HBO MAX"]},
+  {date:"2026-10-13",time:"16:00",comp:"Champions League (Fase de Liga - 2ª R)",home:"Villarreal",away:"Napoli",channels:["📺 HBO MAX"]},
+  {date:"2026-10-13",time:"19:30",comp:"Brasileirão - Série B (33ª Rodada)",home:"Athletic Club",away:"Londrina",channels:["📺 ESPN"]},
+  {date:"2026-10-13",time:"20:30",comp:"Amistoso Feminino",home:"Brasil",away:"Argentina",channels:["📺 SporTV"]},
+  {date:"2026-10-13",time:"21:30",comp:"CONMEBOL Sul-Americana (Semifinal - IDA)",home:"Boca Juniors",away:"Vasco",channels:["📺 SBT"]},
   {date:"2026-10-11",time:"18:30",comp:"Brasileirão - Série B (33ª Rodada)",home:"Cuiabá",away:"Avaí",channels:["📺 ESPN"]},
   {date:"2026-10-11",time:"19:30",comp:"Brasileirão - Série A (30ª Rodada)",home:"Bahia",away:"Mirassol",channels:["📺 Premiere"]},
 
