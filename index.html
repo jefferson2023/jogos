@@ -208,9 +208,11 @@ header{
 
 <script>
 const competitionLogos = {
+  "Copa do Brasil":"https://assets.footylogos.com/logos/copa-do-brasil-logo-footylogos.svg",
+  "Campeonato Argentino":"https://assets.footylogos.com/logos/liga-profesional-argentina/liga-profesional-argentina-logo-footylogos.svg",
   "Campeonato Italiano":"https://assets.footylogos.com/logos/serie-a-italy/serie-a-italy-logo-footylogos.svg",
   "Campeonato Inglês":"https://assets.footylogos.com/logos/premier-league-england/premier-league-england-logo-footylogos.svg",
-  "Campeonato Português":"https://assets.footylogos.com/logos/campeonato-de-portugal-logo-footylogos.svg",
+  "Campeonato Português":"https://assets.footylogos.com/logos/primeira-liga-portugal/primeira-liga-portugal-logo-footylogos.svg",
   "UEFA Champions League":"https://cdn-img.staticzz.com/img/logos/competicoes/27_imgbank_lc_20250314102703.png",
   "AFC Champions League":"https://city-png.b-cdn.net/preview/preview_public/uploads/preview/afc-champions-league-official-logo-hd-png-701751712234554kcwfnociug.png",
   "CONMEBOL Libertadores":"https://i.namu.wiki/i/6etqHRk8O1QOE_MWKvT8SFcIOgLkr4xmIjpATrs9S5hWby4oRqGgI--6xZBNHtlzVP0tJe3F9lpS6X8Nk2YLw7UswwB5W1XpLLywWrSa4ScEe-YzhdvahLfhZ_Uri08uSxMpOqDDzpFyCsV6ILhCcg.webp",
@@ -1103,6 +1105,7 @@ function createCompetitionLogo(comp){
     else if(c.includes("libertadores")) src=competitionLogos["CONMEBOL Libertadores"];
     else if(c.includes("sul-americana")) src=competitionLogos["CONMEBOL Sul-Americana"];
     else if(c.includes("liga saudita")) src=competitionLogos["Liga Saudita"];
+    else if(c.includes("copa do brasil")) src=competitionLogos["Copa do Brasil"];
     else if(c.includes("copa da liga inglesa")) src=competitionLogos["Copa da Liga Inglesa"];
     else if(c.includes("série a")) src=competitionLogos["Brasileirão Série A"];
     else if(c.includes("série b")) src=competitionLogos["Brasileirão Série B"];
@@ -1111,7 +1114,7 @@ function createCompetitionLogo(comp){
     else if(c.includes("serie a") || c.includes("italiano")) src=competitionLogos["Serie A"];
     else if(c.includes("ligue 1") || c.includes("francês")) src=competitionLogos["Ligue 1"];
     else if(c.includes("la liga") || c.includes("espanhol")) src=competitionLogos["La Liga"];
-    else if(c.includes("liga argentina")) src=competitionLogos["Liga Argentina"];
+    else if(c.includes("campeonato argentino") || c.includes("liga argentina")) src=competitionLogos["Campeonato Argentino"];
     else if(c.includes("premier league") || c.includes("inglês")) src=competitionLogos["Premier League"];
     else if(c.includes("nations league")) src=competitionLogos["UEFA Nations League"];
   }
